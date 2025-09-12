@@ -1,7 +1,12 @@
-// src/App.jsx
+// Handle GitHub Pages redirect from 404.html
+const params = new URLSearchParams(window.location.search);
+const redirect = params.get('redirect');
+if (redirect) {
+  window.history.replaceState(null, '', '/pmws-last' + redirect);
+}
 
 import React, { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
@@ -27,7 +32,6 @@ const ScrollToSection = () => {
         return;
       }
     }
-    // Scroll to top on route change if no hash
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname, hash]);
   return null;
@@ -35,7 +39,7 @@ const ScrollToSection = () => {
 
 function App() {
   return (
-    <>
+    <BrowserRouter basename="/pmws-last">
       <Header />
       <ScrollToSection />
       <main>
@@ -55,7 +59,7 @@ function App() {
       <Footer />
       <BackToTopButton />
       <WhatsAppButton />
-    </>
+    </BrowserRouter>
   );
 }
 

@@ -69,86 +69,162 @@ a{text-decoration:none}
 .mobile-toggle{background:#0c3a60;border:1.5px solid rgba(255,255,255,.35);color:#fff;width:44px;height:44px;border-radius:12px;display:grid;place-items:center; cursor: pointer;}
 @media(min-width:1000px){.mobile-toggle{display:none}}
 
-/* Mobile drawer overlay */
-.mobile-drawer{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  background:rgba(10,46,78,.9);
-  backdrop-filter:blur(8px);
-  display:none;
-}
-.mobile-drawer.open{display:block;animation:fadeIn .18s ease}
-body.menu-open{overflow:hidden}
-@keyframes slideIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+/* ======================================= */
+/* ===== ELEGANT MOBILE MENU - REVAMP ===== */
+/* ======================================= */
 
-/* Sliding panel */
+/* --- 1. Drawer Overlay --- */
+/* Uses a semi-transparent version of your primary blue with a blur effect for a modern feel. */
+.mobile-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(10, 46, 78, 0.5); 
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-drawer.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- 2. Sliding Panel --- */
+/* Perfectly matches your site's theme by using your existing variables for background, shadow, and sizing. */
 .mobile-panel {
-  position: absolute;
-  right: 0; top: 0;
-  height: 100%;
-  width: min(80vw, 340px);
-  background: #fff;
-  box-shadow: -2px 0 24px 0 rgba(10,46,78,0.12), -1px 0 8px 0 rgba(232,119,34,0.08);
-  border-top-left-radius: 24px;
-  border-bottom-left-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
-  animation: slideIn .3s cubic-bezier(.4,0,.2,1);
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  gap: 1.2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: min(85vw, 360px);
+    background: var(--bg); /* Ensures dark mode compatibility */
+    box-shadow: var(--shadow-2); /* Uses your strongest shadow for depth */
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother animation easing */
+    overflow-y: auto;
 }
 
-.mobile-panel a {
-  display: block;
-  color: var(--blue);
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1.15rem;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-}
-.mobile-panel a:hover,
-.mobile-panel a:focus {
-  background: var(--orange);
-  color: #fff;
+.mobile-drawer.open .mobile-panel {
+    transform: translateX(0);
 }
 
+/* --- 3. Close Button --- */
+/* Styled to be a clear, tappable circle that uses your theme's colors for interaction. */
 .mobile-panel__close {
-  align-self: flex-end;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: var(--blue);
-  cursor: pointer;
-  margin-bottom: 1rem;
+    align-self: flex-end;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
 }
 
+.mobile-panel__close:hover {
+    background: var(--orange);
+    color: #fff;
+    border-color: var(--orange);
+}
+
+/* --- 4. Main Navigation Links --- */
+/* Creates clean visual separation and adds a subtle staggered animation for an elegant entrance. */
+.mobile-panel__nav {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.mobile-panel__nav a {
+    color: var(--text);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm); /* Uses your predefined border-radius */
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+    /* Animation setup */
+    opacity: 0;
+    transform: translateX(15px);
+    animation: fadeInSlide 0.5s ease forwards;
+}
+
+.mobile-panel__nav a:hover {
+    background: var(--blue-50); /* Uses your light blue for a soft hover effect */
+    color: var(--blue);
+    transform: translateX(5px);
+}
+
+/* Staggered animation delays for each link */
+.mobile-drawer.open .mobile-panel__nav a:nth-child(1) { animation-delay: 0.1s; }
+.mobile-drawer.open .mobile-panel__nav a:nth-child(2) { animation-delay: 0.15s; }
+.mobile-drawer.open .mobile-panel__nav a:nth-child(3) { animation-delay: 0.2s; }
+.mobile-drawer.open .mobile-panel__nav a:nth-child(4) { animation-delay: 0.25s; }
+.mobile-drawer.open .mobile-panel__nav a:nth-child(5) { animation-delay: 0.3s; }
+.mobile-drawer.open .mobile-panel__nav a:nth-child(6) { animation-delay: 0.35s; }
+.mobile-drawer.open .mobile-panel__nav a:nth-child(7) { animation-delay: 0.4s; }
+
+@keyframes fadeInSlide {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- 5. CTA Buttons --- */
+/* Pushes the buttons to the bottom and creates a clear visual hierarchy. */
 .mobile-panel__cta {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    margin-top: auto; /* Pushes CTAs to the bottom of the menu */
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
+
 .mobile-panel__cta a {
-  background: var(--orange);
-  color: #fff;
-  font-weight: 700;
-  border-radius: 12px;
-  padding: 0.9rem 1rem;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(232,119,34,0.08);
-  transition: background 0.2s;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    transition: all 0.2s ease;
 }
-.mobile-panel__cta a:hover,
-.mobile-panel__cta a:focus {
-  background: var(--blue);
-  color: #fff;
+
+/* Primary CTA: Uses your main accent color */
+.mobile-panel__cta a:first-child {
+    background: var(--orange);
+    color: #fff;
+    box-shadow: var(--shadow-1);
+}
+.mobile-panel__cta a:first-child:hover {
+    background: var(--orange-700);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-2);
+}
+
+/* Secondary CTAs: Styled to be less prominent */
+.mobile-panel__cta a:not(:first-child) {
+    background: var(--muted);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+.mobile-panel__cta a:not(:first-child):hover {
+    border-color: var(--orange);
+    color: var(--orange);
 }
 
 /* ===== HERO ===== */
@@ -582,4 +658,32 @@ body.menu-open{overflow:hidden}
 .contact-step-content a:focus {
   background: #0A2E4E;
   color: #fff;
+}
+
+.live-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  animation: pulse-green 1s infinite;
+  background: #2ecc40;
+}
+
+.live-dot.closed {
+  background: #e74c3c;
+  animation: pulse-red 1s infinite;
+}
+
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(44,204,64, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(44,204,64, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(44,204,64, 0); }
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(231,76,60, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(231,76,60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(231,76,60, 0); }
 }

@@ -18,20 +18,20 @@ const MobileDrawer = ({ isOpen, onClose }) => {
         
         {/* Navigation */}
         <nav className="mobile-panel__nav" aria-label="Menu mobile">
-          <Link to="/">Home</Link>
-          <Link to="/chi-siamo">Chi Siamo</Link>
-          <Link to="/servizi">Servizi</Link>
-          <a href="/#perche">Perché noi</a>
-          <Link to="/faq">FAQ</Link>
-          <a href="/#recensioni">Recensioni</a>
-          <Link to="/contatti">Contatti</Link>
+          <Link to="/" onClick={onClose}>Home</Link>
+          <Link to="/chi-siamo" onClick={onClose}>Chi Siamo</Link>
+          <Link to="/servizi" onClick={onClose}>Servizi</Link>
+          <a href="/#perche" onClick={onClose}>Perché noi</a>
+          <Link to="/faq" onClick={onClose}>FAQ</Link>
+          <a href="/#recensioni" onClick={onClose}>Recensioni</a>
+          <Link to="/contatti" onClick={onClose}>Contatti</Link>
         </nav>
         
         {/* CTA buttons */}
         <div className="mobile-panel__cta">
-          <a href="#prenota">Prenota un appuntamento</a>
-          <a href="tel:+390612345678">Parla con noi</a>
-          <a href="https://wa.me/390612345678?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi." target="_blank" rel="noopener">Chat WhatsApp</a>
+          <a href="#prenota" onClick={onClose}>Prenota un appuntamento</a>
+          <a href="tel:+390612345678" onClick={onClose}>Parla con noi</a>
+          <a href="https://wa.me/390612345678?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi." target="_blank" rel="noopener" onClick={onClose}>Chat WhatsApp</a>
         </div>
       </div>
     </div>

@@ -7,4 +7,5 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
   },
+  base: '/pmws-last/', // <-- Add this line
 });

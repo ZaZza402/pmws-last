@@ -32,14 +32,7 @@ function LiveClock() {
     <div style={{ margin: '1rem 0', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
       <span>Ora attuale: {timeString} — </span>
       <span
-        style={{
-          display: 'inline-block',
-          width: '12px',
-          height: '12px',
-          borderRadius: '50%',
-          background: open ? 'green' : 'red',
-          marginRight: '0.5rem',
-        }}
+        className={`live-dot${open ? '' : ' closed'}`}
         aria-label={open ? 'Aperto' : 'Chiuso'}
       ></span>
       <span>{open ? 'Siamo aperti!' : 'Siamo chiusi.'}</span>
