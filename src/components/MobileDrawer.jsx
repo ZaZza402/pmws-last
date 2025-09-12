@@ -21,9 +21,9 @@ const MobileDrawer = ({ isOpen, onClose }) => {
           <Link to="/" onClick={onClose}>Home</Link>
           <Link to="/chi-siamo" onClick={onClose}>Chi Siamo</Link>
           <Link to="/servizi" onClick={onClose}>Servizi</Link>
-          <a href="/#perche" onClick={onClose}>Perché noi</a>
+          <Link to="/#perche" onClick={onClose}>Perché noi</Link>
           <Link to="/faq" onClick={onClose}>FAQ</Link>
-          <a href="/#recensioni" onClick={onClose}>Recensioni</a>
+          <Link to="/#recensioni" onClick={onClose}>Recensioni</Link>
           <Link to="/contatti" onClick={onClose}>Contatti</Link>
         </nav>
         

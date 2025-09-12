@@ -45,9 +45,9 @@ const Header = () => {
           <nav className="desktop-nav" id="desktopNav" aria-label="Principale">
             <NavLink to="/chi-siamo">Chi Siamo</NavLink> {/* ADDED */}
             <NavLink to="/servizi">Servizi</NavLink>
-            <a href="/#perche">Perché noi</a>
+            <NavLink to="/#perche">Perché noi</NavLink>
             <NavLink to="/faq">FAQ</NavLink>
-            <a href="/#recensioni">Recensioni</a>
+            <NavLink to="/#recensioni">Recensioni</NavLink>
             <NavLink to="/contatti">Contatti</NavLink>
           </nav>
           
