@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 
 const contactOptions = [
@@ -25,9 +26,11 @@ const contactOptions = [
 const ContattiPage = () => {
   return (
     <>
-      <title>Contatti e Sede - PuntoMigrare Roma</title>
-      <meta name="description" content="Contattaci per informazioni o per prenotare un appuntamento. Siamo in Via del Fuoco Sacro, 97, Roma. Trova i nostri orari e la mappa per raggiungerci." />
-      <link rel="canonical" href="https://www.puntomigrare.it/contatti" />
+      <Helmet>
+        <title>Contatti e Sede - PuntoMigrare Roma</title>
+        <meta name="description" content="Contattaci per informazioni o per prenotare un appuntamento. Siamo in Via del Fuoco Sacro, 97, Roma. Trova i nostri orari e la mappa per raggiungerci." />
+        <link rel="canonical" href="https://www.puntomigrare.it/contatti" />
+      </Helmet>
 
       <section className="section">
         <div className="container">

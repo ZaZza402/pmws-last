@@ -2,6 +2,7 @@
 
 // THIS IS THE CORRECTED IMPORT LINE
 import React, { useState, useEffect } from 'react'; 
+import { Helmet } from 'react-helmet-async';
 import { faqQuestions } from '../faqData';
 
 // Reusable Accordion Item Component
@@ -51,9 +52,11 @@ const FaqPage = () => {
 
   return (
     <>
-      <title>Domande Frequenti (FAQ) - Immigrazione e CAF | PuntoMigrare</title>
-      <meta name="description" content="Risposte dettagliate alle domande complesse su permesso di soggiorno, cittadinanza, 730, ISEE e altro. La nostra esperienza al tuo servizio." />
-      <link rel="canonical" href="https://www.puntomigrare.it/faq" />
+      <Helmet>
+        <title>Domande Frequenti (FAQ) - Immigrazione e CAF | PuntoMigrare</title>
+        <meta name="description" content="Risposte dettagliate alle domande complesse su permesso di soggiorno, cittadinanza, 730, ISEE e altro. La nostra esperienza al tuo servizio." />
+        <link rel="canonical" href="https://www.puntomigrare.it/faq" />
+      </Helmet>
       
       <section className="section">
         <div className="container">

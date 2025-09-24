@@ -390,9 +390,23 @@ a{text-decoration:none}
 .faq-tab-btn:hover { background-color: var(--card); }
 .faq-tab-btn.active { background-color: var(--orange); color: #fff; box-shadow: var(--shadow-1); }
 .faq-list { max-width: 800px; margin-left: auto; margin-right: auto; display: grid; gap: 1rem; }
-.faq-item { background-color: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+/* This turns the item into a grid to allow for fluid animation */
+.faq-item {
+  display: grid;
+  grid-template-rows: auto 0fr; /* The answer area starts with a height of 0 */
+  transition: grid-template-rows 0.4s ease-in-out;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
 
-/* THIS IS THE CORRECTED RULE */
+/* When the item is expanded, the grid row animates to fit the content */
+.faq-item.expanded {
+  grid-template-rows: auto 1fr;
+}
+
+/* The clickable question area */
 .faq-question {
   display: flex;
   justify-content: space-between;
@@ -405,14 +419,36 @@ a{text-decoration:none}
   background: none;
   border: none;
   cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
 }
 
-.faq-icon { color: var(--orange); transition: transform 0.3s ease; min-width: 24px; }
-.faq-item.expanded .faq-icon { transform: rotate(180deg); }
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-.faq-item.expanded .faq-answer { max-height: 500px; }
-.faq-answer-content { padding: 0 1.25rem 1.25rem; line-height: 1.7; }
-.faq-answer-content p { margin: 0; }
+/* The arrow icon */
+.faq-icon {
+  color: var(--orange);
+  transition: transform 0.3s ease;
+  min-width: 24px;
+}
+
+.faq-item.expanded .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* The container for the answer text that will expand */
+.faq-answer {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* The content inside the answer area */
+.faq-answer-content {
+  padding: 0 1.25rem 1.25rem;
+  line-height: 1.7;
+}
+
+.faq-answer-content p {
+  margin: 0;
+}
 
 /* ======================================= */
 /* ===== REVAMPED FOOTER STYLES ===== */
@@ -686,4 +722,98 @@ a{text-decoration:none}
   0% { box-shadow: 0 0 0 0 rgba(231,76,60, 0.7); }
   70% { box-shadow: 0 0 0 10px rgba(231,76,60, 0); }
   100% { box-shadow: 0 0 0 0 rgba(231,76,60, 0); }
+}
+
+/* ======================================= */
+/* ===== CORRECTED IMAGE PLACEHOLDER STYLES ===== */
+/* ======================================= */
+
+/* The container holds both the image and the placeholder */
+.why__image-container {
+  position: relative; /* This is key for stacking */
+  background-color: var(--blue-50); /* A fallback color while things load */
+  border-radius: var(--radius-md, 16px);
+  overflow: hidden; /* Ensures the shimmer doesn't spill out */
+  min-height: 250px;
+}
+
+/* The placeholder is a layer that sits on top */
+.why__image-placeholder {
+  position: absolute;
+  inset: 0; /* A modern shortcut for top:0, right:0, bottom:0, left:0 */
+  background: linear-gradient(90deg, var(--blue-50) 0%, var(--border) 50%, var(--blue-50) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  transition: opacity 0.5s ease-in-out; /* For a smooth fade-out */
+  opacity: 1; /* Visible by default */
+}
+
+/* The actual image is underneath the placeholder */
+.why__image-container img {
+  display: block; /* Removes extra space below the image */
+  width: 100%;
+  border-radius: var(--radius-md, 16px);
+  opacity: 0; /* Invisible but still takes up space */
+  transition: opacity 0.5s ease-in-out; /* For a smooth fade-in */
+}
+
+/* --- The Magic: Toggling Opacity --- */
+
+/* When the container has the 'loaded' class... */
+.why__image-container.loaded .why__image-placeholder {
+  opacity: 0; /* ...fade out the placeholder. */
+}
+
+.why__image-container.loaded img {
+  opacity: 1; /* ...and fade in the real image. */
+}
+
+/* The shimmer animation remains the same */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ======================================= */
+/* ===== ELEGANT 404 PAGE STYLES ===== */
+/* ======================================= */
+
+.not-found-page {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 4rem 0;
+  min-height: 60vh; /* Ensures it takes up a good amount of screen height */
+}
+
+.not-found-content {
+  max-width: 600px; /* Keeps the content from getting too wide on large screens */
+  margin: 0 auto;
+  background-color: var(--card);
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-1);
+}
+
+.not-found-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--blue-50);
+  color: var(--orange);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.not-found-content h1 {
+  color: var(--blue);
+}
+
+.not-found-content p {
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--text) 80%, white);
 }

@@ -1,11 +1,25 @@
 // src/pages/NotFoundPage.jsx
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { VscCompass } from 'react-icons/vsc'; // A nice, relevant icon
+
 export default function NotFoundPage() {
   return (
-    <main style={{ textAlign: "center", padding: "4rem" }}>
-      <h1>404 - Pagina non trovata</h1>
-      <p>La pagina che cerchi non esiste.</p>
-      <a href="/">Torna alla Home</a>
+    <main className="not-found-page">
+      <div className="container">
+        <div className="not-found-content">
+          <div className="not-found-icon" aria-hidden="true">
+            <VscCompass size={60} />
+          </div>
+          <h1>Pagina non trovata</h1>
+          <p>
+            Sembra che tu abbia preso una strada sbagliata. La pagina che stai cercando non esiste o è stata spostata.
+          </p>
+          <Link to="/" className="btn btn--primary mt-3">
+            Torna alla Home
+          </Link>
+        </div>
+      </div>
     </main>
   );
 }

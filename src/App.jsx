@@ -7,6 +7,8 @@ if (redirect) {
 
 import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import ErrorBoundary from './components/ErrorBoundary';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
@@ -39,27 +41,31 @@ const ScrollToSection = () => {
 
 function App() {
   return (
-    <BrowserRouter basename="/pmws-last">
-      <Header />
-      <ScrollToSection />
-      <main>
-        <Suspense fallback={<div>Caricamento...</div>}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/servizi" element={<ServiziPage />} />
-            <Route path="/chi-siamo" element={<ChiSiamoPage />} />
-            <Route path="/faq" element={<FaqPage />} />
-            <Route path="/contatti" element={<ContattiPage />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-            <Route path="/cookie-policy" element={<CookiePolicyPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
-      </main>
-      <Footer />
-      <BackToTopButton />
-      <WhatsAppButton />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter basename="/pmws-last">
+        <Header />
+        <ScrollToSection />
+        <main>
+          <ErrorBoundary>
+            <Suspense fallback={<div>Caricamento...</div>}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/servizi" element={<ServiziPage />} />
+                <Route path="/chi-siamo" element={<ChiSiamoPage />} />
+                <Route path="/faq" element={<FaqPage />} />
+                <Route path="/contatti" element={<ContattiPage />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </Suspense>
+          </ErrorBoundary>
+        </main>
+        <Footer />
+        <BackToTopButton />
+        <WhatsAppButton />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

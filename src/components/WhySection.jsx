@@ -1,6 +1,8 @@
-import React from 'react';
+// src/components/WhySection.jsx
+import React, { useState } from 'react';
 import { FaRegClock, FaLanguage } from 'react-icons/fa';
 import { MdOutlineGppGood } from 'react-icons/md';
+import ufficioImage from '../assets/ufficio.jpg';
 
 const WhyItem = ({ title, description, icon }) => (
     <div className="why__item" role="listitem">
@@ -13,6 +15,8 @@ const WhyItem = ({ title, description, icon }) => (
 );
 
 const WhySection = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <section id="perche" className="section why" aria-labelledby="why-title">
       <div className="container why__grid">
@@ -38,9 +42,23 @@ const WhySection = () => {
             />
           </div>
         </div>
-        <figure className="panel" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop" alt="Ufficio accogliente e luminoso di PuntoMigrare" loading="lazy" style={{borderRadius:'16px'}}/>
+        
+        {/* ----- CORRECTED AND SIMPLIFIED SECTION ----- */}
+        <figure className={`panel why__image-container ${imageLoaded ? 'loaded' : ''}`} aria-hidden="true">
+          
+          {/* The placeholder is always here, it just fades out with CSS */}
+          <div className="why__image-placeholder"></div>
+          
+          {/* The image is always here, it just fades in with CSS. No more inline styles! */}
+          <img 
+  src={ufficioImage} 
+  alt="Ufficio accogliente e luminoso di PuntoMigrare" 
+  loading="lazy" 
+  onLoad={() => setImageLoaded(true)}
+/>
         </figure>
+        {/* ----- END OF CORRECTED SECTION ----- */}
+
       </div>
     </section>
   );

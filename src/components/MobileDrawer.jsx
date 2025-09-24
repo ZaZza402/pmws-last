@@ -1,14 +1,96 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const MobileDrawer = ({ isOpen, onClose }) => {
+  const drawerRef = useRef(null);
+  const closeButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Focus the close button when the drawer opens
+    if (closeButtonRef.current) {
+      closeButtonRef.current.focus();
+    }
+
+    // Get all focusable elements within the drawer
+    const getFocusableElements = () => {
+      if (!drawerRef.current) return [];
+      
+      const focusableSelectors = [
+        'button:not([disabled])',
+        'a[href]:not([disabled])',
+        'input:not([disabled])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        '[tabindex]:not([tabindex="-1"]):not([disabled])'
+      ].join(', ');
+      
+      return Array.from(drawerRef.current.querySelectorAll(focusableSelectors));
+    };
+
+    // Handle tab key to trap focus
+    const handleKeyDown = (e) => {
+      if (e.key !== 'Tab') return;
+
+      const focusableElements = getFocusableElements();
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift + Tab: moving backwards
+        if (document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable?.focus();
+        }
+      } else {
+        // Tab: moving forwards
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable?.focus();
+        }
+      }
+    };
+
+    // Handle escape key
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    // Add event listeners
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keydown', handleEscape);
+
+    // Cleanup function
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) { return null; }
 
   return (
     <div className="mobile-drawer open" id="mobileDrawer" aria-hidden="false" onClick={onClose}>
-      <div className="mobile-panel" role="dialog" aria-label="Menu" aria-modal="true" onClick={(e) => e.stopPropagation()}>
+      <div 
+        ref={drawerRef}
+        className="mobile-panel" 
+        role="dialog" 
+        aria-label="Menu" 
+        aria-modal="true" 
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Close button */}
-        <button className="mobile-panel__close" aria-label="Chiudi menu" onClick={onClose}>&times;</button>
+        <button 
+          ref={closeButtonRef}
+          className="mobile-panel__close" 
+          aria-label="Chiudi menu" 
+          onClick={onClose}
+        >
+          &times;
+        </button>
         
         {/* Welcome/avatar */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '.6rem', marginBottom: '1rem' }}>
