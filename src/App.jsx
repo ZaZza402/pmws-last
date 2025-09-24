@@ -1,10 +1,3 @@
-// Handle GitHub Pages redirect from 404.html
-const params = new URLSearchParams(window.location.search);
-const redirect = params.get('redirect');
-if (redirect) {
-  window.history.replaceState(null, '', '/pmws-last' + redirect);
-}
-
 import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -40,7 +33,7 @@ const ScrollToSection = () => {
 
 function App() {
   return (
-    <BrowserRouter basename="/pmws-last">
+    <BrowserRouter>
       <Header />
       <ScrollToSection />
       <main>
