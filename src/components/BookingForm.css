@@ -1,0 +1,142 @@
+/* src/components/BookingForm.css */
+:root {
+  --brand-blue: #0A2342;
+  --brand-orange: #FF8C00;
+}
+
+.booking-form-container {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1rem;
+  background: var(--card);
+}
+
+/* --- Stili per React Datepicker --- */
+.react-datepicker {
+  width: 100%;
+  border: none !important;
+  font-family: inherit !important;
+  background-color: transparent !important;
+}
+
+.react-datepicker__month-container {
+    width: 100%;
+}
+
+.react-datepicker__header {
+  background-color: var(--brand-blue) !important;
+  border-bottom: none !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.react-datepicker__day {
+  color: var(--text-color) !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin: 0.2rem !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: var(--brand-orange) !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--brand-orange) !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+.react-datepicker__day--disabled {
+  color: var(--text-muted) !important;
+  opacity: 0.5;
+}
+
+.react-datepicker__navigation-icon::before {
+    border-color: white !important;
+}
+
+/* --- Stili per gli slot e il form --- */
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.slot-button {
+  padding: 0.75rem 0.5rem;
+  border: 1px solid var(--brand-orange);
+  background-color: transparent;
+  color: var(--brand-orange);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-weight: bold;
+}
+
+.slot-button:hover {
+  background-color: var(--brand-orange);
+  color: white;
+}
+
+.slot-button.selected {
+  background-color: var(--brand-orange);
+  color: white;
+}
+
+.user-details {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.user-details label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.user-details input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  color: var(--text-color);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--brand-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.submit-button:hover {
+  opacity: 0.9;
+}
+
+.booking-confirmation {
+    text-align: center;
+    padding: 2rem;
+}
+
+.error-message {
+    color: #e53e3e; /* Red color for errors */
+    font-weight: bold;
+    margin-top: 1rem;
+}

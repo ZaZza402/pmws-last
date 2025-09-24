@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { businessHours } from '../config/businessHours';
+import BookingForm from './BookingForm';
 
-// Funzione per verificare se l'ufficio è aperto
+// Funzione aggiornata per verificare se l'ufficio è aperto
 function isOpen(now = new Date()) {
-  const day = now.getDay(); // 0 = Domenica, 1 = Lunedì, ..., 6 = Sabato
-  const hour = now.getHours();
-  const minute = now.getMinutes();
+  const day = now.getDay();
+  const hour = now.getHours() + now.getMinutes() / 60;
+  const schedule = businessHours[day];
 
-  // Orari: Lun, Mar, Gio: 09:00–18:00 | Mer, Ven: 09:00–13:00 | Sab, Dom: chiuso
-  if (day === 0 || day === 6) return false; // Sabato/Domenica chiuso
+  if (!schedule) return false;
 
-  if (day === 1 || day === 2 || day === 4) { // Lun, Mar, Gio
-    return (hour > 9 || (hour === 9 && minute >= 0)) && (hour < 18 || (hour === 18 && minute === 0));
-  }
-  if (day === 3 || day === 5) { // Mer, Ven
-    return (hour > 9 || (hour === 9 && minute >= 0)) && (hour < 13 || (hour === 13 && minute === 0));
-  }
-  return false;
+  const isInMorningShift = hour >= schedule.open && hour < schedule.breakStart;
+  const isInAfternoonShift = hour >= schedule.breakEnd && hour < schedule.close;
+  
+  return isInMorningShift || isInAfternoonShift;
 }
 
 function LiveClock() {
@@ -25,7 +23,6 @@ function LiveClock() {
     return () => clearInterval(timer);
   }, []);
   const open = isOpen(now);
-
   const timeString = now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
   return (
@@ -54,18 +51,12 @@ const BookingSection = () => {
         <div className="panel mt-4">
           <div className="contact-grid">
             
-            {/* Column 1: Online Booking */}
+            {/* Column 1: Online Booking - UPDATED */}
             <div>
               <h3 style={{ margin: '0 0 .5rem' }}>1. Prenota Online</h3>
               <p className="mt-1" style={{minHeight: '48px'}}>Scegli il giorno e l'ora che preferisci. La conferma è immediata, senza attese.</p>
-              <div style={{ position: 'relative', aspectRatio: '4/3', border: '1px solid var(--border)', borderRadius: '18px', overflow: 'hidden', background: 'var(--card)' }}>
-                <iframe
-                  src="YOUR_GOOGLE_CALENDAR_BOOKING_URL_HERE"
-                  style={{ border: 0, width: '100%', height: '100%' }}
-                  frameBorder="0"
-                  title="Calendario Prenotazioni Google"
-                  loading="lazy"
-                ></iframe>
+              <div className="booking-form-container">
+                 <BookingForm />
               </div>
             </div>
 
@@ -78,8 +69,8 @@ const BookingSection = () => {
                 00133 Roma RM
                 <br /><br/>
                 <strong style={{display:'block'}}>Orari di apertura:</strong>
-                Lun - Mar - Gio : 09:00 – 18:00<br/>
-                Mer - Ven : 09:00 – 13:00
+                Lun, Mar, Gio: 09:00–13:00 / 14:30–18:00<br/>
+                Mer, Ven: 09:00–13:00
               </address>
               <LiveClock />
               <div id="mapLoader" className="mt-2" style={{ position: 'relative', aspectRatio: '4/3', border: '1px solid var(--border)', borderRadius: '18px', overflow: 'hidden', background: 'var(--card)' }}>

@@ -1,7 +1,6 @@
 ﻿// src/pages/HomePage.jsx
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 import HeroSection from '../components/HeroSection';
 import ServicesSection from '../components/ServicesSection';
@@ -13,11 +12,9 @@ import ReviewsSection from '../components/ReviewsSection';
 const HomePage = () => {
   return (
     <>
-      <Helmet>
-        <title>PuntoMigrare  CAF e Servizi per l'Immigrazione a Roma</title>
-        <meta name="description" content="Assistenza specializzata per permesso di soggiorno, cittadinanza, ricongiungimento familiare a Roma. Servizi CAF professionali e umani. Prenota online." />
-        <link rel="canonical" href="https://www.puntomigrare.it/" />
-      </Helmet>
+      <title>PuntoMigrare  CAF e Servizi per l'Immigrazione a Roma</title>
+      <meta name="description" content="Assistenza specializzata per permesso di soggiorno, cittadinanza, ricongiungimento familiare a Roma. Servizi CAF professionali e umani. Prenota online." />
+      <link rel="canonical" href="https://www.puntomigrare.it/" />
 
       <HeroSection />
       

@@ -1,7 +1,6 @@
 // src/pages/ServiziPage.jsx
 
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { allServices, serviceCategories } from '../servicesData';
 
 // This is our new, expandable Service Card component
@@ -56,11 +55,9 @@ const ServiziPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Tutti i Servizi - Immigrazione e CAF a Roma | PuntoMigrare</title>
-        <meta name="description" content="Scopri in dettaglio tutti i nostri servizi: pratiche di immigrazione, CAF e patronato (730, ISEE, NASpI), contratti colf e badanti, e molto altro. Trova il supporto di cui hai bisogno." />
-        <link rel="canonical" href="https://www.puntomigrare.it/servizi" />
-      </Helmet>
+      <title>Tutti i Servizi - Immigrazione e CAF a Roma | PuntoMigrare</title>
+      <meta name="description" content="Scopri in dettaglio tutti i nostri servizi: pratiche di immigrazione, CAF e patronato (730, ISEE, NASpI), contratti colf e badanti, e molto altro. Trova il supporto di cui hai bisogno." />
+      <link rel="canonical" href="https://www.puntomigrare.it/servizi" />
 
       <section className="section">
         <div className="container">

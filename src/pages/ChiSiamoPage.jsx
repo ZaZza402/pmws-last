@@ -1,17 +1,14 @@
 // src/pages/ChiSiamoPage.jsx
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 
 const ChiSiamoPage = () => {
   return (
     <>
-      <Helmet>
-        <title>Chi Siamo - La Nostra Storia | PuntoMigrare</title>
-        <meta name="description" content="Scopri chi c'è dietro PuntoMigrare. Due professioniste con una missione: offrire un servizio umano, chiaro e competente per immigrazione e pratiche CAF a Roma." />
-        <link rel="canonical" href="https://www.puntomigrare.it/chi-siamo" />
-      </Helmet>
+      <title>Chi Siamo - La Nostra Storia | PuntoMigrare</title>
+      <meta name="description" content="Scopri chi c'è dietro PuntoMigrare. Due professioniste con una missione: offrire un servizio umano, chiaro e competente per immigrazione e pratiche CAF a Roma." />
+      <link rel="canonical" href="https://www.puntomigrare.it/chi-siamo" />
 
       <section className="section">
         <div className="container">
