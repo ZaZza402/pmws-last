@@ -155,3 +155,25 @@
   background-color: #5a5a5a;
   color: #9e9e9e;
 }
+
+/* Add these rules to the bottom of BookingForm.css */
+
+.user-details textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  color: var(--text-color);
+  min-height: 80px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.char-counter {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}

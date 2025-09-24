@@ -9,9 +9,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
-  const { date, time, name, email, service } = req.body;
+  const { date, time, name, email, service, note } = req.body; // <-- RECEIVE THE NEW NOTE FIELD
 
-  if (!date || !time || !name || !email) { // Service is optional for now
+  if (!date || !time || !name || !email || !service) {
     return res.status(400).json({ message: 'Missing required fields' });
   }
 
@@ -56,10 +56,9 @@ export default async function handler(req, res) {
     }
     // --- END OF NEW CHECK ---
 
-
-    // 3. Append booking to the Google Sheet
-    const appendRange = 'Sheet1!A:F';
-    const newRow = [[date, time, name, email, new Date().toISOString(), service || '']];
+    // --- Append booking to the Google Sheet (WITH NEW NOTE DATA) ---
+    const appendRange = 'Sheet1!A:G'; // <-- EXTEND RANGE TO COLUMN G
+    const newRow = [[date, time, name, email, new Date().toISOString(), service, note || '']]; // <-- ADD NOTE TO THE ROW
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: appendRange,
@@ -67,19 +66,31 @@ export default async function handler(req, res) {
       resource: { values: newRow },
     });
 
-    // 4. Send confirmation emails via Resend
-    // ... (email sending code remains the same) ...
+    // --- Send confirmation emails (UPDATE NOTIFICATION EMAIL) ---
+    // Email to the client (remains the same)
     await resend.emails.send({
       from: 'PuntoMigrare Conferme <prenotazioni@notifica.puntomigrare.it>',
       to: email,
       subject: 'Il tuo appuntamento con PuntoMigrare è confermato!',
       html: `<p>Ciao ${name}, il tuo appuntamento per il <strong>${date}</strong> alle ore <strong>${time}</strong> è confermato. Ti aspettiamo!</p>`,
     });
+
+    // Email to the business (WITH NEW NOTE INFO)
     await resend.emails.send({
       from: 'PuntoMigrare Prenotazioni <prenotazioni@notifica.puntomigrare.it>',
       to: process.env.BUSINESS_EMAIL_ADDRESS,
-      subject: `Nuovo appuntamento: ${name} - ${date} @ ${time}`,
-      html: `<p>È stato fissato un nuovo appuntamento:</p><ul><li><strong>Nome:</strong> ${name}</li><li><strong>Email:</strong> ${email}</li><li><strong>Data:</strong> ${date}</li><li><strong>Ora:</strong> ${time}</li></ul>`,
+      subject: `Nuovo appuntamento (${service}): ${name} - ${date} @ ${time}`,
+      html: `
+        <p>È stato fissato un nuovo appuntamento:</p>
+        <ul>
+          <li><strong>Nome:</strong> ${name}</li>
+          <li><strong>Email:</strong> ${email}</li>
+          <li><strong>Data:</strong> ${date}</li>
+          <li><strong>Ora:</strong> ${time}</li>
+          <li><strong>Servizio Richiesto:</strong> ${service}</li>
+          <li><strong>Note Aggiuntive:</strong> ${note || 'Nessuna'}</li>
+        </ul>
+      `,
     });
 
     return res.status(200).json({ message: 'Booking successful!' });

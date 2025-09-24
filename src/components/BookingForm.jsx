@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './BookingForm.css';
 
 import { businessHours } from '../config/businessHours';
+import { services } from '../config/services';
 
 // ... (generateTimeSlots function remains the same) ...
 const generateTimeSlots = (date) => {
@@ -44,6 +45,8 @@ const BookingForm = () => {
   const [error, setError] = useState('');
   const [userDetails, setUserDetails] = useState({ name: '', email: '' });
   const [selectedService, setSelectedService] = useState('');
+  const [note, setNote] = useState(''); // <-- NEW STATE for the note
+  const NOTE_MAX_LENGTH = 150; // Define max length for the note
 
   useEffect(() => {
     if (selectedDate) {
@@ -95,8 +98,8 @@ const BookingForm = () => {
 
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
-    if (!selectedSlot || !userDetails.name || !userDetails.email) {
-      setError('Per favore, compila tutti i campi.');
+    if (!selectedSlot || !userDetails.name || !userDetails.email || !selectedService) {
+      setError('Per favore, compila tutti i campi obbligatori.');
       return;
     }
     setIsLoading(true);
@@ -105,25 +108,24 @@ const BookingForm = () => {
     try {
       const response = await fetch('/api/create-booking', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          date: format(selectedDate, 'dd/MM/yyyy'), // Format that matches the sheet
+          date: format(selectedDate, 'dd/MM/yyyy'),
           time: format(selectedSlot, 'HH:mm'),
           name: userDetails.name,
           email: userDetails.email,
+          service: selectedService,
+          note: note, // <-- SEND THE NEW NOTE DATA
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Booking failed');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Booking failed');
       }
-
       setIsBooked(true);
-
     } catch (err) {
-      setError('Qualcosa è andato storto. La prenotazione non è riuscita.');
+      setError(err.message || 'Qualcosa è andato storto.');
       setIsLoading(false);
     }
   };
@@ -184,15 +186,34 @@ const BookingForm = () => {
       
       {selectedSlot && (
          <div className="form-step user-details">
-            <label htmlFor="name">3. Inserisci i tuoi dettagli</label>
+            <label htmlFor="service">3. Seleziona il servizio</label>
+            <select id="service" name="service" required value={selectedService} onChange={(e) => setSelectedService(e.target.value)}>
+              <option value="" disabled>-- Scegli un servizio --</option>
+              {services.map(service => (
+                <option key={service} value={service}>{service}</option>
+              ))}
+            </select>
+            
+            <label htmlFor="name">4. Inserisci i tuoi dettagli</label>
             <input type="text" id="name" name="name" placeholder="Nome completo" required onChange={handleInputChange} />
             <input type="email" id="email" name="email" placeholder="La tua email" required onChange={handleInputChange} />
+
+            <label htmlFor="note">5. Aggiungi una breve nota (opzionale)</label>
+            <textarea
+              id="note"
+              name="note"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              placeholder="Es. 'Documenti urgenti'"
+              maxLength={NOTE_MAX_LENGTH}
+            />
+            <div className="char-counter">{note.length} / {NOTE_MAX_LENGTH}</div>
+            
             <button type="submit" className="submit-button" disabled={isLoading}>
               {isLoading ? 'Conferma...' : 'Conferma Appuntamento'}
             </button>
          </div>
       )}
-
       {error && <p className="error-message">{error}</p>}
     </form>
   );
