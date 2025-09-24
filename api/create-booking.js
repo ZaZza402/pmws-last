@@ -6,13 +6,13 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+    return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
-  const { date, time, name, email } = req.body;
+  const { date, time, name, email, service } = req.body;
 
-  if (!date || !time || !name || !email) {
-    return res.status(400).json({ error: 'Missing required fields' });
+  if (!date || !time || !name || !email) { // Service is optional for now
+    return res.status(400).json({ message: 'Missing required fields' });
   }
 
   try {
@@ -26,15 +26,29 @@ export default async function handler(req, res) {
     });
     const sheets = google.sheets({ version: 'v4', auth });
 
-    // --- NEW: FINAL AVAILABILITY CHECK ---
-    const getRange = 'Sheet1!A2:B'; // Get all existing booking dates and times
+    // --- NEW, ROBUST AVAILABILITY CHECK ---
+    const getRange = 'Sheet1!A2:B';
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: getRange,
     });
     
     const allBookings = response.data.values || [];
-    const bookingCount = allBookings.filter(row => row[0] === date && row[1] === time).length;
+    
+    // Smart comparison logic that ignores leading zeros
+    const bookingCount = allBookings.filter(row => {
+      if (row[0] !== date) return false; // Check if dates match
+
+      // Normalize both sheet time and client time for comparison
+      try {
+        const [sheetHour, sheetMinute] = row[1].split(':').map(Number);
+        const [clientHour, clientMinute] = time.split(':').map(Number);
+        return sheetHour === clientHour && sheetMinute === clientMinute;
+      } catch (e) {
+        // If there's an error parsing a row, ignore it
+        return false;
+      }
+    }).length;
 
     if (bookingCount >= 2) {
       // If 2 or more bookings exist, the slot is full. Reject the new booking.
@@ -43,9 +57,9 @@ export default async function handler(req, res) {
     // --- END OF NEW CHECK ---
 
 
-    // 3. If slot is available, append booking to the Google Sheet
-    const appendRange = 'Sheet1!A:E';
-    const newRow = [[date, time, name, email, new Date().toISOString()]];
+    // 3. Append booking to the Google Sheet
+    const appendRange = 'Sheet1!A:F';
+    const newRow = [[date, time, name, email, new Date().toISOString(), service || '']];
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: appendRange,
@@ -54,15 +68,13 @@ export default async function handler(req, res) {
     });
 
     // 4. Send confirmation emails via Resend
-    // Email to the client
+    // ... (email sending code remains the same) ...
     await resend.emails.send({
       from: 'PuntoMigrare Conferme <prenotazioni@notifica.puntomigrare.it>',
       to: email,
       subject: 'Il tuo appuntamento con PuntoMigrare è confermato!',
       html: `<p>Ciao ${name}, il tuo appuntamento per il <strong>${date}</strong> alle ore <strong>${time}</strong> è confermato. Ti aspettiamo!</p>`,
     });
-
-    // Email to the business
     await resend.emails.send({
       from: 'PuntoMigrare Prenotazioni <prenotazioni@notifica.puntomigrare.it>',
       to: process.env.BUSINESS_EMAIL_ADDRESS,
