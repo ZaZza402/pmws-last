@@ -140,3 +140,18 @@
     font-weight: bold;
     margin-top: 1rem;
 }
+
+/* Add this rule to the bottom of BookingForm.css */
+
+.slot-button.disabled {
+  background-color: #5a5a5a; /* Dark grey */
+  color: #9e9e9e; /* Lighter grey text */
+  border-color: #5a5a5a;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.slot-button.disabled:hover {
+  background-color: #5a5a5a;
+  color: #9e9e9e;
+}

@@ -9,77 +9,79 @@ import './BookingForm.css';
 
 import { businessHours } from '../config/businessHours';
 
-// Funzione per generare gli slot, gestendo la pausa pranzo
+// ... (generateTimeSlots function remains the same) ...
 const generateTimeSlots = (date) => {
   if (!date) return [];
   const dayOfWeek = getDay(date);
   const schedule = businessHours[dayOfWeek];
   if (!schedule) return [];
-
   const { open, close, breakStart, breakEnd } = schedule;
   const slots = [];
-
   const createSlotsInRange = (startHour, endHour) => {
     let currentTime = setHours(date, Math.floor(startHour));
     if (startHour % 1 !== 0) {
       currentTime = setMinutes(currentTime, 30);
     }
     const endTime = setHours(date, Math.floor(endHour));
-    
     while (currentTime < endTime) {
       slots.push(currentTime);
       currentTime = addMinutes(currentTime, 30);
     }
   };
-
   createSlotsInRange(open, breakStart);
   createSlotsInRange(breakEnd, close);
   return slots;
 };
 
+
 const BookingForm = () => {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [availableSlots, setAvailableSlots] = useState([]);
+  const [allPossibleSlots, setAllPossibleSlots] = useState([]); // Renamed for clarity
+  const [bookingCounts, setBookingCounts] = useState({}); // NEW: State to hold counts
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isBooked, setIsBooked] = useState(false);
   const [error, setError] = useState('');
   const [userDetails, setUserDetails] = useState({ name: '', email: '' });
+  const [selectedService, setSelectedService] = useState('');
 
   useEffect(() => {
     if (selectedDate) {
       setIsLoading(true);
       setSelectedSlot(null);
+      setBookingCounts({}); // Clear previous counts
       
+      const allSlots = generateTimeSlots(selectedDate);
+      setAllPossibleSlots(allSlots);
+
       const fetchBookedSlots = async (date) => {
         try {
           const response = await fetch(`/api/get-bookings?date=${format(date, 'yyyy-MM-dd')}`);
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          const bookedSlotsData = await response.json();
-          return bookedSlotsData;
+          if (!response.ok) throw new Error('Network response was not ok');
+          const bookedSlotsData = await response.json(); // e.g., ['9:30', '11:00', '11:00']
+          
+          // CORRECTED: Smart counting that handles missing leading zeros
+          const counts = bookedSlotsData.reduce((acc, slot) => {
+            try {
+              const [hour, minute] = slot.split(':');
+              const paddedHour = hour.padStart(2, '0');
+              const paddedMinute = minute.padStart(2, '0');
+              const normalizedSlot = `${paddedHour}:${paddedMinute}`;
+              acc[normalizedSlot] = (acc[normalizedSlot] || 0) + 1;
+            } catch (e) { /* ignore malformed data */ }
+            return acc;
+          }, {});
+
+          setBookingCounts(counts);
+
         } catch (err) {
           setError('Impossibile caricare gli slot. Riprova più tardi.');
-          return [];
+        } finally {
+          setIsLoading(false);
         }
       };
 
-      fetchBookedSlots(selectedDate).then(bookedSlotsData => {
-        const allPossibleSlots = generateTimeSlots(selectedDate);
-        const bookingCounts = bookedSlotsData.reduce((acc, slot) => {
-          acc[slot] = (acc[slot] || 0) + 1;
-          return acc;
-        }, {});
-
-        const filteredSlots = allPossibleSlots.filter(slot => {
-          const formattedSlot = format(slot, 'HH:mm');
-          return (bookingCounts[formattedSlot] || 0) < 2;
-        });
-
-        setAvailableSlots(filteredSlots);
-        setIsLoading(false);
-      });
+      fetchBookedSlots(selectedDate);
     }
   }, [selectedDate]);
 
@@ -157,12 +159,24 @@ const BookingForm = () => {
         <div className="form-step">
           <label>2. Scegli un orario</label>
           <div className="time-slots-grid">
-            {availableSlots.length > 0 ? (
-              availableSlots.map((slot, index) => (
-                <button type="button" key={index} className={`slot-button ${selectedSlot === slot ? 'selected' : ''}`} onClick={() => setSelectedSlot(slot)}>
-                  {format(slot, 'HH:mm')}
-                </button>
-              ))
+            {allPossibleSlots.length > 0 ? (
+              allPossibleSlots.map((slot, index) => {
+                const formattedSlot = format(slot, 'HH:mm');
+                const count = bookingCounts[formattedSlot] || 0;
+                const isFull = count >= 2;
+
+                return (
+                  <button
+                    type="button"
+                    key={index}
+                    className={`slot-button ${isFull ? 'disabled' : ''} ${selectedSlot === slot ? 'selected' : ''}`}
+                    onClick={() => !isFull && setSelectedSlot(slot)}
+                    disabled={isFull}
+                  >
+                    {formattedSlot}
+                  </button>
+                );
+              })
             ) : <p>Nessun orario disponibile per questa data.</p>}
           </div>
         </div>
