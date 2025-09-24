@@ -25,18 +25,35 @@ export default async function handler(req, res) {
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
     const sheets = google.sheets({ version: 'v4', auth });
-    const range = 'Sheet1!A:E';
 
-    // 2. Append booking to the Google Sheet
+    // --- NEW: FINAL AVAILABILITY CHECK ---
+    const getRange = 'Sheet1!A2:B'; // Get all existing booking dates and times
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: getRange,
+    });
+    
+    const allBookings = response.data.values || [];
+    const bookingCount = allBookings.filter(row => row[0] === date && row[1] === time).length;
+
+    if (bookingCount >= 2) {
+      // If 2 or more bookings exist, the slot is full. Reject the new booking.
+      return res.status(409).json({ message: 'This time slot is no longer available. Please choose another time.' });
+    }
+    // --- END OF NEW CHECK ---
+
+
+    // 3. If slot is available, append booking to the Google Sheet
+    const appendRange = 'Sheet1!A:E';
     const newRow = [[date, time, name, email, new Date().toISOString()]];
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range,
+      range: appendRange,
       valueInputOption: 'USER_ENTERED',
       resource: { values: newRow },
     });
 
-    // 3. Send confirmation emails via Resend
+    // 4. Send confirmation emails via Resend
     // Email to the client
     await resend.emails.send({
       from: 'PuntoMigrare Conferme <prenotazioni@notifica.puntomigrare.it>',
@@ -56,6 +73,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ message: 'Booking successful!' });
   } catch (error) {
     console.error('Error in create-booking function:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    return res.status(500).json({ message: 'An internal error occurred.' });
   }
 }
