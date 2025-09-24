@@ -53,17 +53,12 @@ const BookingForm = () => {
       
       const fetchBookedSlots = async (date) => {
         try {
-          // --- NEXT STEP: API Call to your Serverless Function ---
-          // This is where you will call your backend to get real data.
-          // For now, we simulate the API response with mock data.
-          // const response = await fetch(`/api/get-bookings?date=${format(date, 'yyyy-MM-dd')}`);
-          // const bookedSlotsData = await response.json();
-          
-          console.log(`Simulating API call for bookings on ${format(date, 'yyyy-MM-dd')}`);
-          await new Promise(resolve => setTimeout(resolve, 500)); 
-          const mockBookedSlots = ['10:30', '11:00', '14:30', '14:30']; // Slot 14:30 is now full
-          
-          return mockBookedSlots;
+          const response = await fetch(`/api/get-bookings?date=${format(date, 'yyyy-MM-dd')}`);
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const bookedSlotsData = await response.json();
+          return bookedSlotsData;
         } catch (err) {
           setError('Impossibile caricare gli slot. Riprova più tardi.');
           return [];
@@ -106,17 +101,25 @@ const BookingForm = () => {
     setError('');
 
     try {
-      // --- NEXT STEP: API Call to Create the Booking ---
-      // This is where you'll send data to your Serverless Function
-      // which will save to Google Sheets and send emails via Resend.
-      // await fetch('/api/create-booking', {
-      //   method: 'POST',
-      //   body: JSON.stringify({ /* booking details */ }),
-      // });
-      
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Booking submitted (simulation):', { userDetails, selectedDate, selectedSlot });
+      const response = await fetch('/api/create-booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          date: format(selectedDate, 'dd/MM/yyyy'), // Format that matches the sheet
+          time: format(selectedSlot, 'HH:mm'),
+          name: userDetails.name,
+          email: userDetails.email,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Booking failed');
+      }
+
       setIsBooked(true);
+
     } catch (err) {
       setError('Qualcosa è andato storto. La prenotazione non è riuscita.');
       setIsLoading(false);
