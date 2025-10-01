@@ -6,7 +6,7 @@ import HeroSection from '../components/HeroSection';
 import ServicesSection from '../components/ServicesSection';
 import WhySection from '../components/WhySection';
 import FaqSection from '../components/FaqSection';
-import BookingSection from '../components/BookingSection';
+import DocumentSection from '../components/DocumentSection';
 import ReviewsSection from '../components/ReviewsSection';
 
 const HomePage = () => {
@@ -28,7 +28,7 @@ const HomePage = () => {
         <FaqSection />
       </AnimateOnScroll>
       <AnimateOnScroll>
-        <BookingSection />
+        <DocumentSection />
       </AnimateOnScroll>
       <AnimateOnScroll>
         <ReviewsSection />
