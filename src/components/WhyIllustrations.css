@@ -1,0 +1,197 @@
+/* Why Section Illustrations Common Styles */
+.why-trust-illustration,
+.why-team-illustration,
+.why-stats-illustration {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+/* Visual section container - seamless background integration */
+.why__visual-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 350px;
+  width: 100%;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.why-svg {
+  max-width: 100%;
+  max-height: 100%;
+  width: 480px;
+  height: 360px;
+  /* Seamless integration with section background */
+}
+
+/* SVG scaling for mobile - full width usage */
+.why-trust-illustration svg,
+.why-team-illustration svg,
+.why-stats-illustration svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Specific adjustments for stats illustration to prevent overflow */
+.why-stats-illustration {
+  overflow: hidden;
+}
+
+.why-stats-illustration svg {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobile-first SVG scaling - fill available space */
+@media (max-width: 768px) {
+  .why-trust-illustration svg,
+  .why-team-illustration svg {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    transform: scale(1.2);
+  }
+  
+  .why-stats-illustration svg {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    transform: scale(1.0);
+    max-width: 100vw;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-trust-illustration svg,
+  .why-team-illustration svg {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    transform: scale(1.3);
+  }
+  
+  .why-stats-illustration svg {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    transform: scale(0.95);
+    max-width: 100vw;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 1200px) {
+  .why-svg {
+    width: 420px;
+    height: 315px;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-svg {
+    width: 360px;
+    height: 270px;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-svg {
+    width: 300px;
+    height: 225px;
+  }
+}
+
+/* Visual switcher for why section */
+.why-visual-switcher {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  z-index: 10;
+}
+
+.why-visual-switcher button {
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--blue, rgb(15, 52, 96));
+  border: 1px solid rgba(15, 52, 96, 0.2);
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.why-visual-switcher button:hover {
+  background: rgba(15, 52, 96, 0.1);
+  border-color: rgba(15, 52, 96, 0.4);
+  transform: translateY(-1px);
+}
+
+.why-visual-switcher button.active {
+  background: var(--orange, rgb(255, 107, 53));
+  color: white;
+  border-color: var(--orange, rgb(255, 107, 53));
+}
+
+@media (max-width: 768px) {
+  .why-trust-illustration,
+  .why-team-illustration,
+  .why-stats-illustration {
+    min-height: 320px;
+    height: 320px;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .why__visual-section {
+    min-height: 340px;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .why-visual-switcher button {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-trust-illustration,
+  .why-team-illustration,
+  .why-stats-illustration {
+    min-height: 280px;
+    height: 280px;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .why__visual-section {
+    min-height: 300px;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .why-visual-switcher {
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+}

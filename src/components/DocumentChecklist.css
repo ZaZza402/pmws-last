@@ -13,13 +13,16 @@
 }
 
 .checklist-header h2 {
-  color: var(--brand-blue, #0A2342);
+  background: linear-gradient(135deg, var(--blue, rgb(15, 52, 96)), rgba(15, 52, 96, 0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 0.5rem;
   font-size: 2rem;
 }
 
 .checklist-header p {
-  color: var(--text-muted, #666);
+  color: rgb(100, 116, 139);
   font-size: 1.1rem;
 }
 
@@ -32,44 +35,60 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: var(--brand-blue, #0A2342);
+  color: rgb(15, 52, 96);
 }
 
 .procedure-select {
   width: 100%;
   padding: 1rem;
-  border: 2px solid var(--border, #ddd);
-  border-radius: 8px;
+  border: 2px solid rgba(226, 232, 240, 0.8);
+  border-radius: 12px;
   font-size: 1rem;
-  background-color: white;
-  color: var(--text-color, #333);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 248, 255, 0.5));
+  color: rgb(30, 41, 59);
   cursor: pointer;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(15, 52, 96, 0.04);
 }
 
 .procedure-select:hover,
 .procedure-select:focus {
-  border-color: var(--brand-blue, #0A2342);
+  border-color: rgba(15, 52, 96, 0.4);
   outline: none;
+  box-shadow: 0 4px 12px rgba(15, 52, 96, 0.08);
+  transform: translateY(-1px);
 }
 
 /* Procedure Details */
 .procedure-details {
-  background: white;
-  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.3));
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(15, 52, 96, 0.08), 0 2px 4px rgba(15, 52, 96, 0.04);
   margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.procedure-details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgb(255, 107, 53), rgba(255, 107, 53, 0.6));
 }
 
 .procedure-info h3 {
-  color: var(--brand-blue, #0A2342);
+  color: rgb(15, 52, 96);
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
 
 .procedure-description {
-  color: var(--text-muted, #666);
+  color: rgb(100, 116, 139);
   margin-bottom: 1.5rem;
   font-style: italic;
 }
@@ -88,35 +107,41 @@
 
 .progress-header span {
   font-weight: 600;
-  color: var(--brand-blue, #0A2342);
+  color: rgb(15, 52, 96);
 }
 
 .print-button {
-  background: var(--brand-orange, #FF8C00);
+  background: linear-gradient(135deg, rgb(255, 107, 53), rgba(255, 107, 53, 0.9));
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15);
   font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
 }
 
 .print-button:hover {
-  background: #e67c00;
+  background: linear-gradient(135deg, rgb(230, 81, 31), rgba(230, 81, 31, 0.9));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.25);
 }
 
 .progress-bar {
   width: 100%;
-  height: 8px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
+  height: 10px;
+  background: rgba(226, 232, 240, 0.6);
+  border-radius: 6px;
   overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(15, 52, 96, 0.06);
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--brand-blue, #0A2342), var(--brand-orange, #FF8C00));
+  background: linear-gradient(90deg, rgb(15, 52, 96), rgb(255, 107, 53));
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
   border-radius: 4px;
   transition: width 0.3s ease;
 }

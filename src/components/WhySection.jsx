@@ -2,7 +2,10 @@
 import React, { useState } from 'react';
 import { FaRegClock, FaLanguage } from 'react-icons/fa';
 import { MdOutlineGppGood } from 'react-icons/md';
-import ufficioImage from '../assets/ufficio.jpg';
+import WhyTrustIllustration from './WhyTrustIllustration';
+import WhyTeamIllustration from './WhyTeamIllustration';
+import WhyStatsIllustration from './WhyStatsIllustration';
+import './WhyIllustrations.css';
 
 const WhyItem = ({ title, description, icon }) => (
     <div className="why__item" role="listitem">
@@ -15,7 +18,20 @@ const WhyItem = ({ title, description, icon }) => (
 );
 
 const WhySection = () => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [visualOption, setVisualOption] = useState('trust'); // Options: 'trust', 'team', 'stats'
+  
+  const renderVisual = () => {
+    switch(visualOption) {
+      case 'trust':
+        return <WhyTrustIllustration />;
+      case 'team':
+        return <WhyTeamIllustration />;
+      case 'stats':
+        return <WhyStatsIllustration />;
+      default:
+        return <WhyTrustIllustration />; // Default to trust illustration
+    }
+  };
 
   return (
     <section id="perche" className="section why" aria-labelledby="why-title">
@@ -37,27 +53,40 @@ const WhySection = () => {
             />
             <WhyItem 
               title="Parliamo la Tua Lingua"
-              description="La comunicazione è fondamentale. Oltre all'italiano, parliamo inglese, rumeno e arabo per assicurarci che ogni dettaglio sia perfettamente compreso."
+              description="La comunicazione è fondamentale. Oltre all'italiano, parliamo inglese e rumeno per assicurarci che ogni dettaglio sia perfettamente compreso."
               icon={<FaLanguage size={28} color="#0A2E4E" />}
             />
           </div>
         </div>
         
-        {/* ----- CORRECTED AND SIMPLIFIED SECTION ----- */}
-        <figure className={`panel why__image-container ${imageLoaded ? 'loaded' : ''}`} aria-hidden="true">
-          
-          {/* The placeholder is always here, it just fades out with CSS */}
-          <div className="why__image-placeholder"></div>
-          
-          {/* The image is always here, it just fades in with CSS. No more inline styles! */}
-          <img 
-  src={ufficioImage} 
-  alt="Ufficio accogliente e luminoso di PuntoMigrare" 
-  loading="lazy" 
-  onLoad={() => setImageLoaded(true)}
-/>
-        </figure>
-        {/* ----- END OF CORRECTED SECTION ----- */}
+        {/* Visual content with switcher for client testing */}
+        <div className="why__visual-section">
+          {/* Visual option switcher */}
+          <div className="why-visual-switcher">
+            <button 
+              onClick={() => setVisualOption('trust')} 
+              className={visualOption === 'trust' ? 'active' : ''}
+            >
+              Fiducia & Sicurezza
+            </button>
+            <button 
+              onClick={() => setVisualOption('team')} 
+              className={visualOption === 'team' ? 'active' : ''}
+            >
+              Team Professionale
+            </button>
+            <button 
+              onClick={() => setVisualOption('stats')} 
+              className={visualOption === 'stats' ? 'active' : ''}
+            >
+              Risultati & Dati
+            </button>
+          </div>
+
+          <figure className="panel why__image-container" aria-hidden="true">
+            {renderVisual()}
+          </figure>
+        </div>
 
       </div>
     </section>

@@ -4,20 +4,45 @@
 
 /* ===== TOKENS ===== */
 :root{
-  --blue:#0A2E4E;           /* Primary */
-  --blue-700:#0f3d68;
-  --blue-50:#eff6fc;
-  --orange:#E87722;         /* Accent */
-  --orange-700:#cf6a1e;
-  --bg:#ffffff; --text:#0c1320; --muted:#f4f6f9; --card:#ffffff; --border:#e6e8ec;
-  --shadow-1:0 6px 16px rgba(10,46,78,.08);
-  --shadow-2:0 14px 28px rgba(10,46,78,.14);
+  /* Modern RGB-based color palette */
+  --blue-rgb: 15, 52, 96;           /* Primary - deeper, richer blue */
+  --blue: rgb(var(--blue-rgb));
+  --blue-700-rgb: 10, 35, 66;
+  --blue-700: rgb(var(--blue-700-rgb));
+  --blue-50-rgb: 240, 248, 255;
+  --blue-50: rgb(var(--blue-50-rgb));
+  
+  --orange-rgb: 255, 107, 53;       /* Accent - vibrant yet professional */
+  --orange: rgb(var(--orange-rgb));
+  --orange-700-rgb: 230, 81, 31;
+  --orange-700: rgb(var(--orange-700-rgb));
+  
+  /* Enhanced neutrals with subtle warmth */
+  --bg: rgb(252, 253, 255); 
+  --text: rgb(30, 41, 59); 
+  --muted: rgb(248, 250, 252); 
+  --card: rgb(255, 255, 255); 
+  --border: rgb(226, 232, 240);
+  
+  /* Modern shadows with RGB values */
+  --shadow-1: 0 4px 12px rgba(var(--blue-rgb), 0.08), 0 2px 4px rgba(var(--blue-rgb), 0.04);
+  --shadow-2: 0 10px 25px rgba(var(--blue-rgb), 0.12), 0 4px 10px rgba(var(--blue-rgb), 0.06);
+  --shadow-accent: 0 8px 20px rgba(var(--orange-rgb), 0.15);
+  
+  /* Enhanced focus with modern blue */
+  --focus: rgb(59, 130, 246);
+  
   --radius:22px; --radius-md:16px; --radius-sm:12px; --container:1180px;
-  --focus:#6aa6ff;
 }
 html[data-theme="dark"]{
-  --bg:#0b1220; --text:#eaf1f9; --muted:#0f1a2d; --card:#0e192b; --border:#1a2f4d; --blue-50:#0d1c2e;
-  --shadow-1:0 6px 16px rgba(0,0,0,.35); --shadow-2:0 18px 36px rgba(0,0,0,.45);
+  --bg: rgb(15, 23, 42); 
+  --text: rgb(241, 245, 249); 
+  --muted: rgb(30, 41, 59); 
+  --card: rgb(30, 41, 59); 
+  --border: rgb(51, 65, 85); 
+  --blue-50: rgb(30, 41, 59);
+  --shadow-1: 0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-2: 0 10px 25px rgba(0, 0, 0, 0.35), 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* ===== BASE TYPOGRAPHY ===== */
@@ -49,7 +74,15 @@ a{text-decoration:none}
 @supports not (backdrop-filter: blur(8px)){.header{background:#0A2E4E}}
 .header__inner{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.7rem 0}
 .brand{display:inline-flex;align-items:center;gap:.7rem;color:#fff}
-.brand__logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--orange),#ffd6b7);display:grid;place-items:center;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+.brand__logo{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:linear-gradient(135deg, var(--orange), rgba(var(--orange-rgb), 0.8), rgba(255, 255, 255, 0.1));
+  display:grid;
+  place-items:center;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.15), 0 2px 8px rgba(var(--orange-rgb), 0.2);
+}
 .brand__text{font-family:"Montserrat",sans-serif;font-weight:800;font-size:1.12rem;letter-spacing:.2px}
 
 .desktop-nav{display:none}
@@ -57,14 +90,56 @@ a{text-decoration:none}
 .desktop-nav a{color:#e8edf5;font-weight:600;font-size:.98rem;padding:.55rem .85rem;border-radius:999px}
 .desktop-nav a:hover{color:#fff;background:rgba(255,255,255,.12)}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border-radius:999px;padding:1rem 1.25rem;font-weight:800; border: 1.5px solid transparent;}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  border-radius:999px;
+  padding:1rem 1.25rem;
+  font-weight:800; 
+  border: 1.5px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 .btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.btn--primary{background:var(--orange);color:#fff;border-color: var(--orange); box-shadow:0 12px 26px rgba(232,119,34,.28)}
-.btn--primary:hover{background:var(--orange-700); border-color: var(--orange-700); transform:translateY(-1px)}
-.btn--ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.35)}
-.btn--ghost:hover{border-color:#fff}
-.btn--outline{color:var(--blue);border:1.5px solid var(--blue);background:#fff}
-.btn--outline:hover{background:var(--blue-50)}
+
+.btn--primary{
+  background: linear-gradient(135deg, var(--orange), rgba(var(--orange-700-rgb), 0.9));
+  color: #fff;
+  border-color: var(--orange); 
+  box-shadow: var(--shadow-accent);
+}
+.btn--primary:hover{
+  background: linear-gradient(135deg, var(--orange-700), rgba(var(--orange-700-rgb), 0.8)); 
+  border-color: var(--orange-700); 
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2), var(--shadow-accent);
+}
+
+.btn--ghost{
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(10px);
+}
+.btn--ghost:hover{
+  background: rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.4);
+  transform: translateY(-1px);
+}
+
+.btn--outline{
+  color: var(--blue);
+  border: 1.5px solid rgba(var(--blue-rgb), 0.3);
+  background: linear-gradient(135deg, rgba(var(--blue-50-rgb), 0.5), rgba(255,255,255,0.8));
+}
+.btn--outline:hover{
+  background: linear-gradient(135deg, var(--blue-50), rgba(var(--blue-rgb), 0.05));
+  border-color: var(--blue);
+  transform: translateY(-1px);
+}
 
 .mobile-toggle{background:#0c3a60;border:1.5px solid rgba(255,255,255,.35);color:#fff;width:44px;height:44px;border-radius:12px;display:grid;place-items:center; cursor: pointer;}
 @media(min-width:1000px){.mobile-toggle{display:none}}
@@ -228,7 +303,24 @@ a{text-decoration:none}
 }
 
 /* ===== HERO ===== */
-.hero{position:relative;background:linear-gradient(180deg,var(--blue),var(--blue-700));color:#fff;padding-top:120px;padding-bottom:84px;overflow:hidden}
+.hero{
+  position: relative;
+  background: linear-gradient(135deg, var(--blue), var(--blue-700), rgba(var(--blue-700-rgb), 0.9));
+  color: #fff;
+  padding-top: 120px;
+  padding-bottom: 84px;
+  overflow: hidden;
+}
+.hero::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at top right, rgba(var(--orange-rgb), 0.1), transparent 50%);
+  pointer-events: none;
+}
 .hero__inner{display:grid;gap:2rem;grid-template-columns:1fr;align-items:center}
 @media(min-width:1024px){.hero__inner{grid-template-columns:1.05fr .95fr;gap:3rem}}
 .hero p{margin:0 0 1.1rem;color:#f2f7fc}
@@ -244,9 +336,47 @@ a{text-decoration:none}
 @media(min-width:760px){.cards{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1120px){.cards{grid-template-columns:repeat(3,1fr)}}
 
-.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px;display:grid;gap:.65rem;box-shadow:var(--shadow-1);transition:transform .18s ease, box-shadow .18s ease}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
-.card__icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#fff,var(--blue-50));border:1px solid var(--border)}
+.card{
+  background: linear-gradient(135deg, var(--card), rgba(var(--blue-50-rgb), 0.3));
+  border: 1px solid rgba(var(--border), 0.8);
+  border-radius: 20px;
+  padding: 18px;
+  display: grid;
+  gap: .65rem;
+  box-shadow: var(--shadow-1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-2);
+  border-color: rgba(var(--blue-rgb), 0.15);
+}
+.card::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), rgba(var(--orange-rgb), 0.6));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card:hover::before{
+  opacity: 1;
+}
+.card__icon{
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(var(--blue-rgb), 0.05), var(--blue-50), rgba(255,255,255,0.8));
+  border: 1px solid rgba(var(--blue-rgb), 0.1);
+  box-shadow: 0 2px 8px rgba(var(--blue-rgb), 0.06);
+}
 .card h3{margin:.2rem 0 0}
 .card p{margin:0;color:color-mix(in srgb, var(--text) 78%, white); flex-grow: 1;}
 .card .actions{display:flex;gap:.5rem;flex-wrap:wrap; margin-top: 1rem;}
@@ -262,6 +392,24 @@ a{text-decoration:none}
 /* ===== BOOKING ===== */
 .booking{background:var(--blue-50)}
 .panel{background:var(--card);border-radius:20px;padding:18px;border:1px solid var(--border);box-shadow:var(--shadow-1)}
+
+/* Visual panels blend seamlessly with background */
+.why__image-container.panel {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+/* Mobile-specific panel adjustments */
+@media (max-width: 768px) {
+  .why__image-container.panel {
+    min-height: auto;
+    height: auto;
+  }
+}
 .contact-grid{display:grid;gap:1rem;grid-template-columns:1fr}
 @media(min-width:900px){.contact-grid{grid-template-columns:1fr 1fr}}
 .contact-cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
@@ -728,33 +876,29 @@ a{text-decoration:none}
 /* ===== CORRECTED IMAGE PLACEHOLDER STYLES ===== */
 /* ======================================= */
 
-/* The container holds both the image and the placeholder */
+/* The container - seamless integration with background */
 .why__image-container {
-  position: relative; /* This is key for stacking */
-  background-color: var(--blue-50); /* A fallback color while things load */
-  border-radius: var(--radius-md, 16px);
-  overflow: hidden; /* Ensures the shimmer doesn't spill out */
+  position: relative;
+  background: transparent; /* No background frame */
   min-height: 250px;
+  overflow: visible; /* Allow illustrations to blend naturally */
 }
 
-/* The placeholder is a layer that sits on top */
+/* The placeholder - minimal and transparent */
 .why__image-placeholder {
   position: absolute;
-  inset: 0; /* A modern shortcut for top:0, right:0, bottom:0, left:0 */
-  background: linear-gradient(90deg, var(--blue-50) 0%, var(--border) 50%, var(--blue-50) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  transition: opacity 0.5s ease-in-out; /* For a smooth fade-out */
-  opacity: 1; /* Visible by default */
+  inset: 0;
+  background: transparent; /* No shimmer effect - seamless */
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0; /* Invisible by default - no frame effect */
 }
 
-/* The actual image is underneath the placeholder */
+/* Images and illustrations blend naturally */
 .why__image-container img {
-  display: block; /* Removes extra space below the image */
+  display: block;
   width: 100%;
-  border-radius: var(--radius-md, 16px);
-  opacity: 0; /* Invisible but still takes up space */
-  transition: opacity 0.5s ease-in-out; /* For a smooth fade-in */
+  opacity: 1; /* Always visible - no loading states */
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* --- The Magic: Toggling Opacity --- */
