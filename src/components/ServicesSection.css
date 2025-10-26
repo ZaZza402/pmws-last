@@ -1,0 +1,312 @@
+﻿/* ====================================
+   SERVICES SECTION
+   ==================================== */
+
+/* Remove section padding for services */
+#servizi {
+  padding-top: 0 !important;
+}
+
+#servizi .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+.services-intro {
+  max-width: 70ch;
+  color: var(--text);
+  margin: 1rem 0 3rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ====================================
+   SERVICES GRID WRAPPER
+   ==================================== */
+.services-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* ====================================
+   SERVICE CARD - COMPACT, NO BACKGROUND VISIBLE
+   ==================================== */
+.service-card {
+  position: relative;
+  height: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+.service-card__parallax {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  right: -5%;
+  bottom: -5%;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Category title on the right side */
+.service-card__category {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  z-index: 3;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.1em;
+  padding: 1rem 0.5rem;
+}
+
+/* Colored band at the bottom */
+.service-card__band {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+}
+
+/* Band colors by category - SEMI-TRANSPARENT with HORIZONTAL gradient fade */
+.service-card[data-category="Migranti"] .service-card__band {
+  background: linear-gradient(
+    to right,
+    rgba(90, 155, 212, 0.75),
+    rgba(90, 155, 212, 0)
+  );
+}
+
+.service-card[data-category="Viaggiatori"] .service-card__band {
+  background: linear-gradient(
+    to right,
+    rgba(255, 140, 90, 0.75),
+    rgba(255, 140, 90, 0)
+  );
+}
+
+.service-card[data-category="Famiglie"] .service-card__band {
+  background: linear-gradient(
+    to right,
+    rgba(255, 140, 90, 0.75),
+    rgba(255, 140, 90, 0)
+  );
+}
+
+.service-card[data-category="Altri Servizi"] .service-card__band {
+  background: linear-gradient(
+    to right,
+    rgba(169, 169, 169, 0.75),
+    rgba(169, 169, 169, 0)
+  );
+}
+
+.service-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.service-card__list::-webkit-scrollbar {
+  width: 2px;
+}
+
+.service-card__list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.service-card__list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.service-card__item {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding-left: 1.3rem;
+  position: relative;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+.service-card__item::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
+}
+
+.service-card__link {
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.service-card__link:hover {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline;
+  transform: translateX(3px);
+}
+
+.services-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* ====================================
+   SWIPE INDICATOR DOTS
+   ==================================== */
+.swipe-dots {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .swipe-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .swipe-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(43, 40, 111, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .swipe-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: #2b286f;
+  }
+}
+
+/* ====================================
+   SCROLLING ANIMATION FOR TICKER
+   ==================================== */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ====================================
+   MOBILE - HORIZONTAL SCROLL
+   ==================================== */
+@media (max-width: 767px) {
+  .services-intro {
+    margin: 1rem 0 2rem;
+  }
+
+  /* Break out of container completely */
+  #servizi .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow: visible;
+  }
+
+  .section-title,
+  .services-intro,
+  .services-cta {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* BLEND THE WRAPPER INTO BACKGROUND - MAKE IT INVISIBLE */
+  .services-cards-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 1rem 0;
+    margin: 0 -1.5rem;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .services-cards-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-card {
+    flex: 0 0 85vw;
+    min-width: 85vw;
+    height: 480px;
+    scroll-snap-align: center;
+  }
+
+  .service-card:first-child {
+    margin-left: 1.5rem;
+  }
+
+  .service-card:last-child {
+    margin-right: 1.5rem;
+  }
+
+  .service-card__title {
+    font-size: 1.4rem;
+  }
+
+  .service-card__item {
+    font-size: 0.9rem;
+  }
+
+  .services-cta {
+    margin-top: 2rem;
+  }
+}

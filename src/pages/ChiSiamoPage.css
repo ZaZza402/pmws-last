@@ -1,0 +1,56 @@
+/* ======================================= */
+/* ===== CHI SIAMO PAGE STYLES ===== */
+/* ======================================= */
+
+.about-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  margin-top: 3rem;
+}
+
+@media (min-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.profile-card {
+  background-color: var(--card);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-1);
+  text-align: center;
+  overflow: hidden;
+}
+
+.profile-image-placeholder {
+  height: 280px;
+  background-color: var(--muted);
+  background-image: linear-gradient(45deg, var(--border) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--border) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--border) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--border) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.profile-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile-content {
+  padding: 1.5rem;
+}
+
+.profile-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: var(--orange);
+  margin-top: -0.25rem;
+  margin-bottom: 1rem;
+}

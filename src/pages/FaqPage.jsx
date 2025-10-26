@@ -1,15 +1,34 @@
 // src/pages/FaqPage.jsx
 
 // THIS IS THE CORRECTED IMPORT LINE
-import React, { useState, useEffect } from 'react'; 
-import { faqQuestions } from '../faqData';
+import React, { useState, useEffect } from "react";
+import { faqQuestions } from "../faqData";
+import "./FaqPage.css";
 
 // Reusable Accordion Item Component
 const FaqItem = ({ item, isExpanded, onToggle }) => (
-  <div className={`faq-item ${isExpanded ? 'expanded' : ''}`}>
-    <button className="faq-question" onClick={onToggle} aria-expanded={isExpanded}>
+  <div className={`faq-item ${isExpanded ? "expanded" : ""}`}>
+    <button
+      className="faq-question"
+      onClick={onToggle}
+      aria-expanded={isExpanded}
+    >
       <span>{item.question}</span>
-      <svg className="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+      <svg
+        className="faq-icon"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M6 9l6 6 6-6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
     </button>
     <div className="faq-answer">
       <div className="faq-answer-content">
@@ -19,10 +38,9 @@ const FaqItem = ({ item, isExpanded, onToggle }) => (
   </div>
 );
 
-
 const FaqPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [activeCategory, setActiveCategory] = useState('Immigrazione');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory] = useState("Immigrazione");
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
 
@@ -33,13 +51,14 @@ const FaqPage = () => {
     if (searchTerm) {
       // Search mode: filter all questions
       const lowercasedFilter = searchTerm.toLowerCase();
-      questions = faqQuestions.filter(q =>
-        q.question.toLowerCase().includes(lowercasedFilter) ||
-        q.answer.toLowerCase().includes(lowercasedFilter)
+      questions = faqQuestions.filter(
+        (q) =>
+          q.question.toLowerCase().includes(lowercasedFilter) ||
+          q.answer.toLowerCase().includes(lowercasedFilter)
       );
     } else {
       // Browse mode: filter by active category
-      questions = faqQuestions.filter(q => q.category === activeCategory);
+      questions = faqQuestions.filter((q) => q.category === activeCategory);
     }
     setFilteredQuestions(questions);
     setExpandedId(null); // Collapse all on filter change
@@ -52,18 +71,26 @@ const FaqPage = () => {
   return (
     <>
       <title>Domande Frequenti (FAQ) - Immigrazione e CAF | PuntoMigrare</title>
-      <meta name="description" content="Risposte dettagliate alle domande complesse su permesso di soggiorno, cittadinanza, 730, ISEE e altro. La nostra esperienza al tuo servizio." />
+      <meta
+        name="description"
+        content="Risposte dettagliate alle domande complesse su permesso di soggiorno, cittadinanza, 730, ISEE e altro. La nostra esperienza al tuo servizio."
+      />
       <link rel="canonical" href="https://www.puntomigrare.it/faq" />
-      
-      <section className="section">
+
+      <section className="section page-header">
         <div className="container">
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: "center" }}>
             <h1>Domande Frequenti (FAQ)</h1>
-            <p className="mt-2" style={{ maxWidth: '70ch', margin: '0.5rem auto 0 auto' }}>
-              La nostra esperienza al tuo servizio. Trova risposte chiare ai dubbi più complessi, oppure usa la ricerca per la tua domanda specifica.
+            <p
+              className="mt-2"
+              style={{ maxWidth: "70ch", margin: "0.5rem auto 0 auto" }}
+            >
+              La nostra esperienza al tuo servizio. Trova risposte chiare ai
+              dubbi più complessi, oppure usa la ricerca per la tua domanda
+              specifica.
             </p>
           </div>
-          
+
           <div className="faq-controls">
             <div className="faq-search-bar">
               <input
@@ -75,10 +102,12 @@ const FaqPage = () => {
             </div>
             {!searchTerm && (
               <div className="faq-tabs">
-                {categories.map(category => (
+                {categories.map((category) => (
                   <button
                     key={category}
-                    className={`faq-tab-btn ${activeCategory === category ? 'active' : ''}`}
+                    className={`faq-tab-btn ${
+                      activeCategory === category ? "active" : ""
+                    }`}
                     onClick={() => setActiveCategory(category)}
                   >
                     {category}
@@ -87,10 +116,10 @@ const FaqPage = () => {
               </div>
             )}
           </div>
-          
+
           <div className="faq-list mt-4">
             {filteredQuestions.length > 0 ? (
-              filteredQuestions.map(item => (
+              filteredQuestions.map((item) => (
                 <FaqItem
                   key={item.id}
                   item={item}
@@ -101,7 +130,11 @@ const FaqPage = () => {
             ) : (
               <div className="no-results">
                 <h3>Nessuna domanda trovata</h3>
-                <p>La tua domanda non è in elenco? <a href="/contatti">Contattaci direttamente</a>, saremo felici di risponderti.</p>
+                <p>
+                  La tua domanda non è in elenco?{" "}
+                  <a href="/contatti">Contattaci direttamente</a>, saremo felici
+                  di risponderti.
+                </p>
               </div>
             )}
           </div>

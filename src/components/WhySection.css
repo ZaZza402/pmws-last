@@ -1,0 +1,108 @@
+/* ======================================= */
+/* ===== WHY SECTION STYLES ===== */
+/* ======================================= */
+
+.why {
+  background: linear-gradient(0deg, var(--bg), var(--bg)),
+    radial-gradient(
+      900px 300px at 10% -10%,
+      color-mix(in srgb, var(--orange) 12%, transparent),
+      transparent
+    );
+}
+
+.why__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .why__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.why__list {
+  display: grid;
+  gap: 1rem;
+}
+
+.why__item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 0.85rem;
+  align-items: start;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.why__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #fff, var(--blue-50));
+  border: 1px solid var(--border);
+}
+
+/* Visual panels blend seamlessly with background */
+.why__image-container.panel {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+/* Mobile-specific panel adjustments */
+@media (max-width: 768px) {
+  .why__image-container.panel {
+    min-height: auto;
+    height: auto;
+  }
+}
+
+/* Image container for seamless integration */
+.why__image-container {
+  position: relative;
+  background: transparent;
+  min-height: 250px;
+  overflow: visible;
+}
+
+.why__image-placeholder {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.why__image-container img {
+  display: block;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.why__image-container.loaded .why__image-placeholder {
+  opacity: 0;
+}
+
+.why__image-container.loaded img {
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

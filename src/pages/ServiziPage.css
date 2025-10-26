@@ -1,0 +1,166 @@
+/* ======================================= */
+/* ===== SERVIZI PAGE HUB STYLES ===== */
+/* ======================================= */
+
+.quick-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2.5rem 0;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.search-bar {
+  margin: 2.5rem 0;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1.1rem;
+  color: var(--text);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-1);
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--orange) 30%, transparent);
+}
+
+.service-category {
+  padding-top: 2rem;
+  margin-top: -2rem;
+  scroll-margin-top: 120px;
+}
+
+.service-category + .service-category {
+  margin-top: 2.5rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: var(--muted);
+  border-radius: 20px;
+  margin-top: 2rem;
+}
+
+.no-results h3 {
+  color: var(--blue);
+}
+
+.no-results p a {
+  color: var(--orange);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Service Accordion Card - Smooth Animation */
+.service-accordion {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  scroll-margin-top: 120px;
+  transition: all 0.3s ease;
+}
+
+.service-accordion.expanded {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--orange);
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.service-header:hover {
+  background: rgba(var(--blue-50-rgb), 0.3);
+}
+
+.service-title h3 {
+  margin: 0;
+  color: var(--blue);
+  font-size: 1.1rem;
+}
+
+.service-title p {
+  margin: 0.25rem 0 0;
+  color: color-mix(in srgb, var(--text) 70%, white);
+  font-size: 0.95rem;
+}
+
+.toggle-btn {
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--orange);
+  min-width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+}
+
+.service-accordion.expanded .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.service-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.service-accordion.expanded .service-details {
+  max-height: 1000px;
+}
+
+.service-details-content {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid var(--border);
+  margin-top: -1px;
+}
+
+.service-details-content strong {
+  color: var(--blue);
+}
+
+.service-details-content ul {
+  list-style: none;
+  padding: 0.75rem 0 0 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.service-details-content li {
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.service-details-content li::before {
+  content: "✓";
+  color: var(--orange);
+  position: absolute;
+  left: 0;
+  top: 1px;
+}
+
+.service-details-content .btn {
+  margin-top: 1.5rem;
+}

@@ -17,7 +17,7 @@ const WhyTrustIllustration = () => {
           cx="380"
           cy="80"
           r="60"
-          fill="rgba(15, 52, 96, 0.05)"
+          fill="rgba(43, 40, 111, 0.05)"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
@@ -26,7 +26,7 @@ const WhyTrustIllustration = () => {
           cx="100"
           cy="280"
           r="45"
-          fill="rgba(255, 107, 53, 0.08)"
+          fill="rgba(247, 141, 35, 0.08)"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.6 }}
@@ -40,8 +40,8 @@ const WhyTrustIllustration = () => {
         >
           <path
             d="M240 130 L210 145 L210 230 Q210 245 225 252 L240 260 L255 252 Q270 245 270 230 L270 145 Z"
-            fill="rgba(15, 52, 96, 0.1)"
-            stroke="rgba(15, 52, 96, 0.3)"
+            fill="rgba(43, 40, 111, 0.1)"
+            stroke="rgba(43, 40, 111, 0.3)"
             strokeWidth="3"
           />
           
@@ -84,12 +84,12 @@ const WhyTrustIllustration = () => {
               height="55"
               rx="4"
               fill="rgba(255, 255, 255, 0.9)"
-              stroke="rgba(15, 52, 96, 0.2)"
+              stroke="rgba(43, 40, 111, 0.2)"
               strokeWidth="1.5"
             />
-            <rect x="108" y="172" width="24" height="2.5" rx="1" fill="rgba(15, 52, 96, 0.4)" />
-            <rect x="108" y="178" width="20" height="2.5" rx="1" fill="rgba(15, 52, 96, 0.3)" />
-            <rect x="108" y="184" width="24" height="2.5" rx="1" fill="rgba(255, 107, 53, 0.6)" />
+            <rect x="108" y="172" width="24" height="2.5" rx="1" fill="rgba(43, 40, 111, 0.4)" />
+            <rect x="108" y="178" width="20" height="2.5" rx="1" fill="rgba(43, 40, 111, 0.3)" />
+            <rect x="108" y="184" width="24" height="2.5" rx="1" fill="rgba(247, 141, 35, 0.6)" />
           </motion.g>
 
           {/* Document 2 - right */}
@@ -112,12 +112,12 @@ const WhyTrustIllustration = () => {
               height="55"
               rx="4"
               fill="rgba(255, 255, 255, 0.9)"
-              stroke="rgba(15, 52, 96, 0.2)"
+              stroke="rgba(43, 40, 111, 0.2)"
               strokeWidth="1.5"
             />
-            <rect x="348" y="182" width="24" height="2.5" rx="1" fill="rgba(15, 52, 96, 0.4)" />
-            <rect x="348" y="188" width="20" height="2.5" rx="1" fill="rgba(15, 52, 96, 0.3)" />
-            <rect x="348" y="194" width="24" height="2.5" rx="1" fill="rgba(255, 107, 53, 0.6)" />
+            <rect x="348" y="182" width="24" height="2.5" rx="1" fill="rgba(43, 40, 111, 0.4)" />
+            <rect x="348" y="188" width="20" height="2.5" rx="1" fill="rgba(43, 40, 111, 0.3)" />
+            <rect x="348" y="194" width="24" height="2.5" rx="1" fill="rgba(247, 141, 35, 0.6)" />
           </motion.g>
         </motion.g>
 
@@ -132,12 +132,12 @@ const WhyTrustIllustration = () => {
             cy="80"
             r="28"
             fill="rgba(255, 255, 255, 0.8)"
-            stroke="rgba(15, 52, 96, 0.3)"
+            stroke="rgba(43, 40, 111, 0.3)"
             strokeWidth="2"
           />
           <motion.path
             d="M 140 65 L 140 80 L 155 95"
-            stroke="rgba(15, 52, 96, 0.7)"
+            stroke="rgba(43, 40, 111, 0.7)"
             strokeWidth="3"
             strokeLinecap="round"
             initial={{ pathLength: 0 }}
@@ -157,8 +157,8 @@ const WhyTrustIllustration = () => {
             cy="270"
             rx="30"
             ry="18"
-            fill="rgba(255, 107, 53, 0.1)"
-            stroke="rgba(255, 107, 53, 0.3)"
+            fill="rgba(247, 141, 35, 0.1)"
+            stroke="rgba(247, 141, 35, 0.3)"
             strokeWidth="1.5"
           />
           <text
@@ -166,7 +166,7 @@ const WhyTrustIllustration = () => {
             y="276"
             textAnchor="middle"
             fontSize="12"
-            fill="rgba(15, 52, 96, 0.7)"
+            fill="rgba(43, 40, 111, 0.7)"
             fontWeight="600"
           >
             IT/EN/RO
@@ -181,7 +181,7 @@ const WhyTrustIllustration = () => {
         >
           <motion.path
             d="M 168 100 Q 200 120 210 145"
-            stroke="rgba(15, 52, 96, 0.2)"
+            stroke="rgba(43, 40, 111, 0.2)"
             strokeWidth="2"
             fill="none"
             strokeDasharray="5,5"
@@ -191,7 +191,7 @@ const WhyTrustIllustration = () => {
           />
           <motion.path
             d="M 270 145 Q 310 200 340 195"
-            stroke="rgba(255, 107, 53, 0.3)"
+            stroke="rgba(247, 141, 35, 0.3)"
             strokeWidth="2"
             fill="none"
             strokeDasharray="5,5"
@@ -213,7 +213,7 @@ const WhyTrustIllustration = () => {
               cx={60 + i * 40}
               cy={40 + (i % 2) * 25}
               r="2.5"
-              fill="rgba(15, 52, 96, 0.3)"
+              fill="rgba(43, 40, 111, 0.3)"
               animate={{
                 y: [0, -12, 0],
                 opacity: [0.3, 0.7, 0.3]

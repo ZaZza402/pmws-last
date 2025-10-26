@@ -1,0 +1,125 @@
+/* ======================================= */
+/* ===== CONTATTI PAGE STYLES ===== */
+/* ======================================= */
+
+/* Panel container */
+.page-header .panel {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-1);
+}
+
+/* Contact grid layout */
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Contact cards grid */
+.contact-cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* Contact Timeline */
+.contact-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  margin: 2.5rem 0;
+  position: relative;
+}
+
+.contact-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  position: relative;
+}
+
+.contact-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 48px;
+  width: 2px;
+  height: calc(100% - 48px);
+  background: linear-gradient(to bottom, #f78d23 0%, #2b286f 100%);
+  opacity: 0.18;
+  z-index: 0;
+}
+
+.contact-step-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f78d23 60%, #2b286f 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 8px rgba(10, 46, 78, 0.08);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.contact-step-content {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(10, 46, 78, 0.07);
+  padding: 1.2rem 1.5rem;
+  min-width: 0;
+  flex: 1;
+  border: 1px solid #f2f2f2;
+}
+
+.contact-step-content strong {
+  color: #2b286f;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.contact-step-content p {
+  margin: 0.5rem 0 0 0;
+  color: #444;
+  font-size: 1rem;
+}
+
+.contact-step-content a {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #f78d23;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(232, 119, 34, 0.08);
+  transition: background 0.2s;
+}
+
+.contact-step-content a:hover,
+.contact-step-content a:focus {
+  background: #2b286f;
+  color: #fff;
+}

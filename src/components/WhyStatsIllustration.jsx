@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const WhyStatsIllustration = () => {
   return (
@@ -8,7 +8,12 @@ const WhyStatsIllustration = () => {
         viewBox="0 0 450 250"
         className="w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ width: '100%', height: '100%', maxWidth: '100vw', overflow: 'hidden' }}
+        style={{
+          width: "100%",
+          height: "100%",
+          maxWidth: "100vw",
+          overflow: "hidden",
+        }}
         preserveAspectRatio="xMidYMid meet"
       >
         {/* Advanced gradients and patterns */}
@@ -17,16 +22,22 @@ const WhyStatsIllustration = () => {
             <stop offset="0%" stopColor="rgba(34, 197, 94, 0.2)" />
             <stop offset="100%" stopColor="rgba(34, 197, 94, 0.05)" />
           </radialGradient>
-          <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(255, 107, 53, 0.8)" />
-            <stop offset="50%" stopColor="rgba(15, 52, 96, 0.8)" />
+          <linearGradient
+            id="progressGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
+            <stop offset="0%" stopColor="rgba(247, 141, 35, 0.8)" />
+            <stop offset="50%" stopColor="rgba(43, 40, 111, 0.8)" />
             <stop offset="100%" stopColor="rgba(34, 197, 94, 0.8)" />
           </linearGradient>
           <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-            <feMerge> 
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
@@ -38,8 +49,8 @@ const WhyStatsIllustration = () => {
           transition={{ duration: 2, delay: 0.3 }}
         >
           <circle cx="400" cy="60" r="25" fill="rgba(34, 197, 94, 0.08)" />
-          <circle cx="80" cy="250" r="20" fill="rgba(255, 107, 53, 0.08)" />
-          <circle cx="420" cy="220" r="18" fill="rgba(15, 52, 96, 0.08)" />
+          <circle cx="80" cy="250" r="20" fill="rgba(247, 141, 35, 0.08)" />
+          <circle cx="420" cy="220" r="18" fill="rgba(43, 40, 111, 0.08)" />
         </motion.g>
 
         {/* Main statistics dashboard */}
@@ -54,10 +65,26 @@ const WhyStatsIllustration = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <text x="100" y="40" textAnchor="middle" fontSize="12" fill="rgba(15, 52, 96, 0.8)" fontWeight="700">Tasso di Successo</text>
-            
+            <text
+              x="100"
+              y="40"
+              textAnchor="middle"
+              fontSize="12"
+              fill="rgba(43, 40, 111, 0.8)"
+              fontWeight="700"
+            >
+              Tasso di Successo
+            </text>
+
             {/* Circular progress indicator */}
-            <circle cx="100" cy="80" r="25" fill="none" stroke="rgba(15, 52, 96, 0.1)" strokeWidth="4" />
+            <circle
+              cx="100"
+              cy="80"
+              r="25"
+              fill="none"
+              stroke="rgba(43, 40, 111, 0.1)"
+              strokeWidth="4"
+            />
             <motion.circle
               cx="100"
               cy="80"
@@ -72,7 +99,16 @@ const WhyStatsIllustration = () => {
               transition={{ duration: 2, delay: 1.5 }}
               transform="rotate(-90 100 80)"
             />
-            <text x="100" y="87" textAnchor="middle" fontSize="14" fill="rgba(34, 197, 94, 0.9)" fontWeight="800">98%</text>
+            <text
+              x="100"
+              y="87"
+              textAnchor="middle"
+              fontSize="14"
+              fill="rgba(34, 197, 94, 0.9)"
+              fontWeight="800"
+            >
+              98%
+            </text>
           </motion.g>
 
           {/* Response time metric */}
@@ -81,24 +117,54 @@ const WhyStatsIllustration = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <text x="250" y="40" textAnchor="middle" fontSize="12" fill="rgba(15, 52, 96, 0.8)" fontWeight="700">Tempo di Risposta</text>
-            
+            <text
+              x="250"
+              y="40"
+              textAnchor="middle"
+              fontSize="12"
+              fill="rgba(43, 40, 111, 0.8)"
+              fontWeight="700"
+            >
+              Tempo di Risposta
+            </text>
+
             {/* Clock-like visualization */}
-            <circle cx="250" cy="80" r="20" fill="rgba(255, 107, 53, 0.1)" stroke="rgba(255, 107, 53, 0.3)" strokeWidth="2" />
+            <circle
+              cx="250"
+              cy="80"
+              r="20"
+              fill="rgba(247, 141, 35, 0.1)"
+              stroke="rgba(247, 141, 35, 0.3)"
+              strokeWidth="2"
+            />
             <motion.line
               x1="250"
               y1="80"
               x2="250"
               y2="65"
-              stroke="rgba(255, 107, 53, 0.8)"
+              stroke="rgba(247, 141, 35, 0.8)"
               strokeWidth="2"
               strokeLinecap="round"
               initial={{ rotate: 0 }}
               animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 1.5 }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "linear",
+                delay: 1.5,
+              }}
               style={{ transformOrigin: "250px 80px" }}
             />
-            <text x="250" y="120" textAnchor="middle" fontSize="14" fill="rgba(255, 107, 53, 0.9)" fontWeight="800">≤ 24h</text>
+            <text
+              x="250"
+              y="120"
+              textAnchor="middle"
+              fontSize="14"
+              fill="rgba(247, 141, 35, 0.9)"
+              fontWeight="800"
+            >
+              ≤ 24h
+            </text>
           </motion.g>
 
           {/* Client satisfaction */}
@@ -107,16 +173,32 @@ const WhyStatsIllustration = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}
           >
-            <text x="400" y="40" textAnchor="middle" fontSize="12" fill="rgba(15, 52, 96, 0.8)" fontWeight="700">Clienti Soddisfatti</text>
-            
+            <text
+              x="400"
+              y="40"
+              textAnchor="middle"
+              fontSize="12"
+              fill="rgba(43, 40, 111, 0.8)"
+              fontWeight="700"
+            >
+              Clienti Soddisfatti
+            </text>
+
             {/* Growing number animation */}
-            <circle cx="400" cy="80" r="25" fill="rgba(15, 52, 96, 0.1)" stroke="rgba(15, 52, 96, 0.3)" strokeWidth="2" />
+            <circle
+              cx="400"
+              cy="80"
+              r="25"
+              fill="rgba(43, 40, 111, 0.1)"
+              stroke="rgba(43, 40, 111, 0.3)"
+              strokeWidth="2"
+            />
             <motion.text
               x="400"
               y="87"
               textAnchor="middle"
               fontSize="12"
-              fill="rgba(15, 52, 96, 0.9)"
+              fill="rgba(43, 40, 111, 0.9)"
               fontWeight="800"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -133,8 +215,17 @@ const WhyStatsIllustration = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.8 }}
         >
-          <text x="250" y="170" textAnchor="middle" fontSize="14" fill="rgba(15, 52, 96, 0.8)" fontWeight="700">Crescita delle Performance</text>
-          
+          <text
+            x="250"
+            y="170"
+            textAnchor="middle"
+            fontSize="14"
+            fill="rgba(43, 40, 111, 0.8)"
+            fontWeight="700"
+          >
+            Crescita delle Performance
+          </text>
+
           {/* Dynamic line chart */}
           <motion.path
             d="M 80 220 Q 150 200 220 190 Q 290 185 420 180"
@@ -154,7 +245,7 @@ const WhyStatsIllustration = () => {
             { x: 150, y: 200, year: "2021", delay: 2.4 },
             { x: 220, y: 190, year: "2022", delay: 2.6 },
             { x: 290, y: 185, year: "2023", delay: 2.8 },
-            { x: 420, y: 180, year: "2024", delay: 3 }
+            { x: 420, y: 180, year: "2024", delay: 3 },
           ].map((point, index) => (
             <motion.g
               key={point.year}
@@ -175,7 +266,7 @@ const WhyStatsIllustration = () => {
                 y={point.y + 20}
                 textAnchor="middle"
                 fontSize="10"
-                fill="rgba(15, 52, 96, 0.7)"
+                fill="rgba(43, 40, 111, 0.7)"
                 fontWeight="600"
               >
                 {point.year}
@@ -192,23 +283,41 @@ const WhyStatsIllustration = () => {
         >
           {/* Floating quality badges */}
           {[
-            { x: 60, y: 140, text: "Precisione", color: "rgba(34, 197, 94, 0.8)", delay: 3.4 },
-            { x: 180, y: 260, text: "Affidabilità", color: "rgba(255, 107, 53, 0.8)", delay: 3.6 },
-            { x: 360, y: 140, text: "Professionalità", color: "rgba(15, 52, 96, 0.8)", delay: 3.8 }
+            {
+              x: 60,
+              y: 140,
+              text: "Precisione",
+              color: "rgba(34, 197, 94, 0.8)",
+              delay: 3.4,
+            },
+            {
+              x: 180,
+              y: 260,
+              text: "Affidabilità",
+              color: "rgba(247, 141, 35, 0.8)",
+              delay: 3.6,
+            },
+            {
+              x: 360,
+              y: 140,
+              text: "Professionalità",
+              color: "rgba(43, 40, 111, 0.8)",
+              delay: 3.8,
+            },
           ].map((badge, index) => (
             <motion.g
               key={badge.text}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ 
+              animate={{
                 opacity: [0, 1, 1],
-                y: [20, 0, -5, 0]
+                y: [20, 0, -5, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 2,
                 delay: badge.delay,
                 repeat: Infinity,
                 repeatDelay: 3,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             >
               <rect
@@ -252,13 +361,13 @@ const WhyStatsIllustration = () => {
               animate={{
                 opacity: [0, 1, 0],
                 scale: [0, 1, 0],
-                y: [-10, 0, 10]
+                y: [-10, 0, 10],
               }}
               transition={{
                 duration: 2,
                 delay: 4 + index * 0.2,
                 repeat: Infinity,
-                repeatDelay: 4
+                repeatDelay: 4,
               }}
             />
           ))}

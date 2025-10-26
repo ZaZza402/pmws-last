@@ -1,0 +1,120 @@
+/* ======================================= */
+/* ===== FAQ HUB PAGE STYLES ===== */
+/* ======================================= */
+
+.faq-controls {
+  margin: 2.5rem auto 0 auto;
+  max-width: 800px;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.faq-search-bar input {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-1);
+}
+
+.faq-search-bar input:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--orange) 30%, transparent);
+}
+
+.faq-tabs {
+  display: flex;
+  background-color: var(--muted);
+  border-radius: 12px;
+  padding: 5px;
+  border: 1px solid var(--border);
+}
+
+.faq-tab-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.faq-tab-btn:hover {
+  background-color: var(--card);
+}
+
+.faq-tab-btn.active {
+  background-color: var(--orange);
+  color: #fff;
+  box-shadow: var(--shadow-1);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-item {
+  display: grid;
+  grid-template-rows: auto 0fr;
+  transition: grid-template-rows 0.4s ease-in-out;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.faq-item.expanded {
+  grid-template-rows: auto 1fr;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem;
+  text-align: left;
+  font-size: 1.1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+.faq-icon {
+  color: var(--orange);
+  transition: transform 0.3s ease;
+  min-width: 24px;
+}
+
+.faq-item.expanded .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.faq-answer-content {
+  padding: 0 1.25rem 1.25rem;
+  line-height: 1.7;
+}
+
+.faq-answer-content p {
+  margin: 0;
+}

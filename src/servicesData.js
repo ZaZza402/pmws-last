@@ -1,129 +1,324 @@
-// src/servicesData.js
+﻿// src/servicesData.js
 
-export const serviceCategories = ["Immigrazione", "CAF & Patronato", "Altri Servizi"];
+export const serviceCategories = [
+  "Migranti",
+  "Viaggiatori",
+  "Famiglie",
+  "Altri Servizi",
+];
 
 export const allServices = [
-  // --- IMMIGRAZIONE ---
+  // MIGRANTI
   {
-    id: 's1',
-    category: "Immigrazione",
-    title: "Permesso di Soggiorno",
-    description: "Gestiamo con precisione ogni tipo di permesso, assicurando che la tua documentazione sia sempre perfetta e presentata in tempo.",
+    id: "s1",
+    category: "Migranti",
+    title: "Permessi di Soggiorno, Art. 31",
+    shortTitle: "Permessi di soggiorno, art. 31",
+    description:
+      "Gestiamo ogni tipo di permesso di soggiorno secondo l'art. 31, dalla prima richiesta ai rinnovi e conversioni.",
+    icon: "passport",
     practices: [
       "Primo rilascio per lavoro, famiglia o studio",
       "Rinnovo del permesso di soggiorno",
-      "Conversione del permesso (es. da studio a lavoro)",
+      "Conversione del permesso",
+      "Permesso UE per soggiornanti di lungo periodo",
       "Aggiornamento con inserimento figli",
-      "Permesso di soggiorno UE per soggiornanti di lungo periodo (Ex Carta di Soggiorno)",
       "Duplicato per smarrimento o furto",
-    ]
+    ],
   },
   {
-    id: 's2',
-    category: "Immigrazione",
-    title: "Cittadinanza Italiana",
-    description: "Diventare cittadino è un traguardo di vita. Ti accompagniamo in ogni fase, dal controllo dei requisiti all'invio telematico della domanda.",
+    id: "s2",
+    category: "Migranti",
+    title: "Ricongiungimenti Familiari",
+    shortTitle: "Ricongiungimenti",
+    description:
+      "Riunire la tua famiglia in Italia. Curiamo l'intera procedura del Nulla Osta, verifiche requisiti e gestione pratica completa.",
+    icon: "family",
     practices: [
-      "Domanda di cittadinanza per residenza (Art. 9)",
-      "Domanda di cittadinanza per matrimonio (Art. 5)",
-      "Controllo e verifica della documentazione necessaria",
-      "Invio telematico e gestione della pratica online",
-      "Solleciti e monitoraggio dello stato della domanda",
-    ]
-  },
-  {
-    id: 's3',
-    category: "Immigrazione",
-    title: "Ricongiungimento Familiare",
-    description: "Riunire la tua famiglia è la nostra priorità. Curiamo l'intera procedura per il Nulla Osta, per farti riabbracciare i tuoi cari senza stress.",
-    practices: [
-      "Richiesta Nulla Osta per lavoro subordinato o autonomo",
-      "Verifica dei requisiti di reddito e alloggio",
+      "Richiesta Nulla Osta per ricongiungimento",
+      "Verifica requisiti di reddito e alloggio",
       "Coesione familiare per familiari già in Italia",
       "Permesso di soggiorno per motivi familiari",
-    ]
-  },
-  // --- CAF & PATRONATO ---
-  {
-    id: 's6',
-    category: "CAF & Patronato",
-    title: "Dichiarazione dei Redditi",
-    description: "Ottimizziamo la tua situazione fiscale, assicurandoti ogni detrazione e rimborso a cui hai diritto. Penseremo noi a tutto.",
-    practices: [
-      "Modello 730 (dipendenti e pensionati)",
-      "Modello Redditi Persone Fisiche (Ex Unico)",
-      "Calcolo IMU e TASI",
-      "Gestione di colf, badanti e baby-sitter",
-    ]
+      "Assistenza documenti dall'estero",
+    ],
   },
   {
-    id: 's7',
-    category: "CAF & Patronato",
-    title: "Modello ISEE",
-    description: "Calcoliamo il tuo ISEE in modo rapido e preciso, un documento chiave per accedere a bonus, agevolazioni e prestazioni sociali.",
+    id: "s3",
+    category: "Migranti",
+    title: "Cittadinanza Italiana",
+    shortTitle: "Cittadinanza italiana",
+    description:
+      "Il traguardo più importante. Ti accompagniamo dall'analisi requisiti all'invio telematico, monitorando ogni fase.",
+    icon: "flag",
     practices: [
-      "ISEE ordinario, universitario e socio-sanitario",
-      "ISEE corrente (in caso di variazioni di reddito)",
-      "Consulenza sulle prestazioni collegate all'ISEE",
-    ]
+      "Cittadinanza per residenza (Art. 9)",
+      "Cittadinanza per matrimonio (Art. 5)",
+      "Controllo e verifica documentazione",
+      "Invio telematico e gestione online",
+      "Solleciti e monitoraggio pratica",
+      "Assistenza giuramento",
+    ],
   },
   {
-    id: 's8',
-    category: "CAF & Patronato",
-    title: "Sostegni e Indennità",
-    description: "Ti aiutiamo a ottenere i sostegni economici a cui hai diritto nei momenti di necessità, come la perdita del lavoro o la maternità.",
+    id: "s4",
+    category: "Migranti",
+    title: "Riconoscimento Titoli di Studio",
+    shortTitle: "Riconoscimento titoli studio",
+    description:
+      "Valorizza la tua formazione estera in Italia. Gestiamo il riconoscimento e l'equipollenza dei tuoi titoli di studio.",
+    icon: "education",
     practices: [
-      "Domanda di disoccupazione (NASpI)",
-      "Assegno Unico e Universale per i figli",
-      "Bonus sociali (luce, gas, acqua)",
-      "Indennità di maternità e congedo parentale",
-    ]
+      "Dichiarazione di valore titoli esteri",
+      "Equipollenza diplomi e lauree",
+      "Traduzioni giurate certificati",
+      "Legalizzazione e apostille",
+      "Iscrizione albi professionali",
+    ],
   },
   {
-    id: 's9',
-    category: "CAF & Patronato",
-    title: "Pensioni e Invalidità",
-    description: "Pianifichiamo insieme il tuo futuro e tuteliamo i tuoi diritti, gestendo le pratiche per la pensione e il riconoscimento dell'invalidità.",
+    id: "s5",
+    category: "Migranti",
+    title: "Traduzioni Atti",
+    shortTitle: "Traduzioni atti",
+    description:
+      "Traduzioni certificate e asseverate di documenti in qualsiasi lingua, con valore legale per tutti gli enti italiani.",
+    icon: "translate",
     practices: [
-      "Domanda di pensione di vecchiaia o anticipata",
-      "Pensione di reversibilità",
-      "Domanda di invalidità civile e accompagnamento",
-      "Legge 104/92 per l'assistenza ai familiari",
-    ]
+      "Traduzioni giurate e asseverate",
+      "Certificati di nascita e matrimonio",
+      "Diplomi e certificati accademici",
+      "Contratti e documenti legali",
+      "Legalizzazione presso consolati",
+    ],
   },
-  // --- ALTRI SERVIZI ---
+  // VIAGGIATORI
   {
-    id: 's11',
-    category: "Altri Servizi",
-    title: "Lavoro Domestico",
-    description: "Garantiamo la massima tranquillità a te e a chi ti aiuta in casa, gestendo ogni aspetto del rapporto di lavoro domestico.",
+    id: "v1",
+    category: "Viaggiatori",
+    title: "Visti per l'Italia",
+    shortTitle: "Visti",
+    description:
+      "Assistenza completa per l'ottenimento di visti per turismo, lavoro, studio o famiglia. Prepariamo la documentazione.",
+    icon: "visa",
     practices: [
-      "Contratto di assunzione per colf, badanti, baby-sitter",
+      "Visto turistico Schengen",
+      "Visto per lavoro subordinato",
+      "Visto per studio e ricerca",
+      "Visto per ricongiungimento familiare",
+      "Preparazione documentazione completa",
+      "Prenotazione appuntamenti consolari",
+    ],
+  },
+  {
+    id: "v2",
+    category: "Viaggiatori",
+    title: "Mediazione con Ambasciate",
+    shortTitle: "Mediazione con ambasciate",
+    description:
+      "Facciamo da ponte tra te e le ambasciate, gestendo comunicazioni, solleciti e verifiche per accelerare le pratiche.",
+    icon: "embassy",
+    practices: [
+      "Comunicazioni con uffici consolari",
+      "Solleciti pratiche in sospeso",
+      "Verifica stato domande",
+      "Assistenza appuntamenti",
+      "Supporto documentazione consolare",
+    ],
+  },
+  // FAMIGLIE
+  {
+    id: "f1",
+    category: "Famiglie",
+    title: "Gestione Contratti Lavoro Domestico",
+    shortTitle:
+      "Gestione contratti lavoro domestico (assunzione, buste paga, CUD e TFR)",
+    description:
+      "Tutto per il tuo personale domestico: assunzioni regolari, buste paga mensili, CUD, calcolo TFR e gestione completa.",
+    icon: "home",
+    practices: [
+      "Assunzione colf, badanti e baby-sitter",
       "Elaborazione buste paga mensili",
-      "Calcolo e versamento dei contributi INPS",
-      "Gestione del TFR (Trattamento di Fine Rapporto)",
-    ]
+      "Gestione contributi INPS",
+      "CUD annuale e certificazioni",
+      "Calcolo e liquidazione TFR",
+      "Cessazione rapporto di lavoro",
+    ],
+  },
+  // ALTRI SERVIZI
+  {
+    id: "a1",
+    category: "Altri Servizi",
+    title: "CAF e Patronato",
+    shortTitle: "CAF e patronato",
+    description:
+      "Dichiarazioni dei redditi, ISEE, bonus, pensioni e tutti i servizi fiscali e previdenziali per tutelare i tuoi diritti.",
+    icon: "calculator",
+    practices: [
+      "Modello 730 e Redditi PF",
+      "Calcolo ISEE e DSU",
+      "Assegno Unico Universale",
+      "Domanda disoccupazione NASpI",
+      "Pensioni di vecchiaia e reversibilità",
+      "Invalidità civile e Legge 104",
+    ],
   },
   {
-    id: 's12',
+    id: "a2",
     category: "Altri Servizi",
-    title: "Pratiche di Successione",
-    description: "Ti offriamo un supporto completo e discreto in un momento delicato, occupandoci di tutte le complesse pratiche burocratiche.",
+    title: "Successioni",
+    shortTitle: "Successioni",
+    description:
+      "Assistenza completa nelle pratiche successorie, dalla dichiarazione alla divisione ereditaria, con massima sensibilità.",
+    icon: "inheritance",
     practices: [
       "Dichiarazione di successione",
-      "Volture catastali degli immobili",
-      "Consulenza sulla gestione del patrimonio ereditario",
-    ]
+      "Divisione ereditaria",
+      "Volture catastali",
+      "Testamenti e disposizioni",
+      "Rinunce all'eredità",
+    ],
   },
   {
-    id: 's13',
+    id: "a3",
     category: "Altri Servizi",
-    title: "Documenti e Certificati",
-    description: "Evita lo stress e le lunghe code agli sportelli pubblici. Richiediamo per te tutti i documenti di cui hai bisogno.",
+    title: "Contratti di Affitto",
+    shortTitle: "Contratti affitto",
+    description:
+      "Redazione e registrazione contratti di locazione conformi alla legge, con tutela per proprietari e inquilini.",
+    icon: "contract",
     practices: [
-      "Visure catastali e camerali",
-      "Certificati anagrafici (residenza, stato di famiglia)",
-      "Contratti di locazione (registrazione e adempimenti)",
-    ]
+      "Contratti a canone libero (4+4)",
+      "Contratti a canone concordato (3+2)",
+      "Contratti transitori",
+      "Registrazione telematica",
+      "Cessioni e subentri",
+      "Disdette e risoluzioni",
+    ],
+  },
+  {
+    id: "a4",
+    category: "Altri Servizi",
+    title: "Consulenza Legale",
+    shortTitle: "Consulenza legale",
+    description:
+      "Orientamento legale per questioni di immigrazione, lavoro e diritto civile. Ti indirizziamo verso le soluzioni più efficaci.",
+    icon: "legal",
+    practices: [
+      "Consulenza diritto dell'immigrazione",
+      "Consulenza diritto del lavoro",
+      "Orientamento legale civile",
+      "Ricorsi amministrativi",
+      "Mediazione controversie",
+    ],
+  },
+  {
+    id: "a5",
+    category: "Altri Servizi",
+    title: "Disbrigo Pratiche presso Enti Locali",
+    shortTitle: "Disbrigo pratiche presso gli enti locali",
+    description:
+      "Ti rappresentiamo presso Comune, INPS, Agenzia delle Entrate e altri enti, risparmiandoti code e perdite di tempo.",
+    icon: "government",
+    practices: [
+      "Iscrizione anagrafica e residenza",
+      "Certificati anagrafici",
+      "Pratiche INPS e INAIL",
+      "Agenzia delle Entrate",
+      "Questura e Prefettura",
+      "Sportello Unico Immigrazione",
+    ],
+  },
+];
+
+export const homePageServices = [
+  {
+    title: "Permessi di Soggiorno",
+    description:
+      "Primo rilascio, rinnovi, conversioni. Gestiamo ogni tipo di permesso secondo l'art. 31.",
+    icon: "passport",
+    link: "/servizi#migranti",
+  },
+  {
+    title: "Ricongiungimenti",
+    description:
+      "Riunisci la tua famiglia in Italia. Curiamo l'intera procedura del Nulla Osta.",
+    icon: "family",
+    link: "/servizi#migranti",
+  },
+  {
+    title: "Cittadinanza Italiana",
+    description:
+      "Il grande traguardo. Ti accompagniamo dall'analisi requisiti all'ottenimento.",
+    icon: "flag",
+    link: "/servizi#migranti",
+  },
+  {
+    title: "Riconoscimento Titoli di Studio",
+    description:
+      "Valorizza la tua formazione estera. Gestiamo equipollenze e dichiarazioni di valore.",
+    icon: "education",
+    link: "/servizi#migranti",
+  },
+  {
+    title: "Traduzioni Atti",
+    description:
+      "Traduzioni certificate e asseverate con valore legale per tutti gli enti italiani.",
+    icon: "translate",
+    link: "/servizi#migranti",
+  },
+  {
+    title: "Visti",
+    description:
+      "Assistenza per visti turistici, di lavoro, studio o famiglia con preparazione documentazione.",
+    icon: "visa",
+    link: "/servizi#viaggiatori",
+  },
+  {
+    title: "Mediazione con Ambasciate",
+    description:
+      "Facciamo da ponte con le ambasciate per accelerare le tue pratiche consolari.",
+    icon: "embassy",
+    link: "/servizi#viaggiatori",
+  },
+  {
+    title: "Gestione Lavoro Domestico",
+    description:
+      "Assunzioni, buste paga, CUD e TFR per colf, badanti e baby-sitter. Tutto in regola.",
+    icon: "home",
+    link: "/servizi#famiglie",
+  },
+  {
+    title: "CAF e Patronato",
+    description:
+      "730, ISEE, bonus, pensioni e tutti i servizi fiscali e previdenziali.",
+    icon: "calculator",
+    link: "/servizi#altri-servizi",
+  },
+  {
+    title: "Successioni",
+    description:
+      "Assistenza completa nelle pratiche successorie con massima sensibilità.",
+    icon: "inheritance",
+    link: "/servizi#altri-servizi",
+  },
+  {
+    title: "Contratti di Affitto",
+    description: "Redazione e registrazione contratti di locazione conformi.",
+    icon: "contract",
+    link: "/servizi#altri-servizi",
+  },
+  {
+    title: "Consulenza Legale",
+    description:
+      "Orientamento legale per immigrazione, lavoro e diritto civile.",
+    icon: "legal",
+    link: "/servizi#altri-servizi",
+  },
+  {
+    title: "Pratiche presso Enti Locali",
+    description:
+      "Ti rappresentiamo presso Comune, INPS, Agenzia Entrate e altri enti.",
+    icon: "government",
+    link: "/servizi#altri-servizi",
   },
 ];

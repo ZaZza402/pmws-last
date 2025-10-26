@@ -1,0 +1,43 @@
+/* ======================================= */
+/* ===== ELEGANT 404 PAGE STYLES ===== */
+/* ======================================= */
+
+.not-found-page {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 4rem 0;
+  min-height: 60vh;
+}
+
+.not-found-content {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--card);
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-1);
+}
+
+.not-found-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--blue-50);
+  color: var(--orange);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.not-found-content h1 {
+  color: var(--blue);
+}
+
+.not-found-content p {
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--text) 80%, white);
+}

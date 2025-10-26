@@ -1,20 +1,20 @@
-import React, { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import ErrorBoundary from './components/ErrorBoundary';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import BackToTopButton from './components/BackToTopButton';
-import WhatsAppButton from './components/WhatsAppButton';
-import NotFoundPage from './pages/NotFoundPage';
+import React, { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary";
+import StructuredData from "./components/StructuredData";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import BackToTopButton from "./components/BackToTopButton";
+import WhatsAppButton from "./components/WhatsAppButton";
+import NotFoundPage from "./pages/NotFoundPage";
 
 // Lazy load pages
-const HomePage = lazy(() => import('./pages/HomePage'));
-const ServiziPage = lazy(() => import('./pages/ServiziPage'));
-const ChiSiamoPage = lazy(() => import('./pages/ChiSiamoPage'));
-const FaqPage = lazy(() => import('./pages/FaqPage'));
-const ContattiPage = lazy(() => import('./pages/ContattiPage'));
-const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
-const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const ServiziPage = lazy(() => import("./pages/ServiziPage"));
+const FaqPage = lazy(() => import("./pages/FaqPage"));
+const ContattiPage = lazy(() => import("./pages/ContattiPage"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const CookiePolicyPage = lazy(() => import("./pages/CookiePolicyPage"));
 
 const ScrollToSection = () => {
   const { pathname, hash } = useLocation();
@@ -22,11 +22,11 @@ const ScrollToSection = () => {
     if (hash) {
       const element = document.querySelector(hash);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
         return;
       }
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname, hash]);
   return null;
 };
@@ -34,15 +34,18 @@ const ScrollToSection = () => {
 function App() {
   return (
     <BrowserRouter>
+      <a href="#main-content" className="skip-to-main">
+        Salta al contenuto principale
+      </a>
+      <StructuredData />
       <Header />
       <ScrollToSection />
-      <main>
+      <main id="main-content">
         <ErrorBoundary>
-          <Suspense fallback={<div>Caricamento...</div>}>
+          <Suspense fallback={<div style={{ minHeight: "60vh" }} />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/servizi" element={<ServiziPage />} />
-              <Route path="/chi-siamo" element={<ChiSiamoPage />} />
               <Route path="/faq" element={<FaqPage />} />
               <Route path="/contatti" element={<ContattiPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
