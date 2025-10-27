@@ -25,7 +25,7 @@
 
 .why__list {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .why__item {
@@ -37,6 +37,12 @@
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why__item:hover {
+  border-color: rgba(var(--blue-rgb), 0.2);
+  box-shadow: 0 4px 12px rgba(var(--blue-rgb), 0.08);
 }
 
 .why__icon {
@@ -45,8 +51,14 @@
   border-radius: 12px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #fff, var(--blue-50));
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--blue-50), #e6f0fb);
+  border: 1px solid rgba(var(--blue-rgb), 0.15);
+}
+
+.why__icon svg {
+  color: var(--blue);
+  width: 24px;
+  height: 24px;
 }
 
 /* Visual panels blend seamlessly with background */

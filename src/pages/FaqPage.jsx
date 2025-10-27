@@ -2,6 +2,7 @@
 
 // THIS IS THE CORRECTED IMPORT LINE
 import React, { useState, useEffect } from "react";
+import PageTransition from "../components/PageTransition";
 import { faqQuestions } from "../faqData";
 import "./FaqPage.css";
 
@@ -69,7 +70,7 @@ const FaqPage = () => {
   };
 
   return (
-    <>
+    <PageTransition>
       <title>Domande Frequenti (FAQ) - Immigrazione e CAF | PuntoMigrare</title>
       <meta
         name="description"
@@ -140,7 +141,7 @@ const FaqPage = () => {
           </div>
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
+import PageTransition from "../components/PageTransition";
 import "./ContattiPage.css";
 
 const contactOptions = [
@@ -36,7 +37,7 @@ const contactOptions = [
 
 const ContattiPage = () => {
   return (
-    <>
+    <PageTransition>
       <title>Contatti e Sede - PuntoMigrare Roma</title>
       <meta
         name="description"
@@ -128,7 +129,7 @@ const ContattiPage = () => {
           </div>
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 };
 

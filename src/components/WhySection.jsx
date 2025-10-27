@@ -5,6 +5,7 @@ import { MdOutlineGppGood } from "react-icons/md";
 import WhyTrustIllustration from "./WhyTrustIllustration";
 import WhyTeamIllustration from "./WhyTeamIllustration";
 import WhyStatsIllustration from "./WhyStatsIllustration";
+import ScrollingIconsBackground from "./ScrollingIconsBackground";
 import "./WhyIllustrations.css";
 import "./WhySection.css";
 
@@ -43,8 +44,15 @@ const WhySection = () => {
       id="perche"
       className="section section-bg-white why"
       aria-labelledby="why-title"
+      style={{ position: "relative", overflow: "hidden" }}
     >
-      <div className="container why__grid">
+      {/* Animated background icons */}
+      <ScrollingIconsBackground />
+
+      <div
+        className="container why__grid"
+        style={{ position: "relative", zIndex: 1 }}
+      >
         <div>
           <h2 id="why-title">Perché sceglierci?</h2>
           <p className="mt-2">

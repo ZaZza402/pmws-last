@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import MobileDrawer from "./MobileDrawer";
-import logoInsegna from "../assets/brand-logo/insegna.png";
+import logoSvg from "../assets/brand-logo/pm-logo-blue-orange.svg";
 import "./Header.css";
 
 const Header = () => {
@@ -47,13 +47,9 @@ const Header = () => {
           <Link to="/" className="brand" aria-label="PuntoMigrare home">
             <span className="brand__logo" aria-hidden="true">
               <img
-                src={logoInsegna}
+                src={logoSvg}
                 alt="PuntoMigrare Logo"
-                style={{
-                  height: "32px",
-                  width: "auto",
-                  objectFit: "contain",
-                }}
+                className="brand__logo-img"
               />
             </span>
             <span className="brand__text">
@@ -70,39 +66,16 @@ const Header = () => {
           </nav>
 
           <button
-            className="mobile-toggle"
+            className={`mobile-toggle ${isDrawerOpen ? "open" : ""}`}
             id="menuToggle"
             aria-controls="mobileDrawer"
             aria-expanded={isDrawerOpen}
-            aria-label="Apri menu"
-            onClick={() => setIsDrawerOpen(true)}
+            aria-label={isDrawerOpen ? "Chiudi menu" : "Apri menu"}
+            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
           >
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 28 28"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M3 7h22"
-                stroke="#2b286f"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-              />
-              <path
-                d="M3 14h22"
-                stroke="#F78D23"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-              />
-              <path
-                d="M3 21h22"
-                stroke="#2b286f"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-              />
-            </svg>
+            <span className="mobile-toggle__line mobile-toggle__line--top"></span>
+            <span className="mobile-toggle__line mobile-toggle__line--middle"></span>
+            <span className="mobile-toggle__line mobile-toggle__line--bottom"></span>
           </button>
         </div>
       </header>

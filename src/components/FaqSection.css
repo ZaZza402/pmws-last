@@ -84,6 +84,12 @@
   font-size: 0.975rem;
 }
 
+/* Emphasize important text with blue */
+.faq-answer-content strong {
+  color: var(--blue);
+  font-weight: 600;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .faq-question {

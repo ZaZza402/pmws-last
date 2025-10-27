@@ -5,8 +5,13 @@
 .footer {
   background: var(--blue);
   color: #cfe2f7;
+  visibility: hidden;
   opacity: 0;
-  animation: fadeInFooter 0.6s ease 0.3s forwards;
+}
+
+.footer.loaded {
+  visibility: visible;
+  animation: fadeInFooter 0.4s ease forwards;
 }
 
 .footer a {

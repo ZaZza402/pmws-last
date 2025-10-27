@@ -1,216 +1,240 @@
-/* ======================================= */
-/* ===== FULL SCREEN SLIDE MOBILE MENU ===== */
-/* ======================================= */
+﻿/* Backdrop overlay */
+.mobile-drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 9997;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  backdrop-filter: blur(0px);
+}
 
-/* --- 1. Menu Wrapper - Full Screen Slide with Brand Colors --- */
+.mobile-drawer-backdrop.open {
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  visibility: visible;
+  backdrop-filter: blur(2px);
+}
+
+/* Side drawer container */
 .mobile-drawer {
   position: fixed;
   top: 0;
-  right: -100%;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(
-    135deg,
-    rgb(43, 40, 111) 0%,
-    rgb(43, 40, 111) 50%,
-    rgb(247, 141, 35) 100%
-  );
-  z-index: 10000;
-  transition: right 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  right: 0;
+  height: 100vh;
+  width: 280px;
+  max-width: 85vw;
+  background: linear-gradient(180deg, #2b286f 0%, #1f1d52 100%);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.3);
+  z-index: 9998;
+  padding: 0;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .mobile-drawer.open {
-  right: 0;
+  transform: translateX(0);
 }
 
-/* --- 2. X Close Button (Only show when open) --- */
-.mobile-panel__close {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 10002;
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  opacity: 0;
-  animation: fadeInClose 0.4s ease 0.3s forwards;
-}
-
-@keyframes fadeInClose {
-  to {
-    opacity: 1;
-  }
-}
-
-.mobile-panel__close:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: rotate(90deg) scale(1.1);
-}
-
-.mobile-panel__close span {
-  position: absolute;
-  width: 20px;
-  height: 2px;
-  background: #fff;
-}
-
-.mobile-panel__close span:first-child {
-  transform: rotate(45deg);
-}
-
-.mobile-panel__close span:last-child {
-  transform: rotate(-45deg);
-}
-
-/* --- 4. Navigation List - Vertical Clean Layout with CAPS --- */
-.mobile-panel__nav {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  list-style: none;
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
-  padding: 2rem 1rem;
+/* Content wrapper */
+.mobile-drawer__content {
+  padding-top: 80px;
+  padding-bottom: 2rem;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
 }
 
-.mobile-panel__nav a {
-  display: block;
-  text-decoration: none;
-  font-size: 1.75rem;
-  font-weight: 600;
-  font-family: "Candara", "Roboto", sans-serif;
-  padding: 0.4rem 0;
-  color: #ffffff;
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  /* Clean shadows for depth */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.4);
-  opacity: 0;
-  transform: translateX(100px);
-  transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1),
-    color 0.3s ease;
-}
-
-/* Underline effect on hover */
-.mobile-panel__nav a::after {
-  position: absolute;
-  content: "";
-  background: var(--orange);
-  width: 0%;
-  height: 2px;
-  left: 50%;
-  bottom: -8px;
-  transform: translateX(-50%);
-  transition: width 0.3s ease;
-  box-shadow: 0 2px 6px rgba(247, 141, 35, 0.6);
-}
-
-.mobile-panel__nav a:hover::after {
-  width: 60%;
-}
-
-.mobile-panel__nav a:hover {
-  color: var(--orange);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7), 0 4px 8px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(247, 141, 35, 0.4);
-}
-
-/* Slide in animation when menu opens */
-.mobile-drawer.open .mobile-panel__nav a {
-  opacity: 1;
-  transform: translateX(0);
-  transition-timing-function: ease, cubic-bezier(0.1, 1.3, 0.3, 1);
-}
-
-/* Staggered delays for each link */
-.mobile-drawer.open .mobile-panel__nav a:nth-child(1) {
-  transition-delay: 0.15s;
-}
-.mobile-drawer.open .mobile-panel__nav a:nth-child(2) {
-  transition-delay: 0.25s;
-}
-.mobile-drawer.open .mobile-panel__nav a:nth-child(3) {
-  transition-delay: 0.35s;
-}
-.mobile-drawer.open .mobile-panel__nav a:nth-child(4) {
-  transition-delay: 0.45s;
-}
-.mobile-drawer.open .mobile-panel__nav a:nth-child(5) {
-  transition-delay: 0.55s;
-}
-
-/* --- 5. Single CTA Button - Brand Colors --- */
-.mobile-panel__cta {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 88%;
-  max-width: 360px;
-  opacity: 0;
-  transition: opacity 0.8s ease;
+/* Navigation container */
+.mobile-drawer__nav {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  padding: 0 1.25rem;
+  gap: 0.5rem;
+  flex: 1;
 }
 
-.mobile-drawer.open .mobile-panel__cta {
-  opacity: 1;
-  transition-delay: 0.7s;
+/* Navigation links */
+.mobile-drawer__link {
+  display: block;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  font-family: "Candara", "Roboto", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  position: relative;
+  text-align: left;
 }
 
-.mobile-panel__cta a {
-  display: inline-flex;
+.mobile-drawer__link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: #f78d23;
+  border-radius: 0 2px 2px 0;
+  transition: height 0.25s ease;
+}
+
+.mobile-drawer__link:hover {
+  background: rgba(247, 141, 35, 0.1);
+  color: #f78d23;
+  padding-left: 1.5rem;
+}
+
+.mobile-drawer__link:hover::before {
+  height: 60%;
+}
+
+.mobile-drawer__link:focus {
+  background: rgba(247, 141, 35, 0.1);
+  color: #f78d23;
+  padding-left: 1.5rem;
+}
+
+.mobile-drawer__link:focus::before {
+  height: 60%;
+}
+
+.mobile-drawer__link.active {
+  background: rgba(247, 141, 35, 0.15);
+  color: #f78d23;
+  padding-left: 1.5rem;
+}
+
+.mobile-drawer__link.active::before {
+  height: 60%;
+}
+
+/* CTA section */
+.mobile-drawer__cta {
+  padding: 1.5rem 1.25rem 1.25rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.mobile-drawer__cta-title {
+  font-family: "Candara", "Roboto", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.75rem;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* WhatsApp button - compact and rectangular */
+.mobile-drawer__whatsapp-btn {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  text-decoration: none;
-  text-align: center;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  font-family: "Candara", "Roboto", sans-serif;
-  background: linear-gradient(
-    135deg,
-    var(--orange) 0%,
-    rgba(var(--orange-rgb), 0.9) 100%
-  );
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #25d366 0%, #1fa855 100%);
   color: #fff;
-  border: none;
-  /* Lifted effect with layered shadows */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.3),
-    0 16px 32px rgba(0, 0, 0, 0.4);
-  transform: translateY(-2px);
+  text-decoration: none;
+  border-radius: 6px;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
   transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.mobile-panel__cta a:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(var(--orange-rgb), 0.95) 0%,
-    var(--orange-700) 100%
-  );
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), 0 12px 24px rgba(0, 0, 0, 0.35),
-    0 24px 48px rgba(0, 0, 0, 0.45);
-}
-
-/* Hidden panel container */
-.mobile-panel {
+.mobile-drawer__whatsapp-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.mobile-drawer__whatsapp-btn:hover::before {
+  left: 100%;
+}
+
+.mobile-drawer__whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(37, 211, 102, 0.4);
+}
+
+.mobile-drawer__whatsapp-btn:active {
+  transform: translateY(0);
+}
+
+.mobile-drawer__whatsapp-icon {
+  font-size: 1.25rem;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
+  flex-shrink: 0;
+}
+
+/* Custom scrollbar */
+.mobile-drawer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mobile-drawer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-drawer::-webkit-scrollbar-thumb {
+  background: rgba(247, 141, 35, 0.4);
+  border-radius: 3px;
+}
+
+.mobile-drawer::-webkit-scrollbar-thumb:hover {
+  background: rgba(247, 141, 35, 0.6);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-drawer {
+    transition: none;
+  }
+
+  .mobile-drawer-backdrop {
+    transition: none;
+  }
+
+  .mobile-drawer__link {
+    transition: none;
+  }
+
+  .mobile-drawer__whatsapp-btn {
+    transition: none;
+  }
+
+  .mobile-drawer__link::before {
+    transition: none;
+  }
+
+  .mobile-drawer__whatsapp-btn::before {
+    transition: none;
+  }
 }

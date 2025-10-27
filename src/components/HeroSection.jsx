@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import heroBackground from "../assets/brand-posters/young-family-hero-optimized.webp";
-import logoIcon from "../assets/brand-logo/insegna.png";
+import logoIcon from "../assets/brand-logo/pm-logo-blue-orange.svg";
 import "./HeroSection.css";
 
 const HeroSection = () => {
@@ -12,7 +12,6 @@ const HeroSection = () => {
 
   // Parallax effect - image moves slower than the page scroll
   const backgroundY = useTransform(scrollY, [0, 1000], [0, 300]);
-  const overlayOpacity = useTransform(scrollY, [0, 300], [0.4, 0.7]);
 
   useEffect(() => {
     // Trigger animations after component mounts
@@ -90,10 +89,7 @@ const HeroSection = () => {
       />
 
       {/* Gradient Overlay for readability */}
-      <motion.div
-        className="new-hero__overlay"
-        style={{ opacity: overlayOpacity }}
-      />
+      <div className="new-hero__overlay" />
 
       {/* Content Container */}
       <div className="container new-hero__content">
@@ -102,7 +98,7 @@ const HeroSection = () => {
           initial="hidden"
           animate={isLoaded ? "visible" : "hidden"}
         >
-          {/* Logo Icon (Pin with M) */}
+          {/* Logo Icon with Reflective Mirror Finish */}
           <motion.div className="new-hero__logo-icon" variants={logoVariants}>
             <img
               src={logoIcon}
@@ -112,6 +108,15 @@ const HeroSection = () => {
               height="120"
               loading="eager"
             />
+          </motion.div>
+
+          {/* Tagline */}
+          <motion.div
+            className="new-hero__tagline"
+            variants={textVariants}
+            custom={0.8}
+          >
+            Unire orizzonti, avvicinare persone
           </motion.div>
 
           {/* Value Proposition Headline */}
@@ -160,11 +165,7 @@ const HeroSection = () => {
             whileTap={{ scale: 0.95 }}
             className="btn btn--ghost"
             href="tel:+390612345678"
-            initial={{ backdropFilter: "blur(10px)" }}
-            animate={{ backdropFilter: "blur(10px)" }}
             style={{
-              backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",

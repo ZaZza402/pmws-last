@@ -1,6 +1,6 @@
 // src/components/Footer.jsx
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import logoWhite from "../assets/brand-logo/insegna bianco.png";
@@ -8,9 +8,18 @@ import "./Footer.css";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <footer className="footer section" role="contentinfo">
+    <footer
+      className={`footer section ${isLoaded ? "loaded" : ""}`}
+      role="contentinfo"
+    >
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col">
@@ -117,10 +126,6 @@ const Footer = () => {
           <div className="footer-col">
             <h3>Navigazione</h3>
             <ul>
-              <li>
-                <Link to="/chi-siamo">Chi Siamo</Link>
-              </li>{" "}
-              {/* ADDED */}
               <li>
                 <Link to="/servizi">Tutti i Servizi</Link>
               </li>

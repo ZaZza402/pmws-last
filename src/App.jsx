@@ -1,7 +1,8 @@
-import React, { lazy, Suspense, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary";
 import StructuredData from "./components/StructuredData";
+import ScrollToTop from "./components/ScrollToTop";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BackToTopButton from "./components/BackToTopButton";
@@ -16,33 +17,18 @@ const ContattiPage = lazy(() => import("./pages/ContattiPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const CookiePolicyPage = lazy(() => import("./pages/CookiePolicyPage"));
 
-const ScrollToSection = () => {
-  const { pathname, hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        return;
-      }
-    }
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [pathname, hash]);
-  return null;
-};
-
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true }}>
       <a href="#main-content" className="skip-to-main">
         Salta al contenuto principale
       </a>
       <StructuredData />
       <Header />
-      <ScrollToSection />
       <main id="main-content">
         <ErrorBoundary>
           <Suspense fallback={<div style={{ minHeight: "60vh" }} />}>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/servizi" element={<ServiziPage />} />

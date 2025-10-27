@@ -8,32 +8,7 @@ const MobileDrawer = ({ isOpen, onClose }) => {
   const [shouldRender, setShouldRender] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Prevent body scroll and touch events
-  useEffect(() => {
-    if (isOpen) {
-      // Prevent scrolling on body
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.touchAction = "none";
-    } else {
-      // Restore scrolling
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.touchAction = "";
-    }
-
-    // Cleanup
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.touchAction = "";
-    };
-  }, [isOpen]);
-
-  // Handle rendering with proper timing for animations
+  // Handle rendering with proper timing for smooth animations
   useEffect(() => {
     if (isOpen) {
       // Start rendering
@@ -50,7 +25,7 @@ const MobileDrawer = ({ isOpen, onClose }) => {
       // Wait for animation to complete before unmounting
       const timer = setTimeout(() => {
         setShouldRender(false);
-      }, 700);
+      }, 350); // Faster animation timing
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
@@ -119,67 +94,65 @@ const MobileDrawer = ({ isOpen, onClose }) => {
   }
 
   return (
-    <div
-      ref={drawerRef}
-      className={`mobile-drawer ${isAnimating ? "open" : ""}`}
-      id="mobileDrawer"
-      aria-hidden={!isOpen}
-      role="dialog"
-      aria-label="Menu"
-      aria-modal="true"
-    >
-      {/* Mobile Panel Container */}
-      <div className="mobile-panel">
-        {/* Close button - only show when open */}
-        {isOpen && (
-          <button
-            className="mobile-panel__close"
-            aria-label="Chiudi menu"
-            onClick={onClose}
-          >
-            <span></span>
-            <span></span>
-          </button>
-        )}
+    <>
+      {/* Backdrop overlay */}
+      <div
+        className={`mobile-drawer-backdrop ${isAnimating ? "open" : ""}`}
+        onClick={onClose}
+        aria-hidden="true"
+      />
 
-        {/* Navigation - Vertical Layout with CAPS - NO LOGO */}
-        <nav className="mobile-panel__nav" aria-label="Menu mobile">
-          <Link to="/" onClick={onClose}>
-            HOME
-          </Link>
-          <Link to="/servizi" onClick={onClose}>
-            SERVIZI
-          </Link>
-          <Link to="/#perche" onClick={onClose}>
-            PERCHÉ NOI
-          </Link>
-          <Link to="/faq" onClick={onClose}>
-            FAQ
-          </Link>
-          <Link to="/contatti" onClick={onClose}>
-            CONTATTI
-          </Link>
-        </nav>
+      {/* Sleek sliding menu panel */}
+      <div
+        ref={drawerRef}
+        className={`mobile-drawer ${isAnimating ? "open" : ""}`}
+        id="mobileDrawer"
+        role="dialog"
+        aria-label="Menu"
+        {...(!isOpen ? { inert: true } : {})}
+      >
+        <div className="mobile-drawer__content">
+          {/* Navigation - Minimal and elegant */}
+          <nav className="mobile-drawer__nav" aria-label="Menu mobile">
+            <Link to="/" onClick={onClose} className="mobile-drawer__link">
+              Home
+            </Link>
+            <Link
+              to="/servizi"
+              onClick={onClose}
+              className="mobile-drawer__link"
+            >
+              Servizi
+            </Link>
+            <Link to="/faq" onClick={onClose} className="mobile-drawer__link">
+              FAQ
+            </Link>
+            <Link
+              to="/contatti"
+              onClick={onClose}
+              className="mobile-drawer__link"
+            >
+              Contatti
+            </Link>
+          </nav>
 
-        {/* Single CTA Button */}
-        <div className="mobile-panel__cta">
-          <a
-            href="https://wa.me/390612345678?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={onClose}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-            }}
-          >
-            <FaWhatsapp size={20} />
-            Contattaci su WhatsApp
-          </a>
+          {/* CTA Button */}
+          <div className="mobile-drawer__cta">
+            <p className="mobile-drawer__cta-title">Hai bisogno di aiuto?</p>
+            <a
+              href="https://wa.me/390612345678?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+              className="mobile-drawer__whatsapp-btn"
+            >
+              <FaWhatsapp className="mobile-drawer__whatsapp-icon" />
+              <span>Contattaci su WhatsApp</span>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

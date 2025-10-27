@@ -79,7 +79,7 @@ const FaqSection = () => {
 
         <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
           <Link to="/faq" className="btn btn--blue">
-            Vedi Tutte le Domande Frequenti
+            Hai più domande?
           </Link>
         </div>
       </div>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
+import PageTransition from "../components/PageTransition";
 import { allServices, serviceCategories } from "../servicesData";
 import "./ServiziPage.css";
 
@@ -111,7 +112,7 @@ const ServiziPage = () => {
       .replace(/ /g, "-")}`;
 
   return (
-    <>
+    <PageTransition>
       <title>Tutti i Servizi - Immigrazione e CAF a Roma | PuntoMigrare</title>
       <meta
         name="description"
@@ -206,7 +207,7 @@ const ServiziPage = () => {
           </div>
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 };
 

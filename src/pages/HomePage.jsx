@@ -1,6 +1,7 @@
 ﻿// src/pages/HomePage.jsx
 
 import React from "react";
+import PageTransition from "../components/PageTransition";
 import AnimateOnScroll from "../components/AnimateOnScroll";
 import HeroSection from "../components/HeroSection";
 import ServicesSection from "../components/ServicesSection";
@@ -11,7 +12,7 @@ import DocumentSection from "../components/DocumentSection";
 
 const HomePage = () => {
   return (
-    <>
+    <PageTransition>
       <title>PuntoMigrare - CAF e Servizi per l'Immigrazione a Roma</title>
       <meta
         name="description"
@@ -36,7 +37,7 @@ const HomePage = () => {
       <AnimateOnScroll>
         <DocumentSection />
       </AnimateOnScroll>
-    </>
+    </PageTransition>
   );
 };
 
