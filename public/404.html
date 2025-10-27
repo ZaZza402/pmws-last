@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
   <head>
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script>
-      // Get the full path after the repo name
-      var path = window.location.pathname.replace(/^\/pmws-last/, '');
+      // Simple redirect for SPA on Vercel
+      // No need for complex path manipulation since vercel.json handles rewrites
+      var path = window.location.pathname;
       var search = window.location.search || '';
       var hash = window.location.hash || '';
-      // Redirect to index.html with the full path preserved
-      window.location.replace('/pmws-last/index.html' + '?redirect=' + encodeURIComponent(path + search + hash));
+      
+      // Redirect to root, React Router will handle the routing
+      window.location.replace('/' + search + hash);
     </script>
   </head>
   <body>
