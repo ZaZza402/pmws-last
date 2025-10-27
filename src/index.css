@@ -162,9 +162,28 @@ h3 {
   margin: 0 0 0.55rem;
 }
 
-/* BRAND IDENTITY: All section titles use primary blue */
+/* BRAND IDENTITY: Section titles with gradient fade-out band */
 h2 {
-  color: var(--blue);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  color: var(--text);
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--blue) 0%,
+    var(--blue) 30%,
+    transparent 100%
+  );
+  border-radius: 2px;
 }
 
 h1 {
@@ -228,7 +247,7 @@ img {
 
 /* Subtle section divider with blue accent */
 .section:not(:first-child)::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 50%;
