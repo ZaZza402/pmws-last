@@ -146,6 +146,19 @@ const FaqPage = () => {
               </div>
             )}
           </div>
+
+          {/* Contact CTA */}
+          <div className="faq-contact-cta">
+            <p className="faq-cta-text">
+              <strong>Hai più domande?</strong> Facci sapere — siamo qui per
+              aiutarti.
+            </p>
+            <p className="faq-cta-info">
+              Scrivici a{" "}
+              <a href="mailto:info@puntomigrare.it">info@puntomigrare.it</a> o{" "}
+              <a href="/contatti">visita la nostra pagina contatti</a>.
+            </p>
+          </div>
         </div>
       </section>
     </PageTransition>

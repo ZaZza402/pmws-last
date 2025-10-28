@@ -1,7 +1,7 @@
 /* src/components/PageTransition.css */
 
 .page-transition-wrapper {
-  animation: fadeIn 0.15s ease-in;
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   /* Ensure content is visible by default */
   opacity: 1;
   /* Force hardware acceleration */
@@ -20,7 +20,7 @@
 
 /* Prevent flash of content during route change */
 .page-transition-wrapper > * {
-  animation: slideInContent 0.2s ease-out;
+  animation: slideInContent 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   /* Ensure content is visible by default */
   opacity: 1;
   transform: translateY(0);
@@ -30,8 +30,8 @@
 
 @keyframes slideInContent {
   from {
-    opacity: 0.7;
-    transform: translateY(3px);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;

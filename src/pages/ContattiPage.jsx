@@ -47,19 +47,21 @@ const ContattiPage = () => {
 
       <section className="section page-header">
         <div className="container">
-          <h1>Siamo qui per ascoltarti</h1>
-          <p>
-            Hai un dubbio o vuoi semplicemente capire come possiamo aiutarti?
-            Non esitare a contattarci. Una chiacchierata non costa nulla e può
-            risolvere molti problemi.
-          </p>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <h1 style={{ color: "#2b286f" }}>Siamo qui per ascoltarti</h1>
+            <p style={{ maxWidth: "70ch", margin: "0.75rem auto 0 auto", fontSize: "1.1rem", color: "#475569" }}>
+              Hai un dubbio o vuoi semplicemente capire come possiamo aiutarti?
+              Non esitare a contattarci. Una chiacchierata non costa nulla e può
+              risolvere molti problemi.
+            </p>
+          </div>
 
           <div className="panel mt-4">
             <div className="contact-grid">
               <div>
-                <h3 style={{ margin: "0 0 .5rem" }}>
+                <h2 style={{ margin: "0 0 1rem", color: "#2b286f", fontSize: "1.6rem" }}>
                   Contattaci Come Preferisci
-                </h3>
+                </h2>
                 <div className="contact-timeline mt-2">
                   {contactOptions.map((option, idx) => (
                     <div className="contact-step" key={option.title}>
@@ -75,20 +77,22 @@ const ContattiPage = () => {
                   ))}
                 </div>
 
-                <h3 className="mt-6">Orari di Apertura</h3>
-                <address className="mt-2" style={{ fontStyle: "normal" }}>
-                  Lun - Mar - Gio : 09:00 – 18:00
+                <h3 className="mt-6" style={{ color: "#2b286f", fontSize: "1.4rem" }}>Orari di Apertura</h3>
+                <address className="mt-2" style={{ fontStyle: "normal", color: "#475569", lineHeight: "1.8" }}>
+                  <strong>Lun - Mar - Gio:</strong> 09:00 – 18:00
                   <br />
-                  Mer - Ven : 09:00 – 13:00
+                  <strong>Mer - Ven:</strong> 09:00 – 13:00
                   <br />
-                  Sab - Dom: Chiuso
+                  <strong>Sab - Dom:</strong> Chiuso
                 </address>
               </div>
 
               <div>
-                <h3 style={{ margin: "0 0 .5rem" }}>Vieni a Trovarci</h3>
-                <address className="mt-2" style={{ fontStyle: "normal" }}>
-                  <strong>PuntoMigrare</strong>
+                <h2 style={{ margin: "0 0 1rem", color: "#2b286f", fontSize: "1.6rem" }}>
+                  Vieni a Trovarci
+                </h2>
+                <address className="mt-2" style={{ fontStyle: "normal", color: "#475569", lineHeight: "1.8", fontSize: "1.05rem" }}>
+                  <strong style={{ color: "#2b286f", fontSize: "1.1rem" }}>PuntoMigrare</strong>
                   <br />
                   Via del Fuoco Sacro, 97
                   <br />

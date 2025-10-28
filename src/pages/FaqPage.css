@@ -192,3 +192,60 @@
     font-size: 0.95rem;
   }
 }
+
+/* Contact CTA at bottom of FAQ page */
+.faq-contact-cta {
+  max-width: 800px;
+  margin: 3rem auto 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e8f0f7 0%, #dce8f3 100%);
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid rgba(43, 40, 111, 0.1);
+}
+
+.faq-cta-text {
+  font-size: 1.2rem;
+  color: #2b286f;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.faq-cta-text strong {
+  color: #2b286f;
+  font-weight: 700;
+}
+
+.faq-cta-info {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.faq-cta-info a {
+  color: var(--orange);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.faq-cta-info a:hover {
+  color: #2b286f;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .faq-contact-cta {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .faq-cta-text {
+    font-size: 1.1rem;
+  }
+
+  .faq-cta-info {
+    font-size: 0.95rem;
+  }
+}

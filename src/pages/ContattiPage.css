@@ -1,26 +1,39 @@
 /* ======================================= */
-/* ===== CONTATTI PAGE STYLES ===== */
+/* ===== CONTATTI PAGE STYLES - ELEGANT VERSION ===== */
 /* ======================================= */
 
-/* Panel container */
+/* Page header with elegant gradient background */
+.page-header {
+  background: linear-gradient(135deg, #e8f0f7 0%, #dce8f3 50%, #d5e3f0 100%);
+  padding: 3rem 0;
+}
+
+/* Panel container with elegant white card */
 .page-header .panel {
-  background: var(--card);
+  background: #ffffff;
   border-radius: 20px;
-  padding: 18px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-1);
+  padding: 2.5rem;
+  border: 1px solid rgba(43, 40, 111, 0.1);
+  box-shadow: 0 4px 20px rgba(43, 40, 111, 0.08);
+}
+
+@media (max-width: 768px) {
+  .page-header .panel {
+    padding: 1.5rem;
+  }
 }
 
 /* Contact grid layout */
 .contact-grid {
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 3rem;
   }
 }
 
@@ -84,42 +97,53 @@
 }
 
 .contact-step-content {
-  background: #fff;
+  background: #ffffff;
   border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(10, 46, 78, 0.07);
-  padding: 1.2rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(43, 40, 111, 0.08);
+  padding: 1.3rem 1.5rem;
   min-width: 0;
   flex: 1;
-  border: 1px solid #f2f2f2;
+  border: 1px solid rgba(43, 40, 111, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-step:hover .contact-step-content {
+  box-shadow: 0 6px 24px rgba(43, 40, 111, 0.12);
+  transform: translateY(-2px);
 }
 
 .contact-step-content strong {
   color: #2b286f;
-  font-size: 1.08rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .contact-step-content p {
-  margin: 0.5rem 0 0 0;
-  color: #444;
-  font-size: 1rem;
+  margin: 0;
+  color: #475569;
+  font-size: 0.98rem;
+  line-height: 1.6;
 }
 
 .contact-step-content a {
   display: inline-block;
   margin-top: 1rem;
-  background: #f78d23;
-  color: #fff;
+  background: linear-gradient(135deg, #f78d23 0%, #e87722 100%);
+  color: #ffffff;
   font-weight: 600;
   border-radius: 10px;
-  padding: 0.7rem 1.2rem;
+  padding: 0.75rem 1.3rem;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(232, 119, 34, 0.08);
-  transition: background 0.2s;
+  box-shadow: 0 2px 12px rgba(247, 141, 35, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-step-content a:hover,
 .contact-step-content a:focus {
-  background: #2b286f;
-  color: #fff;
+  background: linear-gradient(135deg, #2b286f 0%, #1e1d50 100%);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(43, 40, 111, 0.3);
 }
