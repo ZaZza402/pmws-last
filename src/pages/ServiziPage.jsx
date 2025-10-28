@@ -38,7 +38,7 @@ const iconMap = {
 const ServiziPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [expandedServiceId, setExpandedServiceId] = useState(null);
+  const [expandedServiceIds, setExpandedServiceIds] = useState([]); // Changed to array for multiple open cards
   const [expandedSubIds, setExpandedSubIds] = useState([]);
 
   // Filter services based on category and search
@@ -75,11 +75,10 @@ const ServiziPage = () => {
     const rect = clickedElement.getBoundingClientRect();
     const offsetFromTop = rect.top;
     
-    // If we're expanding a different card (closing previous, opening new)
-    const isOpeningDifferent = expandedServiceId && expandedServiceId !== id;
-    
-    setExpandedServiceId(expandedServiceId === id ? null : id);
-    setExpandedSubIds([]); // Close all subs when toggling main service
+    // Toggle this service in the array (allow multiple open)
+    setExpandedServiceIds((prev) =>
+      prev.includes(id) ? prev.filter((serviceId) => serviceId !== id) : [...prev, id]
+    );
     
     // After state update, maintain the clicked element's position
     requestAnimationFrame(() => {
@@ -217,7 +216,7 @@ const ServiziPage = () => {
               ) : (
                 <div className="services-list">
                   {filteredServices.map((service) => {
-                    const isExpanded = expandedServiceId === service.id;
+                    const isExpanded = expandedServiceIds.includes(service.id);
                     const hasSubservices =
                       service.subservices && service.subservices.length > 0;
 
