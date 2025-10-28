@@ -6,21 +6,21 @@ import "./ChiSiamoPage.css";
 
 const ChiSiamoPage = () => {
   return (
-    <>
-      <title>Chi Siamo - La Nostra Storia | PuntoMigrare</title>
+    <div className="chi-siamo-page">
+      <title>Chi Siamo - Due Professioniste per la Tua Immigrazione | PuntoMigrare</title>
       <meta
         name="description"
         content="Scopri chi c'è dietro PuntoMigrare. Due professioniste con una missione: offrire un servizio umano, chiaro e competente per immigrazione e pratiche CAF a Roma."
       />
       <link rel="canonical" href="https://www.puntomigrare.it/chi-siamo" />
 
-      <section className="section">
+      <section className="section page-header">
         <div className="container">
           <div style={{ textAlign: "center" }}>
-            <h1>Due Professioniste, Una Sola Missione</h1>
+            <h1 style={{ color: "#2b286f" }}>Due Professioniste, Una Sola Missione</h1>
             <p
               className="font-accent mt-2"
-              style={{ maxWidth: "70ch", margin: "0.5rem auto 0 auto" }}
+              style={{ maxWidth: "70ch", margin: "0.75rem auto 0 auto", fontSize: "1.1rem", color: "#475569" }}
             >
               Crediamo in un approccio basato sull'ascolto, sulla chiarezza e su
               un rapporto di fiducia. Il nostro obiettivo non è solo completare
@@ -85,7 +85,7 @@ const ChiSiamoPage = () => {
           </AnimateOnScroll>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

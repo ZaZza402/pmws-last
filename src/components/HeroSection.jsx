@@ -102,7 +102,7 @@ const HeroSection = () => {
           <motion.div className="new-hero__logo-icon" variants={logoVariants}>
             <img
               src={logoIcon}
-              alt="Punto Migrare Logo"
+              alt="PuntoMigrare - CAF e Servizi per l'Immigrazione a Roma"
               className="new-hero__logo-svg"
               width="120"
               height="120"

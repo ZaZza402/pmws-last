@@ -38,10 +38,10 @@ const contactOptions = [
 const ContattiPage = () => {
   return (
     <PageTransition>
-      <title>Contatti e Sede - PuntoMigrare Roma</title>
+      <title>Contattaci - Sede a Roma, Via del Fuoco Sacro 97 | PuntoMigrare</title>
       <meta
         name="description"
-        content="Contattaci su WhatsApp, telefono o email. Siamo in Via del Fuoco Sacro, 97, Roma. Trova i nostri orari e la mappa per raggiungerci."
+        content="Contattaci su WhatsApp, telefono o email. Ufficio a Roma, Via del Fuoco Sacro 97. Orari: Lun-Mar-Gio 9-18, Mer-Ven 9-13. Parliamo italiano, English, Română."
       />
       <link rel="canonical" href="https://www.puntomigrare.it/contatti" />
 

@@ -69,12 +69,30 @@ const FaqPage = () => {
     setExpandedId(expandedId === id ? null : id);
   };
 
+  // FAQPage Schema for Rich Snippets
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqQuestions.map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: q.answer,
+      },
+    })),
+  };
+
   return (
     <PageTransition>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <title>Domande Frequenti (FAQ) - Immigrazione e CAF | PuntoMigrare</title>
       <meta
         name="description"
-        content="Risposte dettagliate alle domande complesse su permesso di soggiorno, cittadinanza, 730, ISEE e altro. La nostra esperienza al tuo servizio."
+        content="Risposte dettagliate su permesso di soggiorno, cittadinanza italiana, ricongiungimento familiare, 730, ISEE, NASpI e pensioni. Oltre 25 FAQ aggiornate ad ottobre 2025."
       />
       <link rel="canonical" href="https://www.puntomigrare.it/faq" />
 

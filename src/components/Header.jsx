@@ -48,7 +48,7 @@ const Header = () => {
             <span className="brand__logo" aria-hidden="true">
               <img
                 src={logoSvg}
-                alt="PuntoMigrare Logo"
+                alt="PuntoMigrare - Centro di Assistenza Fiscale e Servizi per l'Immigrazione a Roma"
                 className="brand__logo-img"
               />
             </span>

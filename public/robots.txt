@@ -1,0 +1,11 @@
+# PuntoMigrare - robots.txt
+# https://www.puntomigrare.it/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow admin or sensitive areas (if any exist in future)
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://www.puntomigrare.it/sitemap.xml

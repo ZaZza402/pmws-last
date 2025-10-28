@@ -136,8 +136,16 @@ const ServiziPage = () => {
   };
 
   return (
-    <div className="servizi-page">
-      {/* Hero */}
+    <>
+      <title>Tutti i Nostri Servizi - Immigrazione e CAF | PuntoMigrare Roma</title>
+      <meta
+        name="description"
+        content="Servizi completi per immigrazione, permessi di soggiorno, cittadinanza, CAF, Patronato, traduzioni e assistenza legale a Roma. Oltre 30 pratiche gestite con professionalità."
+      />
+      <link rel="canonical" href="https://www.puntomigrare.it/servizi" />
+
+      <div className="servizi-page">
+        {/* Hero */}
       <section className="servizi-hero">
         <div className="container">
           <h1>I Nostri Servizi</h1>
@@ -338,6 +346,7 @@ const ServiziPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
