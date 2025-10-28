@@ -5,7 +5,13 @@
 /* Page header with elegant gradient background */
 .page-header {
   background: linear-gradient(135deg, #e8f0f7 0%, #dce8f3 50%, #d5e3f0 100%);
-  padding: 3rem 0;
+  padding: 140px 0 3rem 0;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 120px 0 2rem 0;
+  }
 }
 
 /* Panel container with elegant white card */
