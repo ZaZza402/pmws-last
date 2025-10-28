@@ -68,31 +68,41 @@ const ServiziPage = () => {
   });
 
   const toggleService = (id, event) => {
-    // Prevent any scroll behavior
-    if (event) {
-      event.preventDefault();
-    }
+    // Get the clicked element's position relative to viewport
+    const clickedElement = event?.currentTarget;
+    if (!clickedElement) return;
     
-    // Store current scroll position
-    const scrollY = window.scrollY;
+    const rect = clickedElement.getBoundingClientRect();
+    const offsetFromTop = rect.top;
+    
+    // If we're expanding a different card (closing previous, opening new)
+    const isOpeningDifferent = expandedServiceId && expandedServiceId !== id;
     
     setExpandedServiceId(expandedServiceId === id ? null : id);
     setExpandedSubIds([]); // Close all subs when toggling main service
     
-    // Restore scroll position after state update
+    // After state update, maintain the clicked element's position
     requestAnimationFrame(() => {
-      window.scrollTo(0, scrollY);
+      if (clickedElement) {
+        const newRect = clickedElement.getBoundingClientRect();
+        const newOffsetFromTop = newRect.top;
+        const scrollAdjustment = newOffsetFromTop - offsetFromTop;
+        
+        // Only adjust if there was a significant change
+        if (Math.abs(scrollAdjustment) > 1) {
+          window.scrollBy(0, scrollAdjustment);
+        }
+      }
     });
   };
 
   const toggleSub = (subId, event) => {
-    // Prevent any scroll behavior
-    if (event) {
-      event.preventDefault();
-    }
+    // Get the clicked element's position relative to viewport
+    const clickedElement = event?.currentTarget;
+    if (!clickedElement) return;
     
-    // Store current scroll position
-    const scrollY = window.scrollY;
+    const rect = clickedElement.getBoundingClientRect();
+    const offsetFromTop = rect.top;
     
     setExpandedSubIds((prev) =>
       prev.includes(subId)
@@ -100,9 +110,18 @@ const ServiziPage = () => {
         : [...prev, subId]
     );
     
-    // Restore scroll position after state update
+    // After state update, maintain the clicked element's position
     requestAnimationFrame(() => {
-      window.scrollTo(0, scrollY);
+      if (clickedElement) {
+        const newRect = clickedElement.getBoundingClientRect();
+        const newOffsetFromTop = newRect.top;
+        const scrollAdjustment = newOffsetFromTop - offsetFromTop;
+        
+        // Only adjust if there was a significant change
+        if (Math.abs(scrollAdjustment) > 1) {
+          window.scrollBy(0, scrollAdjustment);
+        }
+      }
     });
   };
 
