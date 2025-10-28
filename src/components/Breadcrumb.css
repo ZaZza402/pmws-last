@@ -1,0 +1,77 @@
+/* ============================================
+   BREADCRUMB COMPONENT
+   ============================================ */
+.breadcrumb {
+  padding: 1rem 0;
+  background: transparent;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.breadcrumb-link:hover {
+  color: #2b286f;
+  background: rgba(43, 40, 111, 0.05);
+}
+
+.breadcrumb-home-icon {
+  font-size: 0.95rem;
+  color: #f78d23;
+}
+
+.breadcrumb-separator {
+  font-size: 0.7rem;
+  color: #d1d5db;
+}
+
+.breadcrumb-current {
+  color: #2b286f;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .breadcrumb {
+    padding: 0.75rem 0;
+  }
+
+  .breadcrumb-link,
+  .breadcrumb-current {
+    font-size: 0.85rem;
+  }
+
+  .breadcrumb-home-icon {
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb-separator {
+    font-size: 0.65rem;
+  }
+}

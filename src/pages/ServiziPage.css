@@ -3,17 +3,22 @@
    =========================================== */
 
 .servizi-page {
-  padding-top: 100px; /* Space for fixed header */
   min-height: 100vh;
   background: #fff;
   scroll-behavior: auto; /* Prevent smooth scroll interference */
 }
 
-/* Hero Section */
+/* Hero Section with elegant gradient background */
 .servizi-hero {
-  background: linear-gradient(135deg, #f5f5fa 0%, #fff 100%);
-  padding: 3rem 0 2.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #e8f0f7 0%, #dce8f3 50%, #d5e3f0 100%);
+  padding: 140px 0 3rem;
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .servizi-hero {
+    padding: 120px 0 2.5rem;
+  }
 }
 
 .servizi-hero h1 {
@@ -26,8 +31,8 @@
   text-align: center;
   max-width: 600px;
   margin: 0 auto 2rem;
-  font-size: 1.05rem;
-  color: #6b7280;
+  font-size: 1.1rem;
+  color: #475569;
 }
 
 /* Search Box */
@@ -87,6 +92,86 @@
   transform: translateY(-50%) scale(1.1) rotate(90deg);
 }
 
+/* ============================================
+   POPULAR SERVICES SECTION
+   ============================================ */
+.popular-services-section {
+  padding: 3rem 0 4rem;
+  background: linear-gradient(to bottom, #fff 0%, #fafbfc 100%);
+}
+
+.popular-title {
+  font-family: "Amsterdam One", cursive, sans-serif;
+  font-size: 2.5rem;
+  color: #2b286f;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.popular-subtitle {
+  text-align: center;
+  color: #6b7280;
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.popular-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.popular-service-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.popular-service-card:hover {
+  transform: translateY(-6px);
+  border-color: #f78d23;
+  box-shadow: 0 12px 30px rgba(247, 141, 35, 0.15);
+}
+
+.popular-icon {
+  font-size: 3rem;
+  color: #f78d23;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.popular-service-card:hover .popular-icon {
+  transform: scale(1.1);
+  color: #2b286f;
+}
+
+.popular-service-card h3 {
+  font-size: 1.25rem;
+  color: #2b286f;
+  font-weight: 700;
+  margin: 0;
+}
+
+.popular-service-card p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
 /* Content Layout */
 .servizi-content {
   padding: 3rem 0 6rem; /* Extra bottom padding for last cards */
@@ -122,6 +207,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
   padding: 0.75rem 1rem;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
@@ -134,11 +220,22 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.cat-btn .cat-icon {
+  font-size: 1.1rem;
+  color: #f78d23;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
 .cat-btn:hover {
   background: #f9fafb;
   border-color: #d1d5db;
   transform: translateX(4px);
   box-shadow: 0 2px 8px rgba(43, 40, 111, 0.08);
+}
+
+.cat-btn:hover .cat-icon {
+  transform: scale(1.1);
 }
 
 .cat-btn.active {
@@ -147,6 +244,14 @@
   border-color: #2b286f;
   transform: translateX(4px);
   box-shadow: 0 4px 12px rgba(43, 40, 111, 0.2);
+}
+
+.cat-btn.active .cat-icon {
+  color: #f78d23;
+}
+
+.cat-btn > span:nth-child(2) {
+  flex: 1;
 }
 
 .cat-btn .count {
@@ -531,6 +636,37 @@
 
   .hero-subtitle {
     font-size: 0.95rem;
+  }
+
+  /* Popular Services Mobile */
+  .popular-services-section {
+    padding: 2rem 0 3rem;
+  }
+
+  .popular-title {
+    font-size: 1.9rem;
+  }
+
+  .popular-subtitle {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .popular-services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .popular-service-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .popular-icon {
+    font-size: 2.5rem;
+  }
+
+  .popular-service-card h3 {
+    font-size: 1.15rem;
   }
 
   .servizi-content {

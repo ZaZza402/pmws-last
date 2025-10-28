@@ -1,6 +1,7 @@
 import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
+import Breadcrumb from "../components/Breadcrumb";
 import "./ContattiPage.css";
 
 const contactOptions = [
@@ -38,7 +39,9 @@ const contactOptions = [
 const ContattiPage = () => {
   return (
     <PageTransition>
-      <title>Contattaci - Sede a Roma, Via del Fuoco Sacro 97 | PuntoMigrare</title>
+      <title>
+        Contattaci - Sede a Roma, Via del Fuoco Sacro 97 | PuntoMigrare
+      </title>
       <meta
         name="description"
         content="Contattaci su WhatsApp, telefono o email. Ufficio a Roma, Via del Fuoco Sacro 97. Orari: Lun-Mar-Gio 9-18, Mer-Ven 9-13. Parliamo italiano, English, Română."
@@ -47,6 +50,9 @@ const ContattiPage = () => {
 
       <section className="section page-header">
         <div className="container">
+          {/* Breadcrumb */}
+          <Breadcrumb items={[{ label: "Contatti" }]} />
+          
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <h1 style={{ color: "#2b286f" }}>Siamo qui per ascoltarti</h1>
             <p

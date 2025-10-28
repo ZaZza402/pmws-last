@@ -3,6 +3,7 @@
 // THIS IS THE CORRECTED IMPORT LINE
 import React, { useState, useEffect } from "react";
 import PageTransition from "../components/PageTransition";
+import Breadcrumb from "../components/Breadcrumb";
 import { faqQuestions } from "../faqData";
 import "./FaqPage.css";
 
@@ -98,6 +99,9 @@ const FaqPage = () => {
 
       <section className="section page-header">
         <div className="container">
+          {/* Breadcrumb */}
+          <Breadcrumb items={[{ label: "FAQ" }]} />
+          
           <div style={{ textAlign: "center" }}>
             <h1>Domande Frequenti (FAQ)</h1>
             <p
