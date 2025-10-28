@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BackToTopButton from "./components/BackToTopButton";
 import WhatsAppButton from "./components/WhatsAppButton";
+import PageLoader from "./components/PageLoader";
 import NotFoundPage from "./pages/NotFoundPage";
 
 // Lazy load pages
@@ -27,7 +28,7 @@ function App() {
       <Header />
       <main id="main-content">
         <ErrorBoundary>
-          <Suspense fallback={<div style={{ minHeight: "60vh" }} />}>
+          <Suspense fallback={<PageLoader />}>
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />

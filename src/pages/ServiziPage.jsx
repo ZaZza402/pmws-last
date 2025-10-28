@@ -175,16 +175,6 @@ const ServiziPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [filteredServices, setFilteredServices] = useState(allServices);
   const [expandedId, setExpandedId] = useState(null);
-  const [isReady, setIsReady] = useState(false);
-
-  // Ensure component is fully mounted before showing content
-  useEffect(() => {
-    // Small delay to ensure CSS is fully loaded
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 10);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Handle direct linking
   useEffect(() => {
@@ -239,11 +229,6 @@ const ServiziPage = () => {
   const getCategoryCount = (category) => {
     return allServices.filter((s) => s.category === category).length;
   };
-
-  // Show nothing until component is ready to prevent flash
-  if (!isReady) {
-    return null;
-  }
 
   return (
     <PageTransition>
