@@ -86,9 +86,8 @@ const FaqPage = () => {
               className="mt-2"
               style={{ maxWidth: "70ch", margin: "0.5rem auto 0 auto" }}
             >
-              La nostra esperienza al tuo servizio. Trova risposte chiare ai
-              dubbi più complessi, oppure usa la ricerca per la tua domanda
-              specifica.
+              Risposte chiare e complete alle domande più importanti su immigrazione, 
+              CAF, pensioni e servizi. Organizzate per aiutarti a trovare subito quello che cerchi.
             </p>
           </div>
 
@@ -114,6 +113,13 @@ const FaqPage = () => {
                     {category}
                   </button>
                 ))}
+              </div>
+            )}
+            {(searchTerm || filteredQuestions.length > 0) && (
+              <div className="faq-results-count">
+                {searchTerm
+                  ? `Trovate ${filteredQuestions.length} domande che corrispondono alla tua ricerca`
+                  : `${filteredQuestions.length} domande nella categoria "${activeCategory}"`}
               </div>
             )}
           </div>

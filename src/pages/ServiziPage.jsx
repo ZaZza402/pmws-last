@@ -71,22 +71,24 @@ const ServiziPage = () => {
     // Get the clicked element's position relative to viewport
     const clickedElement = event?.currentTarget;
     if (!clickedElement) return;
-    
+
     const rect = clickedElement.getBoundingClientRect();
     const offsetFromTop = rect.top;
-    
+
     // Toggle this service in the array (allow multiple open)
     setExpandedServiceIds((prev) =>
-      prev.includes(id) ? prev.filter((serviceId) => serviceId !== id) : [...prev, id]
+      prev.includes(id)
+        ? prev.filter((serviceId) => serviceId !== id)
+        : [...prev, id]
     );
-    
+
     // After state update, maintain the clicked element's position
     requestAnimationFrame(() => {
       if (clickedElement) {
         const newRect = clickedElement.getBoundingClientRect();
         const newOffsetFromTop = newRect.top;
         const scrollAdjustment = newOffsetFromTop - offsetFromTop;
-        
+
         // Only adjust if there was a significant change
         if (Math.abs(scrollAdjustment) > 1) {
           window.scrollBy(0, scrollAdjustment);
@@ -99,23 +101,23 @@ const ServiziPage = () => {
     // Get the clicked element's position relative to viewport
     const clickedElement = event?.currentTarget;
     if (!clickedElement) return;
-    
+
     const rect = clickedElement.getBoundingClientRect();
     const offsetFromTop = rect.top;
-    
+
     setExpandedSubIds((prev) =>
       prev.includes(subId)
         ? prev.filter((id) => id !== subId)
         : [...prev, subId]
     );
-    
+
     // After state update, maintain the clicked element's position
     requestAnimationFrame(() => {
       if (clickedElement) {
         const newRect = clickedElement.getBoundingClientRect();
         const newOffsetFromTop = newRect.top;
         const scrollAdjustment = newOffsetFromTop - offsetFromTop;
-        
+
         // Only adjust if there was a significant change
         if (Math.abs(scrollAdjustment) > 1) {
           window.scrollBy(0, scrollAdjustment);
