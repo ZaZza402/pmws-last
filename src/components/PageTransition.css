@@ -1,7 +1,9 @@
 /* src/components/PageTransition.css */
 
 .page-transition-wrapper {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.2s ease-in-out;
+  /* Ensure content is visible by default */
+  opacity: 1;
 }
 
 @keyframes fadeIn {
@@ -15,13 +17,16 @@
 
 /* Prevent flash of content during route change */
 .page-transition-wrapper > * {
-  animation: slideInContent 0.4s ease-out;
+  animation: slideInContent 0.3s ease-out;
+  /* Ensure content is visible by default */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes slideInContent {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(5px);
   }
   to {
     opacity: 1;

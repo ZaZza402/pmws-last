@@ -22,14 +22,15 @@ export const allServices = [
       {
         id: "s1-1",
         title: "Primo Rilascio",
-        description: "Prima richiesta del permesso di soggiorno per lavoro, famiglia, studio o altri motivi.",
+        description:
+          "Prima richiesta del permesso di soggiorno per lavoro, famiglia, studio o altri motivi.",
         practices: [
           "Permesso per lavoro subordinato",
           "Permesso per lavoro autonomo",
           "Permesso per motivi familiari",
           "Permesso per studio",
           "Permesso per attesa occupazione",
-        ]
+        ],
       },
       {
         id: "s1-2",
@@ -41,7 +42,7 @@ export const allServices = [
           "Rinnovo studio",
           "Verifica requisiti di reddito",
           "Gestione documentazione completa",
-        ]
+        ],
       },
       {
         id: "s1-3",
@@ -52,29 +53,31 @@ export const allServices = [
           "Da lavoro subordinato ad autonomo",
           "Da motivi familiari a lavoro",
           "Cambio datore di lavoro",
-        ]
+        ],
       },
       {
         id: "s1-4",
         title: "Permesso UE Lungo Periodo",
-        description: "Permesso permanente per chi risiede da almeno 5 anni in Italia.",
+        description:
+          "Permesso permanente per chi risiede da almeno 5 anni in Italia.",
         practices: [
           "Verifica requisiti di residenza",
           "Controllo reddito minimo",
           "Test di lingua italiana A2",
           "Pratica completa con documentazione",
-        ]
+        ],
       },
       {
         id: "s1-5",
         title: "Aggiornamenti e Duplicati",
-        description: "Modifiche al permesso esistente e duplicati per smarrimento.",
+        description:
+          "Modifiche al permesso esistente e duplicati per smarrimento.",
         practices: [
           "Inserimento figli minori",
           "Cambio indirizzo o dati anagrafici",
           "Duplicato per smarrimento o furto",
           "Aggiornamento dati passaporto",
-        ]
+        ],
       },
     ],
   },
@@ -108,25 +111,27 @@ export const allServices = [
       {
         id: "s3-1",
         title: "Cittadinanza per Residenza (Art. 9)",
-        description: "Dopo 10 anni di residenza legale in Italia (5 per rifugiati/apolidi).",
+        description:
+          "Dopo 10 anni di residenza legale in Italia (5 per rifugiati/apolidi).",
         practices: [
           "Verifica requisiti di residenza",
           "Controllo carichi pendenti",
           "Certificato penale",
           "Reddito minimo richiesto",
           "Documentazione completa",
-        ]
+        ],
       },
       {
         id: "s3-2",
         title: "Cittadinanza per Matrimonio (Art. 5)",
-        description: "Per coniugi di cittadini italiani dopo 2 anni di matrimonio (1 anno se figli).",
+        description:
+          "Per coniugi di cittadini italiani dopo 2 anni di matrimonio (1 anno se figli).",
         practices: [
           "Verifica requisiti matrimoniali",
           "Certificato di matrimonio",
           "Test di lingua italiana B1",
           "Documentazione coniuge italiano",
-        ]
+        ],
       },
       {
         id: "s3-3",
@@ -137,7 +142,7 @@ export const allServices = [
           "Monitoraggio stato pratica",
           "Solleciti e comunicazioni",
           "Assistenza fino al giuramento",
-        ]
+        ],
       },
     ],
   },

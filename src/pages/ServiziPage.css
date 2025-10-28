@@ -9,9 +9,11 @@
 
 /* Hero Section */
 .services-hero {
-  background: linear-gradient(135deg, 
-    rgba(var(--blue-rgb), 0.05) 0%, 
-    rgba(var(--orange-rgb), 0.03) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--blue-rgb), 0.05) 0%,
+    rgba(var(--orange-rgb), 0.03) 100%
+  );
   padding: 3rem 0 2.5rem;
   border-bottom: 1px solid var(--border);
 }
@@ -200,6 +202,9 @@
   border-radius: 16px;
   transition: all 0.3s ease;
   overflow: hidden;
+  /* Ensure proper rendering on navigation */
+  will-change: auto;
+  transform: translateZ(0);
 }
 
 .service-card:hover {
@@ -233,7 +238,11 @@
 .service-icon-badge {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, var(--blue-50), rgba(var(--blue-rgb), 0.1));
+  background: linear-gradient(
+    135deg,
+    var(--blue-50),
+    rgba(var(--blue-rgb), 0.1)
+  );
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -308,16 +317,18 @@
 .service-card-body {
   padding: 0 1.5rem 1.5rem;
   animation: slideDown 0.3s ease;
+  /* Ensure proper background on navigation */
+  background: white;
 }
 
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    max-height: 0;
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    max-height: 5000px;
   }
 }
 
@@ -345,6 +356,8 @@
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
+  /* Ensure proper rendering */
+  will-change: auto;
 }
 
 .subservice-card:hover {
@@ -539,8 +552,10 @@
   }
 
   .service-card-header {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto 1fr;
     gap: 1rem;
+    position: relative;
+    padding-right: 4rem;
   }
 
   .service-icon-badge {
@@ -556,39 +571,26 @@
 
   .service-title {
     font-size: 1.15rem;
-    padding-right: 3rem;
   }
 
   .subservice-header {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr auto;
     gap: 0.75rem;
+    padding: 1rem;
   }
 
   .subservice-number {
-    grid-row: 1;
-    grid-column: 2;
-  }
-
-  .subservice-title-area {
-    grid-row: 1;
-    grid-column: 1;
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
   }
 
   .subservice-toggle {
-    grid-row: 2;
-    grid-column: 1 / -1;
-    width: 100%;
-    justify-content: flex-start;
-    gap: 0.5rem;
+    /* Keep toggle button in its natural position */
   }
 
-  .subservice-toggle::after {
-    content: "Mostra dettagli";
-    font-size: 0.85rem;
-  }
-
-  .subservice-toggle.expanded::after {
-    content: "Nascondi dettagli";
+  .subservice-details {
+    padding: 1rem;
   }
 
   .search-input {
@@ -602,5 +604,109 @@
 
   .search-clear {
     right: 1rem;
+  }
+
+  .category-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+    min-width: 120px;
+  }
+
+  .service-card-body {
+    padding: 0 1rem 1rem;
+  }
+
+  .practices-list {
+    padding-left: 1.25rem;
+  }
+
+  .practices-list li {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-page {
+    padding-top: 70px;
+  }
+
+  .services-hero {
+    padding: 1.5rem 0 1.25rem;
+  }
+
+  .services-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-card-header {
+    padding: 1rem;
+    padding-right: 3.5rem;
+  }
+
+  .service-icon-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .service-icon {
+    font-size: 1.1rem;
+  }
+
+  .service-title {
+    font-size: 1rem;
+  }
+
+  .service-description {
+    font-size: 0.85rem;
+  }
+
+  .subservices-count {
+    font-size: 0.75rem;
+  }
+
+  .service-expand-btn {
+    width: 32px;
+    height: 32px;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .subservice-header {
+    padding: 0.875rem;
+  }
+
+  .subservice-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.875rem;
+  }
+
+  .subservice-title-area h4 {
+    font-size: 0.95rem;
+  }
+
+  .subservice-desc {
+    font-size: 0.8rem;
+  }
+
+  .subservice-toggle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .subservice-details {
+    padding: 0.875rem;
+  }
+
+  .btn--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 }

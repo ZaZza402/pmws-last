@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { 
-  FaWhatsapp, 
-  FaChevronRight, 
+import {
+  FaWhatsapp,
+  FaChevronRight,
   FaSearch,
   FaPassport,
   FaUsers,
@@ -16,7 +16,7 @@ import {
   FaBalanceScale,
   FaFileContract,
   FaGavel,
-  FaLandmark
+  FaLandmark,
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 import { allServices, serviceCategories } from "../servicesData";
@@ -39,7 +39,7 @@ const getIconComponent = (iconName) => {
     legal: FaGavel,
     government: FaLandmark,
   };
-  
+
   const IconComponent = icons[iconName] || FaPassport;
   return <IconComponent />;
 };
@@ -49,25 +49,23 @@ const SubServiceCard = ({ subservice, parentTitle }) => {
 
   return (
     <div className="subservice-card">
-      <div 
-        className="subservice-header" 
+      <div
+        className="subservice-header"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <div className="subservice-number">
-          {subservice.id.split('-')[1]}
-        </div>
+        <div className="subservice-number">{subservice.id.split("-")[1]}</div>
         <div className="subservice-title-area">
           <h4>{subservice.title}</h4>
           <p className="subservice-desc">{subservice.description}</p>
         </div>
-        <button 
-          className={`subservice-toggle ${isExpanded ? 'expanded' : ''}`}
+        <button
+          className={`subservice-toggle ${isExpanded ? "expanded" : ""}`}
           aria-label={isExpanded ? "Chiudi dettagli" : "Mostra dettagli"}
         >
           <FaChevronRight />
         </button>
       </div>
-      
+
       {isExpanded && (
         <div className="subservice-details">
           <strong className="practices-label">Pratiche specifiche:</strong>
@@ -97,9 +95,11 @@ const ServiceCard = ({ service, isExpanded, onToggle }) => {
   const hasSubservices = service.subservices && service.subservices.length > 0;
 
   return (
-    <article 
-      id={service.id} 
-      className={`service-card ${isExpanded ? 'expanded' : ''} ${service.featured ? 'featured' : ''}`}
+    <article
+      id={service.id}
+      className={`service-card ${isExpanded ? "expanded" : ""} ${
+        service.featured ? "featured" : ""
+      }`}
     >
       <div className="service-card-header" onClick={onToggle}>
         <div className="service-icon-badge">
@@ -114,8 +114,8 @@ const ServiceCard = ({ service, isExpanded, onToggle }) => {
             </span>
           )}
         </div>
-        <button 
-          className={`service-expand-btn ${isExpanded ? 'expanded' : ''}`}
+        <button
+          className={`service-expand-btn ${isExpanded ? "expanded" : ""}`}
           aria-expanded={isExpanded}
           aria-label={isExpanded ? "Chiudi" : "Espandi"}
         >
@@ -132,9 +132,9 @@ const ServiceCard = ({ service, isExpanded, onToggle }) => {
               </div>
               <div className="subservices-grid">
                 {service.subservices.map((sub) => (
-                  <SubServiceCard 
-                    key={sub.id} 
-                    subservice={sub} 
+                  <SubServiceCard
+                    key={sub.id}
+                    subservice={sub}
                     parentTitle={service.title}
                   />
                 ))}
@@ -142,7 +142,9 @@ const ServiceCard = ({ service, isExpanded, onToggle }) => {
             </div>
           ) : (
             <div className="simple-service-details">
-              <strong className="practices-label">Pratiche che gestiamo:</strong>
+              <strong className="practices-label">
+                Pratiche che gestiamo:
+              </strong>
               <ul className="practices-list">
                 {service.practices.map((practice, idx) => (
                   <li key={idx}>{practice}</li>
@@ -194,22 +196,23 @@ const ServiziPage = () => {
 
     // Category filter
     if (selectedCategory !== "all") {
-      filtered = filtered.filter(s => s.category === selectedCategory);
+      filtered = filtered.filter((s) => s.category === selectedCategory);
     }
 
     // Search filter
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      filtered = filtered.filter(service => {
-        const matchesMain = 
+      filtered = filtered.filter((service) => {
+        const matchesMain =
           service.title.toLowerCase().includes(term) ||
           service.description.toLowerCase().includes(term) ||
-          service.practices?.some(p => p.toLowerCase().includes(term));
-        
-        const matchesSub = service.subservices?.some(sub =>
-          sub.title.toLowerCase().includes(term) ||
-          sub.description.toLowerCase().includes(term) ||
-          sub.practices?.some(p => p.toLowerCase().includes(term))
+          service.practices?.some((p) => p.toLowerCase().includes(term));
+
+        const matchesSub = service.subservices?.some(
+          (sub) =>
+            sub.title.toLowerCase().includes(term) ||
+            sub.description.toLowerCase().includes(term) ||
+            sub.practices?.some((p) => p.toLowerCase().includes(term))
         );
 
         return matchesMain || matchesSub;
@@ -224,7 +227,7 @@ const ServiziPage = () => {
   };
 
   const getCategoryCount = (category) => {
-    return allServices.filter(s => s.category === category).length;
+    return allServices.filter((s) => s.category === category).length;
   };
 
   return (
@@ -240,7 +243,9 @@ const ServiziPage = () => {
           <div className="container">
             <h1>I Nostri Servizi Completi</h1>
             <p className="hero-subtitle">
-              Esplora tutti i servizi nel dettaglio. Clicca su ogni servizio per scoprire le sotto-categorie e le pratiche specifiche che possiamo gestire per te.
+              Esplora tutti i servizi nel dettaglio. Clicca su ogni servizio per
+              scoprire le sotto-categorie e le pratiche specifiche che possiamo
+              gestire per te.
             </p>
 
             {/* Search Bar */}
@@ -254,7 +259,7 @@ const ServiziPage = () => {
                 className="search-input"
               />
               {searchTerm && (
-                <button 
+                <button
                   className="search-clear"
                   onClick={() => setSearchTerm("")}
                   aria-label="Cancella ricerca"
@@ -275,20 +280,28 @@ const ServiziPage = () => {
                   <h3 className="sidebar-title">Categorie</h3>
                   <nav className="category-nav">
                     <button
-                      className={`category-btn ${selectedCategory === "all" ? "active" : ""}`}
+                      className={`category-btn ${
+                        selectedCategory === "all" ? "active" : ""
+                      }`}
                       onClick={() => setSelectedCategory("all")}
                     >
                       <span>Tutti i Servizi</span>
-                      <span className="category-count">{allServices.length}</span>
+                      <span className="category-count">
+                        {allServices.length}
+                      </span>
                     </button>
                     {serviceCategories.map((cat) => (
                       <button
                         key={cat}
-                        className={`category-btn ${selectedCategory === cat ? "active" : ""}`}
+                        className={`category-btn ${
+                          selectedCategory === cat ? "active" : ""
+                        }`}
                         onClick={() => setSelectedCategory(cat)}
                       >
                         <span>{cat}</span>
-                        <span className="category-count">{getCategoryCount(cat)}</span>
+                        <span className="category-count">
+                          {getCategoryCount(cat)}
+                        </span>
                       </button>
                     ))}
                   </nav>
@@ -313,11 +326,13 @@ const ServiziPage = () => {
                     <div className="no-results-icon">🔍</div>
                     <h3>Nessun servizio trovato</h3>
                     <p>
-                      Prova a modificare i termini di ricerca o la categoria selezionata.
+                      Prova a modificare i termini di ricerca o la categoria
+                      selezionata.
                       <br />
-                      Non trovi quello che cerchi? <a href="/contatti">Contattaci</a> direttamente.
+                      Non trovi quello che cerchi?{" "}
+                      <a href="/contatti">Contattaci</a> direttamente.
                     </p>
-                    <button 
+                    <button
                       className="btn btn--outline"
                       onClick={() => {
                         setSearchTerm("");
