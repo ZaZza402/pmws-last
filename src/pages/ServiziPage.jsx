@@ -67,17 +67,43 @@ const ServiziPage = () => {
     );
   });
 
-  const toggleService = (id) => {
+  const toggleService = (id, event) => {
+    // Prevent any scroll behavior
+    if (event) {
+      event.preventDefault();
+    }
+    
+    // Store current scroll position
+    const scrollY = window.scrollY;
+    
     setExpandedServiceId(expandedServiceId === id ? null : id);
     setExpandedSubIds([]); // Close all subs when toggling main service
+    
+    // Restore scroll position after state update
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollY);
+    });
   };
 
-  const toggleSub = (subId) => {
+  const toggleSub = (subId, event) => {
+    // Prevent any scroll behavior
+    if (event) {
+      event.preventDefault();
+    }
+    
+    // Store current scroll position
+    const scrollY = window.scrollY;
+    
     setExpandedSubIds((prev) =>
       prev.includes(subId)
         ? prev.filter((id) => id !== subId)
         : [...prev, subId]
     );
+    
+    // Restore scroll position after state update
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollY);
+    });
   };
 
   const getCategoryCount = (cat) => {
@@ -181,7 +207,7 @@ const ServiziPage = () => {
                         {/* Service Header */}
                         <div
                           className="service-header"
-                          onClick={() => toggleService(service.id)}
+                          onClick={(e) => toggleService(service.id, e)}
                         >
                           <div className="service-icon-box">
                             {getIcon(service.icon)}
@@ -217,7 +243,7 @@ const ServiziPage = () => {
                                     <div key={sub.id} className="sub-item">
                                       <div
                                         className="sub-header"
-                                        onClick={() => toggleSub(sub.id)}
+                                        onClick={(e) => toggleSub(sub.id, e)}
                                       >
                                         <span className="sub-number">
                                           {sub.id.split("-")[1]}
