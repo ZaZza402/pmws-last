@@ -9,10 +9,10 @@ import BackToTopButton from "./components/BackToTopButton";
 import WhatsAppButton from "./components/WhatsAppButton";
 import PageLoader from "./components/PageLoader";
 import NotFoundPage from "./pages/NotFoundPage";
+import ServiziPage from "./pages/ServiziPage"; // Import directly, no lazy loading
 
-// Lazy load pages
+// Lazy load other pages
 const HomePage = lazy(() => import("./pages/HomePage"));
-const ServiziPage = lazy(() => import("./pages/ServiziPage"));
 const FaqPage = lazy(() => import("./pages/FaqPage"));
 const ContattiPage = lazy(() => import("./pages/ContattiPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
