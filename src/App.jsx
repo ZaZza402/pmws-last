@@ -11,7 +11,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 // Lazy load pages
 const HomePage = lazy(() => import("./pages/HomePage"));
-const ServiziPage = lazy(() => import("./pages/ServiziPage"));
+const ServiziPage = lazy(() => import("./pages/ServiziPageNew"));
 const FaqPage = lazy(() => import("./pages/FaqPage"));
 const ContattiPage = lazy(() => import("./pages/ContattiPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));

@@ -17,13 +17,65 @@ export const allServices = [
     description:
       "Gestiamo ogni tipo di permesso di soggiorno secondo l'art. 31, dalla prima richiesta ai rinnovi e conversioni.",
     icon: "passport",
-    practices: [
-      "Primo rilascio per lavoro, famiglia o studio",
-      "Rinnovo del permesso di soggiorno",
-      "Conversione del permesso",
-      "Permesso UE per soggiornanti di lungo periodo",
-      "Aggiornamento con inserimento figli",
-      "Duplicato per smarrimento o furto",
+    featured: true,
+    subservices: [
+      {
+        id: "s1-1",
+        title: "Primo Rilascio",
+        description: "Prima richiesta del permesso di soggiorno per lavoro, famiglia, studio o altri motivi.",
+        practices: [
+          "Permesso per lavoro subordinato",
+          "Permesso per lavoro autonomo",
+          "Permesso per motivi familiari",
+          "Permesso per studio",
+          "Permesso per attesa occupazione",
+        ]
+      },
+      {
+        id: "s1-2",
+        title: "Rinnovo Permesso",
+        description: "Rinnovo del permesso di soggiorno prima della scadenza.",
+        practices: [
+          "Rinnovo lavoro subordinato",
+          "Rinnovo motivi familiari",
+          "Rinnovo studio",
+          "Verifica requisiti di reddito",
+          "Gestione documentazione completa",
+        ]
+      },
+      {
+        id: "s1-3",
+        title: "Conversione Permesso",
+        description: "Cambio tipologia del permesso di soggiorno esistente.",
+        practices: [
+          "Da studio a lavoro",
+          "Da lavoro subordinato ad autonomo",
+          "Da motivi familiari a lavoro",
+          "Cambio datore di lavoro",
+        ]
+      },
+      {
+        id: "s1-4",
+        title: "Permesso UE Lungo Periodo",
+        description: "Permesso permanente per chi risiede da almeno 5 anni in Italia.",
+        practices: [
+          "Verifica requisiti di residenza",
+          "Controllo reddito minimo",
+          "Test di lingua italiana A2",
+          "Pratica completa con documentazione",
+        ]
+      },
+      {
+        id: "s1-5",
+        title: "Aggiornamenti e Duplicati",
+        description: "Modifiche al permesso esistente e duplicati per smarrimento.",
+        practices: [
+          "Inserimento figli minori",
+          "Cambio indirizzo o dati anagrafici",
+          "Duplicato per smarrimento o furto",
+          "Aggiornamento dati passaporto",
+        ]
+      },
     ],
   },
   {
@@ -34,6 +86,7 @@ export const allServices = [
     description:
       "Riunire la tua famiglia in Italia. Curiamo l'intera procedura del Nulla Osta, verifiche requisiti e gestione pratica completa.",
     icon: "family",
+    featured: true,
     practices: [
       "Richiesta Nulla Osta per ricongiungimento",
       "Verifica requisiti di reddito e alloggio",
@@ -50,13 +103,42 @@ export const allServices = [
     description:
       "Il traguardo più importante. Ti accompagniamo dall'analisi requisiti all'invio telematico, monitorando ogni fase.",
     icon: "flag",
-    practices: [
-      "Cittadinanza per residenza (Art. 9)",
-      "Cittadinanza per matrimonio (Art. 5)",
-      "Controllo e verifica documentazione",
-      "Invio telematico e gestione online",
-      "Solleciti e monitoraggio pratica",
-      "Assistenza giuramento",
+    featured: true,
+    subservices: [
+      {
+        id: "s3-1",
+        title: "Cittadinanza per Residenza (Art. 9)",
+        description: "Dopo 10 anni di residenza legale in Italia (5 per rifugiati/apolidi).",
+        practices: [
+          "Verifica requisiti di residenza",
+          "Controllo carichi pendenti",
+          "Certificato penale",
+          "Reddito minimo richiesto",
+          "Documentazione completa",
+        ]
+      },
+      {
+        id: "s3-2",
+        title: "Cittadinanza per Matrimonio (Art. 5)",
+        description: "Per coniugi di cittadini italiani dopo 2 anni di matrimonio (1 anno se figli).",
+        practices: [
+          "Verifica requisiti matrimoniali",
+          "Certificato di matrimonio",
+          "Test di lingua italiana B1",
+          "Documentazione coniuge italiano",
+        ]
+      },
+      {
+        id: "s3-3",
+        title: "Gestione Pratica Online",
+        description: "Invio telematico e monitoraggio completo della domanda.",
+        practices: [
+          "Compilazione e invio telematico",
+          "Monitoraggio stato pratica",
+          "Solleciti e comunicazioni",
+          "Assistenza fino al giuramento",
+        ]
+      },
     ],
   },
   {
