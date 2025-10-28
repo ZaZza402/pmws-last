@@ -86,8 +86,9 @@ const FaqPage = () => {
               className="mt-2"
               style={{ maxWidth: "70ch", margin: "0.5rem auto 0 auto" }}
             >
-              Risposte chiare e complete alle domande più importanti su immigrazione, 
-              CAF, pensioni e servizi. Organizzate per aiutarti a trovare subito quello che cerchi.
+              Risposte chiare e complete alle domande più importanti su
+              immigrazione, CAF, pensioni e servizi. Organizzate per aiutarti a
+              trovare subito quello che cerchi.
             </p>
           </div>
 
