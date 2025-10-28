@@ -59,8 +59,8 @@ const Header = () => {
           </Link>
 
           <nav className="desktop-nav" id="desktopNav" aria-label="Principale">
+            <NavLink to="/">Home</NavLink>
             <NavLink to="/servizi">Servizi</NavLink>
-            <NavLink to="/#perche">Perché noi</NavLink>
             <NavLink to="/faq">FAQ</NavLink>
             <NavLink to="/contatti">Contatti</NavLink>
           </nav>
