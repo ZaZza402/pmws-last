@@ -200,11 +200,14 @@
   background: white;
   border: 2px solid var(--border);
   border-radius: 16px;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   /* Ensure proper rendering on navigation */
   will-change: auto;
   transform: translateZ(0);
+  /* Force immediate color application */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 .service-card:hover {
@@ -355,9 +358,10 @@
   border: 1px solid rgba(var(--blue-rgb), 0.15);
   border-radius: 12px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   /* Ensure proper rendering */
   will-change: auto;
+  backface-visibility: hidden;
 }
 
 .subservice-card:hover {
