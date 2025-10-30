@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { FaWhatsapp, FaChevronRight, FaSearch, FaClipboardList, FaGlobe } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import {
+  FaWhatsapp,
+  FaChevronRight,
+  FaSearch,
+  FaClipboardList,
+  FaGlobe,
+} from "react-icons/fa";
 import {
   FaPassport,
   FaUsers,
@@ -41,6 +48,39 @@ const ServiziPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [expandedServiceIds, setExpandedServiceIds] = useState([]); // Changed to array for multiple open cards
   const [expandedSubIds, setExpandedSubIds] = useState([]);
+
+  // Handle hash navigation from home page links
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const serviceId = hash.replace("#", "");
+
+      // Find and expand the service
+      const service = allServices.find((s) => s.id === serviceId);
+      if (service) {
+        // Add to expanded services
+        setExpandedServiceIds((prev) =>
+          prev.includes(serviceId) ? prev : [...prev, serviceId]
+        );
+
+        // Scroll to the service after a short delay
+        setTimeout(() => {
+          const element = document.getElementById(serviceId);
+          if (element) {
+            const headerOffset = 100; // Adjust for fixed header
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition =
+              elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }
+        }, 300);
+      }
+    }
+  }, []);
 
   // Filter services based on category and search
   const filteredServices = allServices.filter((service) => {
@@ -133,9 +173,9 @@ const ServiziPage = () => {
 
   const getCategoryIcon = (category) => {
     const iconMapping = {
-      "Migranti": FaPassport,
-      "Viaggiatori": FaPlane,
-      "Famiglie": FaUsers,
+      Migranti: FaPassport,
+      Viaggiatori: FaPlane,
+      Famiglie: FaUsers,
       "Altri Servizi": FaClipboardList,
     };
     const Icon = iconMapping[category];
@@ -164,7 +204,7 @@ const ServiziPage = () => {
           <div className="container">
             {/* Breadcrumb */}
             <Breadcrumb items={[{ label: "Servizi" }]} />
-            
+
             <h1>I Nostri Servizi</h1>
             <p className="hero-subtitle">
               Esplora tutti i nostri servizi. Clicca per vedere i dettagli.
@@ -199,14 +239,31 @@ const ServiziPage = () => {
             <div className="container">
               <h2 className="popular-title">Servizi Più Richiesti</h2>
               <p className="popular-subtitle">
-                I servizi più comuni per chi arriva dall'estero o ha bisogno di assistenza fiscale
+                I servizi più comuni per chi arriva dall'estero o ha bisogno di
+                assistenza fiscale
               </p>
               <div className="popular-services-grid">
                 <button
                   className="popular-service-card"
                   onClick={() => {
-                    setSelectedCategory("Immigrazione");
-                    document.querySelector('.servizi-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const serviceId = "s1"; // Permessi di Soggiorno
+                    setExpandedServiceIds((prev) =>
+                      prev.includes(serviceId) ? prev : [...prev, serviceId]
+                    );
+                    setTimeout(() => {
+                      const element = document.getElementById(serviceId);
+                      if (element) {
+                        const headerOffset = 100;
+                        const elementPosition =
+                          element.getBoundingClientRect().top;
+                        const offsetPosition =
+                          elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                    }, 100);
                   }}
                 >
                   <FaPassport className="popular-icon" />
@@ -216,8 +273,24 @@ const ServiziPage = () => {
                 <button
                   className="popular-service-card"
                   onClick={() => {
-                    setSelectedCategory("CAF");
-                    document.querySelector('.servizi-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const serviceId = "a1"; // CAF e Patronato services
+                    setExpandedServiceIds((prev) =>
+                      prev.includes(serviceId) ? prev : [...prev, serviceId]
+                    );
+                    setTimeout(() => {
+                      const element = document.getElementById(serviceId);
+                      if (element) {
+                        const headerOffset = 100;
+                        const elementPosition =
+                          element.getBoundingClientRect().top;
+                        const offsetPosition =
+                          elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                    }, 100);
                   }}
                 >
                   <FaCalculator className="popular-icon" />
@@ -227,8 +300,24 @@ const ServiziPage = () => {
                 <button
                   className="popular-service-card"
                   onClick={() => {
-                    setSelectedCategory("Immigrazione");
-                    document.querySelector('.servizi-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const serviceId = "s3"; // Cittadinanza
+                    setExpandedServiceIds((prev) =>
+                      prev.includes(serviceId) ? prev : [...prev, serviceId]
+                    );
+                    setTimeout(() => {
+                      const element = document.getElementById(serviceId);
+                      if (element) {
+                        const headerOffset = 100;
+                        const elementPosition =
+                          element.getBoundingClientRect().top;
+                        const offsetPosition =
+                          elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                    }, 100);
                   }}
                 >
                   <FaFlag className="popular-icon" />
@@ -238,8 +327,24 @@ const ServiziPage = () => {
                 <button
                   className="popular-service-card"
                   onClick={() => {
-                    setSelectedCategory("Immigrazione");
-                    document.querySelector('.servizi-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const serviceId = "s2"; // Ricongiungimento Familiare
+                    setExpandedServiceIds((prev) =>
+                      prev.includes(serviceId) ? prev : [...prev, serviceId]
+                    );
+                    setTimeout(() => {
+                      const element = document.getElementById(serviceId);
+                      if (element) {
+                        const headerOffset = 100;
+                        const elementPosition =
+                          element.getBoundingClientRect().top;
+                        const offsetPosition =
+                          elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                    }, 100);
                   }}
                 >
                   <FaUsers className="popular-icon" />
@@ -310,7 +415,13 @@ const ServiziPage = () => {
                         service.subservices && service.subservices.length > 0;
 
                       return (
-                        <div key={service.id} className="service-item">
+                        <div
+                          key={service.id}
+                          id={service.id}
+                          className={`service-item ${
+                            isExpanded ? "expanded" : ""
+                          }`}
+                        >
                           {/* Service Header */}
                           <div
                             className="service-header"
@@ -338,9 +449,9 @@ const ServiziPage = () => {
                             </button>
                           </div>
 
-                          {/* Service Body (when expanded) */}
-                          {isExpanded && (
-                            <div className="service-body">
+                          {/* Service Body with smooth accordion animation */}
+                          <div className="service-body">
+                            <div className="service-body-content">
                               {hasSubservices ? (
                                 <div className="subservices">
                                   <h4>Seleziona il servizio specifico:</h4>
@@ -348,7 +459,12 @@ const ServiziPage = () => {
                                     const isSubExpanded =
                                       expandedSubIds.includes(sub.id);
                                     return (
-                                      <div key={sub.id} className="sub-item">
+                                      <div
+                                        key={sub.id}
+                                        className={`sub-item ${
+                                          isSubExpanded ? "expanded" : ""
+                                        }`}
+                                      >
                                         <div
                                           className="sub-header"
                                           onClick={(e) => toggleSub(sub.id, e)}
@@ -372,7 +488,7 @@ const ServiziPage = () => {
                                           </button>
                                         </div>
 
-                                        {isSubExpanded && (
+                                        <div className="sub-body-wrapper">
                                           <div className="sub-body">
                                             <strong>
                                               Pratiche specifiche:
@@ -393,7 +509,7 @@ const ServiziPage = () => {
                                               <FaWhatsapp /> Chiedi Info
                                             </a>
                                           </div>
-                                        )}
+                                        </div>
                                       </div>
                                     );
                                   })}
@@ -417,13 +533,40 @@ const ServiziPage = () => {
                                 </div>
                               )}
                             </div>
-                          )}
+                          </div>
                         </div>
                       );
                     })}
                   </div>
                 )}
               </main>
+            </div>
+          </div>
+        </section>
+
+        {/* Professional CTA Section */}
+        <section className="servizi-cta-section">
+          <div className="container">
+            <div className="cta-content">
+              <h2>Non hai trovato quello che cercavi?</h2>
+              <p>
+                Il nostro team è pronto ad ascoltarti. Contattaci per una
+                consulenza personalizzata e scopri come possiamo aiutarti con le
+                tue pratiche.
+              </p>
+              <div className="cta-buttons">
+                <a
+                  href="https://wa.me/390612345678?text=Ciao, vorrei informazioni sui vostri servizi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--primary btn--large"
+                >
+                  <FaWhatsapp /> Scrivici su WhatsApp
+                </a>
+                <Link to="/contatti" className="btn btn--outline btn--large">
+                  Vai ai Contatti
+                </Link>
+              </div>
             </div>
           </div>
         </section>

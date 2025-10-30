@@ -42,11 +42,11 @@ const FaqItem = ({ item, isExpanded, onToggle }) => (
 
 const FaqPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState("Immigrazione");
+  const [activeCategory, setActiveCategory] = useState("Migranti");
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
 
-  const categories = ["Immigrazione", "CAF & Patronato", "Altri Servizi"];
+  const categories = ["Migranti", "Viaggiatori", "Famiglie", "Altri Servizi"];
 
   useEffect(() => {
     let questions = [];
@@ -101,7 +101,7 @@ const FaqPage = () => {
         <div className="container">
           {/* Breadcrumb */}
           <Breadcrumb items={[{ label: "FAQ" }]} />
-          
+
           <div style={{ textAlign: "center" }}>
             <h1>Domande Frequenti (FAQ)</h1>
             <p

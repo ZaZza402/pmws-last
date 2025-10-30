@@ -10,7 +10,8 @@ import "./Breadcrumb.css";
  */
 const Breadcrumb = ({ items = [] }) => {
   // Always include Home as first item if not already there
-  const breadcrumbItems = items[0]?.path === "/" ? items : [{ label: "Home", path: "/" }, ...items];
+  const breadcrumbItems =
+    items[0]?.path === "/" ? items : [{ label: "Home", path: "/" }, ...items];
 
   // Generate schema.org BreadcrumbList markup
   const breadcrumbSchema = {

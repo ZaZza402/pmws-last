@@ -17,6 +17,7 @@ Stai per lavorare su un progetto ben strutturato. Questa guida ti metterà opera
 ### **Prerequisiti**
 
 Assicurati di avere installato:
+
 - **Node.js** v18+ (consigliato v20)
 - **npm** o **yarn** (viene con Node)
 - **Git** (per version control)
@@ -116,25 +117,30 @@ puntomigrare/
 ## 🧰 Stack Tecnologico (Cosa Stiamo Usando)
 
 ### **Framework Core**
+
 - **React 19.1.1** - Ultima versione stabile (release dic 2024)
 - **React Router DOM 7.1.1** - Routing client-side (nuova API)
 - **Vite 6.0.7** - Server di dev super veloce e tool di build
 
 ### **UI & Icone**
+
 - **React Icons 5.4.0** - Libreria di icone (Font Awesome)
 - **Framer Motion** - Animazioni fluide (in AnimateOnScroll)
 
 ### **Styling**
+
 - **CSS Puro** - Nessun preprocessore (il CSS moderno è potente!)
 - **Pattern CSS Modules** - Ogni componente ha il suo file `.css`
 - **Variabili CSS** - Per colori/spaziatura consistenti
 
 ### **Build & Dev Tools**
+
 - **ESLint 9** - Linting del codice (cattura errori)
 - **@vitejs/plugin-react** - React Fast Refresh per hot reload
 - **sharp** - Ottimizzazione immagini (in optimize-images.cjs)
 
 ### **Nessuna Libreria Esterna Per:**
+
 - ❌ Framework UI (no Bootstrap, Material-UI, ecc.)
 - ❌ Gestione stato (gli hook React bastano)
 - ❌ Form (componenti React controllati vanilla)
@@ -150,8 +156,8 @@ puntomigrare/
 
 ```css
 /* Colori Brand */
---brand-blue: #2b286f;      /* Primario (header, bottoni)*/
---brand-orange: #f78d23;    /* Accento (CTA, highlight) */
+--brand-blue: #2b286f; /* Primario (header, bottoni)*/
+--brand-orange: #f78d23; /* Accento (CTA, highlight) */
 
 /* Gradienti */
 --gradient-blue: linear-gradient(135deg, #e8f0f7 0%, #dce8f3 50%, #d5e3f0 100%);
@@ -178,6 +184,7 @@ font-family: "Amsterdam One", cursive, sans-serif;
 ```
 
 **Dimensioni Font:**
+
 - H1: 2.5rem (40px) - Titoli pagina
 - H2: 1.8-2rem (29-32px) - Header sezioni
 - H3: 1.3rem (21px) - Titoli card
@@ -200,6 +207,7 @@ Padding top pagina: 140px desktop / 120px mobile (per header fisso)
 ### **Componenti**
 
 **Stili Bottoni:**
+
 ```css
 /* CTA Primario */
 background: linear-gradient(135deg, #f78d23 0%, #e87722 100%);
@@ -213,6 +221,7 @@ transform: translateY(-2px);
 ```
 
 **Stili Card:**
+
 ```css
 background: white;
 border-radius: 14-20px;
@@ -231,12 +240,14 @@ box-shadow: 0 8px 30px rgba(43, 40, 111, 0.15);
 ### **1. Aggiornare Informazioni di Contatto**
 
 **File da modificare:**
+
 - `src/components/Header.jsx` - Numero telefono nell'header
 - `src/components/Footer.jsx` - Tutti i dettagli contatto
 - `src/pages/ContattiPage.jsx` - Contenuto pagina contatti
 - `src/components/WhatsAppButton.jsx` - Link WhatsApp
 
 **Cerca & Sostituisci:**
+
 ```javascript
 // Trova: +390612345678
 // Sostituisci con: [numero telefono reale]
@@ -253,24 +264,22 @@ box-shadow: 0 8px 30px rgba(43, 40, 111, 0.15);
 export const allServices = [
   // Aggiungi il nuovo oggetto servizio
   {
-    id: "s40",  // Incrementa dall'ultimo ID
-    category: "Migranti",  // O: Viaggiatori, Famiglie, Altri Servizi
+    id: "s40", // Incrementa dall'ultimo ID
+    category: "Migranti", // O: Viaggiatori, Famiglie, Altri Servizi
     title: "Nome del Tuo Servizio",
     shortTitle: "Versione breve",
     description: "Cosa fa questo servizio...",
-    icon: "passport",  // Vedi serviceIcons.jsx per le opzioni
-    featured: false,  // Imposta true per sezione "Servizi Più Richiesti"
-    practices: [
-      "Cosa specifica 1",
-      "Cosa specifica 2",
-    ],
-    subservices: [  // Opzionale
+    icon: "passport", // Vedi serviceIcons.jsx per le opzioni
+    featured: false, // Imposta true per sezione "Servizi Più Richiesti"
+    practices: ["Cosa specifica 1", "Cosa specifica 2"],
+    subservices: [
+      // Opzionale
       {
         id: "s40-sub1",
         title: "Nome sub-servizio",
         description: "Cosa copre...",
-      }
-    ]
+      },
+    ],
   },
   // ... resto dei servizi
 ];
@@ -286,10 +295,10 @@ export const allServices = [
 export const faqQuestions = [
   // Aggiungi la tua nuova domanda
   {
-    id: "faq-26",  // Incrementa dall'ultimo
-    category: "Immigrazione",  // O: CAF & Patronato, Altri Servizi
+    id: "faq-26", // Incrementa dall'ultimo
+    category: "Immigrazione", // O: CAF & Patronato, Altri Servizi
     question: "La tua domanda qui?",
-    answer: "Risposta dettagliata qui..."
+    answer: "Risposta dettagliata qui...",
   },
   // ... resto delle FAQ
 ];
@@ -316,16 +325,14 @@ Poi aggiorna la visualizzazione in `ContattiPage.jsx` se necessario.
 **Modifica:** `src/pages/ChiSiamoPage.jsx`
 
 Sostituisci il contenuto placeholder:
+
 - Foto membri del team (in `src/assets/`)
 - Nomi e titoli
 - Descrizioni bio
 
 ```javascript
 <div className="profile-card">
-  <img 
-    src="/percorso/foto-reale.jpg" 
-    alt="Nome membro team"
-  />
+  <img src="/percorso/foto-reale.jpg" alt="Nome membro team" />
   <h3>Nome Reale</h3>
   <p className="role">Il Loro Titolo/Ruolo</p>
   <p className="bio">Bio reale qui...</p>
@@ -342,6 +349,7 @@ node optimize-images.cjs
 ```
 
 Questo comprime le immagini senza perdita di qualità (usa la libreria sharp). Metti prima le immagini nelle rispettive cartelle:
+
 - Logo brand → `src/assets/brand-logo/`
 - Foto → `src/assets/brand-posters/`
 - Icone → `src/assets/svg-icons/`
@@ -392,6 +400,7 @@ npm run preview
 ```
 
 **File importanti per l'hosting:**
+
 - La cartella `dist/` contiene tutto
 - `public/sitemap.xml` e `public/robots.txt` devono essere accessibili alla root
 - Configura redirect: Tutte le route → `index.html` (per React Router)
@@ -401,6 +410,7 @@ npm run preview
 ## 🐛 Risoluzione Problemi Comuni
 
 ### **Problema: Errori "Module not found"**
+
 ```bash
 # Soluzione: Reinstalla le dipendenze
 rm -rf node_modules
@@ -408,6 +418,7 @@ npm install
 ```
 
 ### **Problema: Hot reload non funziona**
+
 ```bash
 # Soluzione: Riavvia il server di dev
 # Premi Ctrl+C per fermare, poi:
@@ -415,16 +426,19 @@ npm run dev
 ```
 
 ### **Problema: Immagini non caricano**
+
 - Controlla i percorsi file (sensibile a maiuscole/minuscole!)
 - Immagini in `src/assets/` usano percorsi relativi: `import logo from '../assets/brand-logo/logo.png'`
 - Immagini in `public/` usano percorsi assoluti: `/logo.png`
 
 ### **Problema: Stili non si applicano**
+
 - Controlla se il file CSS è importato nel componente
 - Controlla errori di battitura nei selettori CSS
 - Usa DevTools del browser per ispezionare l'elemento
 
 ### **Problema: Build fallisce**
+
 ```bash
 # Controlla prima gli errori in modalità dev
 npm run dev
@@ -436,25 +450,30 @@ npm run dev
 ## 📚 File Importanti da Conoscere
 
 ### **Configurazione Router**
+
 **File:** `src/App.jsx`
 
 Tutte le route sono definite qui. Per aggiungere una nuova pagina:
+
 ```javascript
 <Route path="/nuova-pagina" element={<NuovaPagina />} />
 ```
 
 ### **File Dati** (Modifica questi per aggiornamenti contenuto)
+
 - `src/servicesData.js` - Tutti i servizi (39 elementi)
 - `src/faqData.js` - Tutte le FAQ (25 domande)
 - `src/config/businessHours.js` - Orari d'ufficio
 - `src/config/documentChecklist.js` - Documenti richiesti
 
 ### **File SEO** (Importanti per Google)
+
 - `public/sitemap.xml` - Aggiorna quando aggiungi/rimuovi pagine
 - `public/robots.txt` - Istruzioni crawler
 - Ogni componente pagina ha tag `<title>` e `<meta>` in cima
 
 ### **Stili Globali**
+
 - `src/index.css` - CSS reset, stili base, font
 - `src/App.css` - Stili a livello app
 - `src/styles/Utilities.css` - Classi helper
@@ -464,6 +483,7 @@ Tutte le route sono definite qui. Per aggiungere una nuova pagina:
 ## 🔒 Considerazioni SEO (Non Rompere Queste!)
 
 ### **Meta Tag (Ogni Pagina Ha Questi)**
+
 ```jsx
 <title>Titolo Pagina - 50-60 caratteri | PuntoMigrare</title>
 <meta name="description" content="Descrizione 140-160 caratteri..." />
@@ -473,12 +493,15 @@ Tutte le route sono definite qui. Per aggiungere una nuova pagina:
 **Non rimuovere o modificare questi** senza una buona ragione - sono ottimizzati per Google.
 
 ### **Schema Markup** (Dati Strutturati)
+
 - `FaqPage.jsx` ha schema FAQPage (rich snippet)
 - `Breadcrumb.jsx` ha schema BreadcrumbList
 - Questi aiutano Google a capire il contenuto della pagina
 
 ### **Sitemap** (public/sitemap.xml)
+
 Se aggiungi o rimuovi pagine, aggiorna la sitemap:
+
 ```xml
 <url>
   <loc>https://www.puntomigrare.it/nuova-pagina</loc>
@@ -488,7 +511,9 @@ Se aggiungi o rimuovi pagine, aggiorna la sitemap:
 ```
 
 ### **Testo Alt Immagini**
+
 Ogni immagine ha testo alt per accessibilità e SEO:
+
 ```jsx
 <img src="..." alt="Testo descrittivo qui" />
 ```
@@ -498,6 +523,7 @@ Ogni immagine ha testo alt per accessibilità e SEO:
 ## 🎯 Standard di Qualità del Codice
 
 ### **Struttura Componente**
+
 ```jsx
 // 1. Import
 import React, { useState } from 'react';
@@ -507,10 +533,10 @@ import './Component.css';
 const Component = () => {
   // 3. State e hook
   const [state, setState] = useState(initialValue);
-  
+
   // 4. Event handler
   const handleClick = () => { ... };
-  
+
   // 5. Render
   return (
     <div className="component">
@@ -524,29 +550,38 @@ export default Component;
 ```
 
 ### **Convenzioni di Nomenclatura**
+
 - **Componenti:** PascalCase (`Header.jsx`, `ServicesSection.jsx`)
 - **Classi CSS:** kebab-case (`.service-card`, `.btn-primary`)
 - **Funzioni:** camelCase (`handleClick`, `fetchData`)
 - **Costanti:** UPPER_SNAKE_CASE (`API_URL`, `MAX_ITEMS`)
 
 ### **Organizzazione CSS**
+
 Il file CSS di ogni componente segue questa struttura:
+
 ```css
 /* 1. Wrapper componente */
-.component-name { }
+.component-name {
+}
 
 /* 2. Elementi figli */
-.component-name .child { }
+.component-name .child {
+}
 
 /* 3. Modificatori */
-.component-name.modifier { }
+.component-name.modifier {
+}
 
 /* 4. Stati */
-.component-name:hover { }
-.component-name.active { }
+.component-name:hover {
+}
+.component-name.active {
+}
 
 /* 5. Media query alla fine */
-@media (max-width: 768px) { }
+@media (max-width: 768px) {
+}
 ```
 
 ---
@@ -565,18 +600,22 @@ Il file CSS di ogni componente segue questa struttura:
 ## 📞 Ottenere Aiuto
 
 ### **Documentazione Progetto**
+
 - `ANALYSIS_REPORT.md` - Analisi completa, audit SEO, decisioni di design
 - `PROJECT_HANDOVER.md` - Documentazione per il cliente
 - Questo file - Guida sviluppatore
 
 ### **Documentazione React**
+
 - [React Docs](https://react.dev/) - Documentazione ufficiale React
 - [React Router](https://reactrouter.com/) - Docs libreria routing
 
 ### **Documentazione Vite**
+
 - [Vite Guide](https://vitejs.dev/guide/) - Documentazione build tool
 
 ### **Risorse CSS**
+
 - [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS) - Guida CSS completa
 - [Can I Use](https://caniuse.com/) - Controllo compatibilità browser
 
@@ -619,22 +658,25 @@ Se il cliente vuole più funzionalità dopo, considera:
 ## 🤝 Note di Handover
 
 ### **Cosa è Fatto:**
+
 ✅ Sito completo (7 pagine)  
 ✅ Mobile responsive  
 ✅ SEO ottimizzato (sitemap, schema, meta tag)  
 ✅ Tutti i componenti documentati  
 ✅ Codice pulito e manutenibile  
 ✅ Nessun bug maggiore  
-✅ Performance ottimizzate  
+✅ Performance ottimizzate
 
 ### **Cosa Serve Fare:**
+
 ❌ Aggiornare info contatto placeholder  
 ❌ Aggiungere foto/bio reali a Chi Siamo  
 ❌ Sottomettere sitemap a Google  
 ❌ Creare Google My Business  
-❌ Approvazione cliente sul contenuto  
+❌ Approvazione cliente sul contenuto
 
 ### **Limitazioni Conosciute:**
+
 - Nessun backend (è un sito statico)
 - Nessun invio form (WhatsApp è il CTA)
 - Chi Siamo ha contenuto placeholder
@@ -647,12 +689,14 @@ Se il cliente vuole più funzionalità dopo, considera:
 Questa è un'applicazione React solida e pronta per la produzione. Il codice è pulito, l'architettura è sana, e tutto è ben documentato. Dovresti essere in grado di iniziare a fare modifiche senza troppi grattacapi.
 
 **Alcuni consigli:**
+
 - Leggi `ANALYSIS_REPORT.md` per capire le decisioni di design
 - Non sovra-ingegnerizzare - il cliente ha bisogno di semplicità
 - Testa frequentemente su mobile (la maggior parte degli utenti sarà su telefoni)
 - Mantieni il codebase leggero (nessuna dipendenza non necessaria)
 
 **Se ti blocchi:**
+
 - Controlla prima questa guida
 - Leggi i commenti dei componenti (sono utili)
 - Usa i DevTools del browser (sono i tuoi migliori amici)

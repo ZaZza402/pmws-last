@@ -430,22 +430,28 @@
   transform: rotate(90deg);
 }
 
-/* Service Body */
+/* Service Body - Smooth Accordion Animation (like FAQ) */
 .service-body {
-  padding: 0 1.5rem 1.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: white;
-  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.service-item.expanded .service-body {
+  max-height: 2000px; /* Large enough for content */
+}
+
+.service-body-content {
+  padding: 0 1.5rem 1.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-out 0.1s, transform 0.3s ease-out 0.1s;
+}
+
+.service-item.expanded .service-body-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .subservices h4 {
@@ -543,19 +549,28 @@
   transform: rotate(90deg);
 }
 
+/* Sub-body - Smooth Accordion Animation (like FAQ) */
+.sub-body-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sub-item.expanded .sub-body-wrapper {
+  max-height: 800px; /* Large enough for sub-content */
+}
+
 .sub-body {
   padding: 1rem 1.25rem;
   border-top: 1px solid rgba(43, 40, 111, 0.1);
-  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease-out 0.05s, transform 0.25s ease-out 0.05s;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.sub-item.expanded .sub-body {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .sub-body strong,
@@ -1418,5 +1433,82 @@
   .btn--small {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
+  }
+}
+
+/* ===========================================
+   PROFESSIONAL CTA SECTION
+   =========================================== */
+
+.servizi-cta-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #e8f0f7 100%);
+  padding: 5rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.cta-content {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  color: #2b286f;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.cta-content p {
+  color: #475569;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn--large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn--large svg {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .servizi-cta-section {
+    padding: 3rem 0;
+    margin-top: 3rem;
+  }
+
+  .cta-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn--large {
+    width: 100%;
+    justify-content: center;
   }
 }

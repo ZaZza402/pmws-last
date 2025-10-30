@@ -21,7 +21,7 @@ const ChiSiamoPage = () => {
         <div className="container">
           {/* Breadcrumb */}
           <Breadcrumb items={[{ label: "Chi Siamo" }]} />
-          
+
           <div style={{ textAlign: "center" }}>
             <h1 style={{ color: "#2b286f" }}>
               Due Professioniste, Una Sola Missione
