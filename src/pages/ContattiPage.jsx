@@ -2,6 +2,7 @@ import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 import Breadcrumb from "../components/Breadcrumb";
+import { LiveClock } from "../components/DocumentSection";
 import "./ContattiPage.css";
 
 const contactOptions = [
@@ -102,6 +103,7 @@ const ContattiPage = () => {
                 >
                   Orari di Apertura
                 </h3>
+                <LiveClock />
                 <address
                   className="mt-2"
                   style={{

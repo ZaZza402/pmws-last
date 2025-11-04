@@ -136,6 +136,19 @@ const Footer = () => {
                 <Link to="/contatti">Contatti e Sede</Link>
               </li>
             </ul>
+            <div className="footer-credit">
+              <small>
+                Website by{" "}
+                <a
+                  href="https://www.alecsdesign.xyz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-designer-link"
+                >
+                  Alex
+                </a>
+              </small>
+            </div>
           </div>
         </div>
         <div className="footer-bottom">
@@ -145,17 +158,6 @@ const Footer = () => {
           <div className="legal-links">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/cookie-policy">Cookie Policy</Link>
-            <span>
-              Designed by{" "}
-              <a
-                href="https://www.alecsdesign.xyz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-designer-link"
-              >
-                Alex
-              </a>
-            </span>
           </div>
         </div>
       </div>

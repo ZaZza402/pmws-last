@@ -17,7 +17,7 @@ function isOpen(now = new Date()) {
   return isInMorningShift || isInAfternoonShift;
 }
 
-function LiveClock() {
+export function LiveClock() {
   const [now, setNow] = useState(new Date());
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000);
@@ -34,18 +34,22 @@ function LiveClock() {
     <div
       style={{
         margin: "1rem 0",
-        fontWeight: "bold",
         display: "flex",
         alignItems: "center",
-        gap: "0.5rem",
+        gap: "0.75rem",
+        flexWrap: "wrap",
       }}
     >
-      <span>Ora attuale: {timeString} — </span>
-      <span
-        className={`live-dot${open ? "" : " closed"}`}
-        aria-label={open ? "Aperto" : "Chiuso"}
-      ></span>
-      <span>{open ? "Siamo aperti!" : "Siamo chiusi."}</span>
+      <span style={{ fontWeight: "500", color: "#64748b" }}>
+        Ora attuale: {timeString}
+      </span>
+      <span className={`live-status${open ? "" : " closed"}`}>
+        <span
+          className={`live-dot${open ? "" : " closed"}`}
+          aria-label={open ? "Aperto" : "Chiuso"}
+        ></span>
+        <span>{open ? "Aperto ora" : "Chiuso"}</span>
+      </span>
     </div>
   );
 }

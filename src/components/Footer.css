@@ -141,6 +141,32 @@
   text-decoration: underline;
 }
 
+/* Designer Credit - Subtle and Professional */
+.footer-credit {
+  margin-top: 1.5rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-credit small {
+  display: block;
+  font-size: 1rem;
+  color: #aebecd;
+  opacity: 0.8;
+}
+
+.footer-credit .footer-designer-link {
+  color: #f78d23 !important;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-credit .footer-designer-link:hover {
+  color: #ff9d3a !important;
+  text-decoration: underline;
+}
+
 /* Social Media Links */
 .footer-social {
   margin-top: 1.5rem;
@@ -199,4 +225,16 @@
 .social-link--whatsapp:hover {
   background: #25d366;
   border-color: #25d366;
+}
+
+/* Mobile: Tighter spacing for footer credit */
+@media (max-width: 768px) {
+  .footer-credit {
+    margin-top: 1rem;
+    padding: 0.5rem 0 0 0;
+  }
+
+  .footer-col ul {
+    margin-bottom: 0;
+  }
 }
