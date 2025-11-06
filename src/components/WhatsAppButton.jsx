@@ -14,13 +14,13 @@ const WhatsAppButton = () => {
   // Contact options
   const contacts = [
     {
-      name: "Paola",
+      name: "Paula",
       phone: "393456839875",
       displayPhone: "+39 345 683 9875",
       color: "#2b286f",
     },
     {
-      name: "Michela",
+      name: "Mihaela",
       phone: "393459256257",
       displayPhone: "+39 345 925 6257",
       color: "#F78D23",

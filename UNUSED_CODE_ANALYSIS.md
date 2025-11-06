@@ -354,10 +354,13 @@ TOTAL POTENTIAL SAVINGS:      ~49KB minified
 #### 🗑️ **RECOMMEND DELETING:**
 
 1. **WhyIllustrations.css**
+
    - No illustrations exist
    - Serves no purpose
    - Easy to recreate if needed
    - **Savings:** ~2KB
+
+   Some change so I can test diff
 
 #### 🤔 **REQUIRES CLIENT DECISION:**
 
