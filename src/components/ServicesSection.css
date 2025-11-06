@@ -16,8 +16,16 @@
 .services-intro {
   max-width: 70ch;
   color: var(--text);
-  margin: 1rem 0 3rem;
+  margin: 1rem 0 0.5rem;
   font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.services-subtitle {
+  max-width: 70ch;
+  color: var(--text-muted);
+  margin: 0.5rem 0 3rem;
+  font-size: 1rem;
   line-height: 1.6;
 }
 

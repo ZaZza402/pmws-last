@@ -77,9 +77,12 @@ const ServicesSection = () => {
 
       <div className="container">
         <h2 className="section-title">I Nostri Servizi</h2>
-        <p className="services-intro">
-          Dallo sportello immigrazione alle pratiche CAF e patronato, copriamo
-          ogni tua esigenza.
+        <p className="services-intro">Dal primo documento al nuovo futuro</p>
+        <p className="services-subtitle">
+          <em>
+            Vi accompagniamo nel vostro percorso, che sia di immigrazione,
+            assistenza fiscale o legale, fino alla totale integrazione.
+          </em>
         </p>
 
         <div
