@@ -99,14 +99,16 @@ const WhatsAppButton = () => {
           <motion.button
             className={`whatsapp-btn ${isMenuOpen ? "whatsapp-btn--open" : ""}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Chiudi menu WhatsApp" : "Apri menu WhatsApp"}
+            aria-label={
+              isMenuOpen ? "Chiudi menu WhatsApp" : "Apri menu WhatsApp"
+            }
             title={isMenuOpen ? "Chiudi menu" : "Contattaci su WhatsApp"}
             initial={{ opacity: 0, scale: 0, y: 20 }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1, 
+            animate={{
+              opacity: 1,
+              scale: 1,
               y: 0,
-              rotate: isMenuOpen ? 90 : 0 
+              rotate: isMenuOpen ? 90 : 0,
             }}
             exit={{ opacity: 0, scale: 0, y: 20 }}
             transition={{ type: "spring", stiffness: 150, damping: 15 }}

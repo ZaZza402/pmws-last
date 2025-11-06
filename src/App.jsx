@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BackToTopButton from "./components/BackToTopButton";
 import WhatsAppButton from "./components/WhatsAppButton";
+import InstallPrompt from "./components/InstallPrompt";
 import PageLoader from "./components/PageLoader";
 import NotFoundPage from "./pages/NotFoundPage";
 import ServiziPage from "./pages/ServiziPage"; // Import directly, no lazy loading
@@ -45,6 +46,7 @@ function App() {
       <Footer />
       <BackToTopButton />
       <WhatsAppButton />
+      <InstallPrompt />
     </BrowserRouter>
   );
 }
