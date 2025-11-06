@@ -19,7 +19,7 @@ const contactOptions = [
           rel="noopener noreferrer"
           style={{ display: "block" }}
         >
-          Paola: +39 345 683 9875
+          Paula: +39 345 683 9875
         </a>
         <a
           href="https://wa.me/393459256257?text=Buongiorno"
@@ -27,7 +27,7 @@ const contactOptions = [
           rel="noopener noreferrer"
           style={{ display: "block" }}
         >
-          Michela: +39 345 925 6257
+          Mihaela: +39 345 925 6257
         </a>
       </div>
     ),
@@ -40,10 +40,10 @@ const contactOptions = [
     action: (
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <a href="tel:+393456839875" style={{ display: "block" }}>
-          Paola: +39 345 683 9875
+          Paula: +39 345 683 9875
         </a>
         <a href="tel:+393459256257" style={{ display: "block" }}>
-          Michela: +39 345 925 6257
+          Mihaela: +39 345 925 6257
         </a>
       </div>
     ),
