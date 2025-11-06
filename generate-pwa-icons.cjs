@@ -8,7 +8,7 @@ const inputFile = path.join(
   "src",
   "assets",
   "brand-logo",
-  "logo.png"
+  "insegna.png"
 );
 const outputDir = path.join(__dirname, "public");
 
