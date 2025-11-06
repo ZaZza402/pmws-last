@@ -13,7 +13,7 @@ const contactOptions = [
       "Perfetto per una domanda veloce o per inviarci una foto di un documento.",
     action: (
       <a
-        href="https://wa.me/390612345678?text=Buongiorno"
+        href="https://wa.me/393459256257?text=Buongiorno"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -26,7 +26,7 @@ const contactOptions = [
     title: "Telefono",
     description:
       "Se preferisci parlare direttamente con noi per spiegarci la tua situazione.",
-    action: <a href="tel:+390612345678">Chiama Ora</a>,
+    action: <a href="tel:+393459256257">Chiama Ora</a>,
   },
   {
     icon: <FaEnvelope />,

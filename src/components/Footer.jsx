@@ -69,7 +69,7 @@ const Footer = () => {
                   <FaInstagram size={20} />
                 </a>
                 <a
-                  href="https://wa.me/390612345678"
+                  href="https://wa.me/393459256257"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Contattaci su WhatsApp"
