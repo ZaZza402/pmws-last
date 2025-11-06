@@ -246,60 +246,6 @@ const ServiziPage = () => {
                 <button
                   className="popular-service-card"
                   onClick={() => {
-                    const serviceId = "s1"; // Permessi di Soggiorno
-                    setExpandedServiceIds((prev) =>
-                      prev.includes(serviceId) ? prev : [...prev, serviceId]
-                    );
-                    setTimeout(() => {
-                      const element = document.getElementById(serviceId);
-                      if (element) {
-                        const headerOffset = 100;
-                        const elementPosition =
-                          element.getBoundingClientRect().top;
-                        const offsetPosition =
-                          elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: "smooth",
-                        });
-                      }
-                    }, 100);
-                  }}
-                >
-                  <FaPassport className="popular-icon" />
-                  <h3>Permesso di Soggiorno</h3>
-                  <p>Rinnovo, richiesta, conversione</p>
-                </button>
-                <button
-                  className="popular-service-card"
-                  onClick={() => {
-                    const serviceId = "a1"; // CAF e Patronato services
-                    setExpandedServiceIds((prev) =>
-                      prev.includes(serviceId) ? prev : [...prev, serviceId]
-                    );
-                    setTimeout(() => {
-                      const element = document.getElementById(serviceId);
-                      if (element) {
-                        const headerOffset = 100;
-                        const elementPosition =
-                          element.getBoundingClientRect().top;
-                        const offsetPosition =
-                          elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: "smooth",
-                        });
-                      }
-                    }, 100);
-                  }}
-                >
-                  <FaCalculator className="popular-icon" />
-                  <h3>Modello 730 & ISEE</h3>
-                  <p>Dichiarazione redditi e certificazioni</p>
-                </button>
-                <button
-                  className="popular-service-card"
-                  onClick={() => {
                     const serviceId = "s3"; // Cittadinanza
                     setExpandedServiceIds((prev) =>
                       prev.includes(serviceId) ? prev : [...prev, serviceId]
@@ -327,6 +273,33 @@ const ServiziPage = () => {
                 <button
                   className="popular-service-card"
                   onClick={() => {
+                    const serviceId = "s1"; // Permessi di Soggiorno
+                    setExpandedServiceIds((prev) =>
+                      prev.includes(serviceId) ? prev : [...prev, serviceId]
+                    );
+                    setTimeout(() => {
+                      const element = document.getElementById(serviceId);
+                      if (element) {
+                        const headerOffset = 100;
+                        const elementPosition =
+                          element.getBoundingClientRect().top;
+                        const offsetPosition =
+                          elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                    }, 100);
+                  }}
+                >
+                  <FaPassport className="popular-icon" />
+                  <h3>Permesso di Soggiorno</h3>
+                  <p>Rinnovo, richiesta, conversione</p>
+                </button>
+                <button
+                  className="popular-service-card"
+                  onClick={() => {
                     const serviceId = "s2"; // Ricongiungimento Familiare
                     setExpandedServiceIds((prev) =>
                       prev.includes(serviceId) ? prev : [...prev, serviceId]
@@ -350,6 +323,33 @@ const ServiziPage = () => {
                   <FaUsers className="popular-icon" />
                   <h3>Ricongiungimento Familiare</h3>
                   <p>Pratica completa per familiari</p>
+                </button>
+                <button
+                  className="popular-service-card"
+                  onClick={() => {
+                    const serviceId = "a1"; // CAF e Patronato services
+                    setExpandedServiceIds((prev) =>
+                      prev.includes(serviceId) ? prev : [...prev, serviceId]
+                    );
+                    setTimeout(() => {
+                      const element = document.getElementById(serviceId);
+                      if (element) {
+                        const headerOffset = 100;
+                        const elementPosition =
+                          element.getBoundingClientRect().top;
+                        const offsetPosition =
+                          elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                    }, 100);
+                  }}
+                >
+                  <FaCalculator className="popular-icon" />
+                  <h3>Modello 730 & ISEE</h3>
+                  <p>Dichiarazione redditi e certificazioni</p>
                 </button>
               </div>
             </div>
@@ -522,7 +522,7 @@ const ServiziPage = () => {
                                       <li key={idx}>{practice}</li>
                                     ))}
                                   </ul>
-                                    <a
+                                  <a
                                     href={`https://wa.me/393459256257?text=Info: ${service.title}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
