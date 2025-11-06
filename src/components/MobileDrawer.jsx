@@ -140,7 +140,7 @@ const MobileDrawer = ({ isOpen, onClose }) => {
           <div className="mobile-drawer__cta">
             <p className="mobile-drawer__cta-title">Hai bisogno di aiuto?</p>
             <a
-              href="https://wa.me/390612345678?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi"
+              href="https://wa.me/393459256257?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi"
               target="_blank"
               rel="noopener noreferrer"
               onClick={onClose}

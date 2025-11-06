@@ -4,8 +4,18 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const WhatsAppButton = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const whatsappUrl =
-    "https://wa.me/393459256257?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi.";
+  
+  // Phone number without '+' or spaces for WhatsApp
+  const phoneNumber = "393459256257";
+  const message = "Buongiorno, vorrei informazioni sui vostri servizi.";
+  
+  // Detect mobile device
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  // Use app protocol for mobile, wa.me for desktop
+  const whatsappUrl = isMobile
+    ? `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
+    : `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   useEffect(() => {
     const handleScroll = () => {

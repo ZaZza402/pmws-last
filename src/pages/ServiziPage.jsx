@@ -501,7 +501,7 @@ const ServiziPage = () => {
                                               )}
                                             </ul>
                                             <a
-                                              href={`https://wa.me/390612345678?text=Info: ${service.title} - ${sub.title}`}
+                                              href={`https://wa.me/393459256257?text=Info: ${service.title} - ${sub.title}`}
                                               target="_blank"
                                               rel="noopener noreferrer"
                                               className="btn btn--primary btn--small"
@@ -522,11 +522,11 @@ const ServiziPage = () => {
                                       <li key={idx}>{practice}</li>
                                     ))}
                                   </ul>
-                                  <a
-                                    href={`https://wa.me/390612345678?text=Info: ${service.title}`}
+                                    <a
+                                    href={`https://wa.me/393459256257?text=Info: ${service.title}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="btn btn--primary"
+                                    className="btn btn--primary btn--small"
                                   >
                                     <FaWhatsapp /> Richiedi Informazioni
                                   </a>
@@ -556,7 +556,7 @@ const ServiziPage = () => {
               </p>
               <div className="cta-buttons">
                 <a
-                  href="https://wa.me/390612345678?text=Ciao, vorrei informazioni sui vostri servizi"
+                  href="https://wa.me/393459256257?text=Ciao, vorrei informazioni sui vostri servizi"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn--primary btn--large"

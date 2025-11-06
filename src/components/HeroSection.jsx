@@ -148,7 +148,7 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn btn--primary"
-            href="https://wa.me/390612345678?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi"
+            href="https://wa.me/393459256257?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -164,7 +164,7 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn btn--ghost"
-            href="tel:+390612345678"
+            href="tel:+393459256257"
             style={{
               display: "inline-flex",
               alignItems: "center",

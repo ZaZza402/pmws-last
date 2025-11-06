@@ -95,7 +95,7 @@ class ErrorBoundary extends React.Component {
               <div style={{ marginTop: '2rem', fontSize: '0.9rem', color: '#666' }}>
                 <p>Se il problema persiste, non esitare a contattarci:</p>
                 <p>
-                  📞 <a href="tel:+390612345678" style={{ color: '#2b286f' }}>+39 06 1234 5678</a> | 
+                  📞 <a href="tel:+393459256257" style={{ color: '#2b286f' }}>+39 345 925 6257</a> | 
                   📧 <a href="mailto:info@puntomigrare.it" style={{ color: '#2b286f' }}>info@puntomigrare.it</a>
                 </p>
               </div>
