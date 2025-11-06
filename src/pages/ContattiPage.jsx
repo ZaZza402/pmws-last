@@ -12,13 +12,24 @@ const contactOptions = [
     description:
       "Perfetto per una domanda veloce o per inviarci una foto di un documento.",
     action: (
-      <a
-        href="https://wa.me/393459256257?text=Buongiorno"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Invia un Messaggio
-      </a>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <a
+          href="https://wa.me/393456839875?text=Buongiorno"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: "block" }}
+        >
+          Paola: +39 345 683 9875
+        </a>
+        <a
+          href="https://wa.me/393459256257?text=Buongiorno"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: "block" }}
+        >
+          Michela: +39 345 925 6257
+        </a>
+      </div>
     ),
   },
   {
@@ -26,7 +37,16 @@ const contactOptions = [
     title: "Telefono",
     description:
       "Se preferisci parlare direttamente con noi per spiegarci la tua situazione.",
-    action: <a href="tel:+393459256257">Chiama Ora</a>,
+    action: (
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <a href="tel:+393456839875" style={{ display: "block" }}>
+          Paola: +39 345 683 9875
+        </a>
+        <a href="tel:+393459256257" style={{ display: "block" }}>
+          Michela: +39 345 925 6257
+        </a>
+      </div>
+    ),
   },
   {
     icon: <FaEnvelope />,
@@ -112,11 +132,11 @@ const ContattiPage = () => {
                     lineHeight: "1.8",
                   }}
                 >
-                  <strong>Lun - Mar - Gio:</strong> 09:00 – 18:00
+                  <strong>Lun, Mar, Gio:</strong> 9:00 – 13:00, 14:30 – 18:00
                   <br />
-                  <strong>Mer - Ven:</strong> 09:00 – 13:00
+                  <strong>Mer, Ven:</strong> 9:00 – 13:00
                   <br />
-                  <strong>Sab - Dom:</strong> Chiuso
+                  <strong>Sab, Dom:</strong> Chiuso
                 </address>
               </div>
 

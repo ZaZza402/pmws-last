@@ -22,9 +22,9 @@ const contactMethods = [
   },
   {
     icon: <FaPhoneAlt />,
-    title: "+39 345 925 6257",
-    subtitle: "Lun-Gio 9-18 | Ven 9-13",
-    link: "tel:+393459256257",
+    title: "Paola / Michela",
+    subtitle: "+39 345 683 9875 / +39 345 925 6257",
+    link: "tel:+393456839875",
     color: "#2b286f",
     external: false,
   },
