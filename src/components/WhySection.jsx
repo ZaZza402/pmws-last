@@ -40,15 +40,15 @@ const WhySection = () => {
               <p>
                 <strong>PuntoMigrare</strong> nasce dalla passione per le
                 persone e dalla profonda conoscenza delle sfide che affrontano
-                quotidianamente chi vive tra due mondi. Non siamo solo un CAF o
+                quotidianamente chi vive tra due mondi. Non siamo solo
                 un'agenzia: siamo il partner che avresti voluto avere quando
                 tutto sembrava complicato.
               </p>
               <p>
                 Ogni pratica che gestiamo porta con sé una storia, un sogno, una
-                famiglia. Per questo trattiamo ogni cliente con l'attenzione e
-                il rispetto che merita, parlando la sua lingua — letteralmente e
-                metaforicamente.
+                famiglia. Per questo trattiamo ogni cliente con empatia,
+                attenzione, e il rispetto che merita, parlando la sua lingua —
+                letteralmente e metaforicamente.
                 <span className="why-highlight">
                   {" "}
                   Italiano, English, Română

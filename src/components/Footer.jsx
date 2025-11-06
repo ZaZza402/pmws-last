@@ -43,7 +43,7 @@ const Footer = () => {
               la massima tranquillità.
             </p>
             <address className="footer-contact">
-              <a href="tel:+390612345678">+39 06 1234 5678</a>
+              <a href="tel:+393459256257">+39 345 925 6257</a>
               <a href="mailto:info@puntomigrare.it">info@puntomigrare.it</a>
               <span>Via del Fuoco Sacro, 97, 00133 Roma RM</span>
             </address>

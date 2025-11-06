@@ -5,7 +5,7 @@ import { FaWhatsapp } from "react-icons/fa";
 const WhatsAppButton = () => {
   const [isVisible, setIsVisible] = useState(false);
   const whatsappUrl =
-    "https://wa.me/390612345678?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi.";
+    "https://wa.me/393459256257?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi.";
 
   useEffect(() => {
     const handleScroll = () => {
