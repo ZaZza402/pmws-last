@@ -41,3 +41,31 @@
   line-height: 1.7;
   color: color-mix(in srgb, var(--text) 80%, white);
 }
+
+.maintenance-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--blue-50);
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--blue);
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn--outline-blue {
+  background: transparent;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+}
+
+.btn--outline-blue:hover {
+  background: var(--blue);
+  color: white;
+}

@@ -8,9 +8,10 @@ import Footer from "./components/Footer";
 import BackToTopButton from "./components/BackToTopButton";
 import WhatsAppButton from "./components/WhatsAppButton";
 import InstallPrompt from "./components/InstallPrompt";
+import CookieConsent from "./components/CookieConsent";
 import PageLoader from "./components/PageLoader";
 import NotFoundPage from "./pages/NotFoundPage";
-import ServiziPage from "./pages/ServiziPage"; // Import directly, no lazy loading
+// import ServiziPage from "./pages/ServiziPage"; // Temporarily disabled for redesign
 
 // Lazy load other pages
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -33,7 +34,7 @@ function App() {
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/servizi" element={<ServiziPage />} />
+              {/* <Route path="/servizi" element={<ServiziPage />} /> */}
               <Route path="/faq" element={<FaqPage />} />
               <Route path="/contatti" element={<ContattiPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
@@ -47,6 +48,7 @@ function App() {
       <BackToTopButton />
       <WhatsAppButton />
       <InstallPrompt />
+      <CookieConsent />
     </BrowserRouter>
   );
 }
