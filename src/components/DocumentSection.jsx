@@ -67,19 +67,37 @@ const DocumentSection = () => {
             className="mt-2"
             style={{ maxWidth: "65ch", margin: "0.5rem auto 0 auto" }}
           >
-            Siamo qui per aiutarti con le tue pratiche di immigrazione. 
-            Trova la nostra sede e scopri i nostri orari di apertura.
+            Siamo qui per aiutarti con le tue pratiche di immigrazione. Trova la
+            nostra sede e scopri i nostri orari di apertura.
           </p>
         </div>
 
         <div className="map-section-wrapper">
           <div className="map-info-container">
             <div className="map-info">
-              <h3 style={{ margin: "0 0 1rem", color: "var(--blue)", fontSize: "1.5rem" }}>
+              <h3
+                style={{
+                  margin: "0 0 1rem",
+                  color: "var(--blue)",
+                  fontSize: "1.5rem",
+                }}
+              >
                 La Nostra Sede
               </h3>
-              <address style={{ fontStyle: "normal", lineHeight: "1.8", fontSize: "1.1rem" }}>
-                <strong style={{ display: "block", marginBottom: "0.5rem", color: "var(--blue)" }}>
+              <address
+                style={{
+                  fontStyle: "normal",
+                  lineHeight: "1.8",
+                  fontSize: "1.1rem",
+                }}
+              >
+                <strong
+                  style={{
+                    display: "block",
+                    marginBottom: "0.5rem",
+                    color: "var(--blue)",
+                  }}
+                >
                   Indirizzo:
                 </strong>
                 Via del Fuoco Sacro, 97
@@ -87,7 +105,13 @@ const DocumentSection = () => {
                 00133 Roma RM
                 <br />
                 <br />
-                <strong style={{ display: "block", marginBottom: "0.5rem", color: "var(--blue)" }}>
+                <strong
+                  style={{
+                    display: "block",
+                    marginBottom: "0.5rem",
+                    color: "var(--blue)",
+                  }}
+                >
                   Orari di Apertura:
                 </strong>
                 <span style={{ display: "block", marginBottom: "0.25rem" }}>
