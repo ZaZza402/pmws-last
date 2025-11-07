@@ -5,7 +5,7 @@ const PrivacyPolicyPage = () => (
   <PageTransition>
     <main
       className="page-header"
-      style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}
+      style={{ padding: "6rem 2rem 2rem", maxWidth: "800px", margin: "0 auto" }}
     >
       <h1>Informativa sulla Privacy</h1>
       <section>

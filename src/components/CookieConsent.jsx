@@ -100,12 +100,13 @@ const CookieConsent = () => {
               <div className="cookie-banner-icon">
                 <FaCookieBite size={32} />
               </div>
-              
+
               <div className="cookie-banner-text">
                 <h3>Utilizziamo i Cookie</h3>
                 <p>
-                  Utilizziamo cookie per migliorare la tua esperienza di navigazione,
-                  analizzare il traffico del sito e personalizzare i contenuti.{" "}
+                  Utilizziamo cookie per migliorare la tua esperienza di
+                  navigazione, analizzare il traffico del sito e personalizzare
+                  i contenuti.{" "}
                   <Link to="/cookie-policy">Leggi la nostra Cookie Policy</Link>
                 </p>
               </div>
@@ -151,7 +152,8 @@ const CookieConsent = () => {
                     <div>
                       <h4>Cookie Necessari</h4>
                       <p>
-                        Essenziali per il funzionamento del sito. Non possono essere disattivati.
+                        Essenziali per il funzionamento del sito. Non possono
+                        essere disattivati.
                       </p>
                     </div>
                     <label className="cookie-toggle">
@@ -170,8 +172,8 @@ const CookieConsent = () => {
                     <div>
                       <h4>Cookie Analitici</h4>
                       <p>
-                        Ci aiutano a capire come i visitatori interagiscono con il sito
-                        (Google Analytics).
+                        Ci aiutano a capire come i visitatori interagiscono con
+                        il sito (Google Analytics).
                       </p>
                     </div>
                     <label className="cookie-toggle">
@@ -190,8 +192,8 @@ const CookieConsent = () => {
                     <div>
                       <h4>Cookie di Marketing</h4>
                       <p>
-                        Utilizzati per tracciare i visitatori attraverso diversi siti web
-                        per mostrare annunci pertinenti.
+                        Utilizzati per tracciare i visitatori attraverso diversi
+                        siti web per mostrare annunci pertinenti.
                       </p>
                     </div>
                     <label className="cookie-toggle">

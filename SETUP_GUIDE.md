@@ -1,6 +1,7 @@
 # Punto Migrare - Setup Guide for Custom Domain & Analytics
 
 ## 📋 Table of Contents
+
 1. [Custom Domain Setup (Aruba.it)](#custom-domain-setup-arubait)
 2. [Google Analytics Setup](#google-analytics-setup)
 3. [Cookie Policy Updates](#cookie-policy-updates)
@@ -28,6 +29,7 @@
 #### For Root Domain (puntomigrare.it)
 
 **A Record:**
+
 ```
 Type: A
 Name: @ (or leave blank)
@@ -36,6 +38,7 @@ TTL: 3600
 ```
 
 **CNAME Record for www:**
+
 ```
 Type: CNAME
 Name: www
@@ -46,6 +49,7 @@ TTL: 3600
 #### Alternative: If Aruba doesn't allow A record for root
 
 **CNAME Record (if supported):**
+
 ```
 Type: CNAME
 Name: @ (or leave blank)
@@ -119,7 +123,10 @@ Currency: Euro (EUR)
    ```
    and
    ```html
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+   <script
+     async
+     src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+   ></script>
    ```
 3. Replace **both** `G-XXXXXXXXXX` with your actual Measurement ID
 4. Save the file
@@ -144,6 +151,7 @@ Currency: Euro (EUR)
 ### Google Analytics with Consent Mode
 
 The website is configured with **Consent Mode V2**:
+
 - Analytics are **blocked by default**
 - User must accept analytics cookies
 - Consent is stored in localStorage
@@ -173,15 +181,17 @@ The **Cookie Policy page** needs to be updated with:
 Open `src/pages/CookiePolicyPage.jsx` and update these sections:
 
 **Section: Analytics Cookies**
+
 ```jsx
 <p>
-  Utilizziamo Google Analytics (Measurement ID: G-XXXXXXXXXX) per 
-  comprendere come i visitatori utilizzano il nostro sito.
+  Utilizziamo Google Analytics (Measurement ID: G-XXXXXXXXXX) per comprendere
+  come i visitatori utilizzano il nostro sito.
 </p>
 ```
 
 **Section: Cookie Table**
 Add this row to the analytics cookies table:
+
 ```jsx
 <tr>
   <td>_ga</td>
@@ -222,9 +232,7 @@ Your `vercel.json` should include:
 
 ```json
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
   "headers": [
     {
       "source": "/(.*)",
@@ -290,11 +298,13 @@ This file doesn't exist yet. Create it in the root directory if you want these s
 ### Common Issues
 
 **Issue: Domain not working after 48 hours**
+
 - Check DNS with: https://dnschecker.org/
 - Verify Aruba DNS records match exactly
 - Contact Aruba support if records are correct but not propagating
 
 **Issue: Google Analytics not tracking**
+
 - Check browser console for errors
 - Verify Measurement ID is correct (no spaces/typos)
 - Check GA4 Realtime report
@@ -302,11 +312,13 @@ This file doesn't exist yet. Create it in the root directory if you want these s
 - Try in incognito mode
 
 **Issue: Cookie popup not showing**
+
 - Clear localStorage: `localStorage.clear()`
 - Refresh page
 - Check browser console for errors
 
 **Issue: /servizi showing 404 instead of maintenance**
+
 - Verify App.jsx has the route commented out
 - Clear browser cache
 - Check deployment is latest version
@@ -339,6 +351,7 @@ npm run generate-pwa-icons
 8. ✅ Submit sitemap to Google Search Console
 
 **Important Files to Update with Your Custom Domain:**
+
 - `index.html` - Update og:url meta tags
 - `public/sitemap.xml` - Update all URLs
 - `public/robots.txt` - Update sitemap URL
