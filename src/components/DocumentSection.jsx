@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { businessHours } from "../config/businessHours";
-import DocumentChecklist from "./DocumentChecklist";
 import "./DocumentSection.css";
 
 // Funzione aggiornata per verificare se l'ufficio è aperto
@@ -62,80 +61,58 @@ const DocumentSection = () => {
       aria-labelledby="documents-title"
     >
       <div className="container">
-        <div style={{ textAlign: "center" }}>
-          <h2 id="documents-title">Preparati per la tua Visita</h2>
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <h2 id="documents-title">Vieni a Trovarci</h2>
           <p
             className="mt-2"
             style={{ maxWidth: "65ch", margin: "0.5rem auto 0 auto" }}
           >
-            Scopri quali documenti servono per la tua pratica di immigrazione e
-            dove trovarci per ricevere assistenza specializzata.
+            Siamo qui per aiutarti con le tue pratiche di immigrazione. 
+            Trova la nostra sede e scopri i nostri orari di apertura.
           </p>
         </div>
 
-        <div className="panel mt-4">
-          <div className="contact-grid">
-            {/* Column 1: Document Checklist - NEW FEATURE */}
-            <div>
-              <h3 style={{ margin: "0 0 .5rem" }}>1. Controlla i Documenti</h3>
-              <p className="mt-1" style={{ minHeight: "48px" }}>
-                Seleziona la tua pratica e scopri esattamente quali documenti
-                preparare per velocizzare la procedura.
-              </p>
-              <div className="checklist-container">
-                <DocumentChecklist />
-              </div>
-            </div>
-
-            {/* Column 2: Address and Map - KEPT THE SAME */}
-            <div id="contatti-info">
-              <h3 style={{ margin: "0 0 .5rem" }} id="mappa">
-                2. Vieni a Trovarci
+        <div className="map-section-wrapper">
+          <div className="map-info-container">
+            <div className="map-info">
+              <h3 style={{ margin: "0 0 1rem", color: "var(--blue)", fontSize: "1.5rem" }}>
+                La Nostra Sede
               </h3>
-              <address className="mt-1" style={{ fontStyle: "normal" }}>
-                <strong>Sede:</strong>
-                <br />
+              <address style={{ fontStyle: "normal", lineHeight: "1.8", fontSize: "1.1rem" }}>
+                <strong style={{ display: "block", marginBottom: "0.5rem", color: "var(--blue)" }}>
+                  Indirizzo:
+                </strong>
                 Via del Fuoco Sacro, 97
                 <br />
                 00133 Roma RM
                 <br />
                 <br />
-                <strong style={{ display: "block" }}>Orari di apertura:</strong>
-                Lun, Mar, Gio: 09:00–13:00 / 14:30–18:00
-                <br />
-                Mer, Ven: 09:00–13:00
+                <strong style={{ display: "block", marginBottom: "0.5rem", color: "var(--blue)" }}>
+                  Orari di Apertura:
+                </strong>
+                <span style={{ display: "block", marginBottom: "0.25rem" }}>
+                  <strong>Lun, Mar, Gio:</strong> 09:00–13:00 / 14:30–18:00
+                </span>
+                <span style={{ display: "block" }}>
+                  <strong>Mer, Ven:</strong> 09:00–13:00
+                </span>
               </address>
-              <LiveClock />
-              <div
-                id="mapLoader"
-                className="mt-2"
-                style={{
-                  position: "relative",
-                  aspectRatio: "4/3",
-                  border: "1px solid var(--border)",
-                  borderRadius: "18px",
-                  overflow: "hidden",
-                  background: "var(--card)",
-                }}
-              >
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.334008920117!2d12.610996876690044!3d41.88566996350734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f63f533967885%3A0x606fb3c4ab5913a!2sVia%20del%20Fuoco%20Sacro%2C%2097%2C%2000133%20Roma%20RM!5e0!3m2!1sit!2sit!4v1723900381665!5m2!1sit!2sit"
-                  width="600"
-                  height="450"
-                  style={{
-                    border: 0,
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                  }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Mappa della sede di PuntoMigrare in Via del Fuoco Sacro, 97"
-                ></iframe>
+              <div style={{ marginTop: "1.5rem" }}>
+                <LiveClock />
               </div>
+            </div>
+
+            <div className="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.334008920117!2d12.610996876690044!3d41.88566996350734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f63f533967885%3A0x606fb3c4ab5913a!2sVia%20del%20Fuoco%20Sacro%2C%2097%2C%2000133%20Roma%20RM!5e0!3m2!1sit!2sit!4v1723900381665!5m2!1sit!2sit"
+                width="600"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mappa della sede di PuntoMigrare in Via del Fuoco Sacro, 97"
+              ></iframe>
             </div>
           </div>
         </div>
