@@ -24,12 +24,14 @@ When I initially set up Google Analytics, I implemented it with **GDPR Consent M
 ### 1. **Improved Analytics Initialization** ✨
 
 **Before:**
+
 ```javascript
 // Analytics only updated to "granted" when accepted
 // But never explicitly "denied" when rejected
 ```
 
 **After:**
+
 ```javascript
 const initializeAnalytics = () => {
   if (window.gtag) {
@@ -53,6 +55,7 @@ const denyAnalytics = () => {
 ### 2. **Better State Management** 🎯
 
 Now the system:
+
 - ✅ Explicitly grants consent when user accepts
 - ✅ Explicitly denies consent when user rejects
 - ✅ Sends immediate page view event when granted
@@ -61,11 +64,13 @@ Now the system:
 ### 3. **Updated Footer Attribution** 🎨
 
 Changed from:
+
 ```
 Website by Alex
 ```
 
 To:
+
 ```
 Sito Creato da alecsdesign.xyz
 ```
@@ -75,6 +80,7 @@ Sito Creato da alecsdesign.xyz
 ### For Accurate Data Collection:
 
 1. **Clear Your Browser Data First:**
+
    ```
    Settings → Privacy → Clear browsing data
    - Cookies and site data
@@ -82,6 +88,7 @@ Sito Creato da alecsdesign.xyz
    ```
 
 2. **Test the Site Fresh:**
+
    - Visit https://www.puntomigrare.it/
    - Wait for cookie banner (2 seconds)
    - Click **"Accetta Tutti"** (Accept All)
@@ -96,11 +103,13 @@ Sito Creato da alecsdesign.xyz
 ### Understanding Your Data:
 
 #### ✅ Will Be Tracked:
+
 - Visitors who click "Accept All"
 - Visitors who enable "Analytics" in cookie settings
 - Repeat visitors who previously accepted cookies
 
 #### ❌ Won't Be Tracked:
+
 - Visitors who click "Only Necessary"
 - Visitors who ignore the cookie banner
 - Visitors who have ad blockers
@@ -147,12 +156,14 @@ User makes choice:
 ### Legal Requirements (GDPR):
 
 1. **Consent Must Be:**
+
    - ✅ Freely given
    - ✅ Specific
    - ✅ Informed
    - ✅ Unambiguous
 
 2. **You Cannot:**
+
    - ❌ Pre-check consent boxes
    - ❌ Use "implied consent"
    - ❌ Block access without consent
@@ -169,11 +180,13 @@ User makes choice:
 ## 📈 Expected Analytics Behavior
 
 ### Week 1-2:
+
 - **Low numbers** (10-30% of visitors accept cookies)
 - This is **normal** and **legally correct**
 - Most users either ignore or reject tracking
 
 ### Long Term:
+
 - Analytics will show **partial data**
 - Only tracks **consenting users**
 - Better than nothing, and **legally safe**
@@ -181,6 +194,7 @@ User makes choice:
 ## 🆚 Alternative Options (Not Recommended)
 
 ### Option A: Remove Consent Banner Entirely
+
 ```
 ❌ Illegal in EU/Europe
 ❌ Risk of €20M fines (GDPR violations)
@@ -188,6 +202,7 @@ User makes choice:
 ```
 
 ### Option B: Pre-Accept Analytics
+
 ```
 ❌ Violates GDPR
 ❌ User didn't give explicit consent
@@ -195,6 +210,7 @@ User makes choice:
 ```
 
 ### Option C: Use Privacy-Friendly Analytics
+
 ```
 ✅ Plausible Analytics
 ✅ Fathom Analytics
@@ -238,6 +254,7 @@ User makes choice:
 ### Issue 1: "Still showing 0 visits"
 
 **Solutions:**
+
 1. Clear your localStorage: `localStorage.clear()` in console
 2. Clear cookies and cache completely
 3. Visit site in incognito mode
@@ -247,6 +264,7 @@ User makes choice:
 ### Issue 2: "I accepted cookies but still not tracked"
 
 **Possible causes:**
+
 - Ad blocker is active (blocks GA script)
 - Privacy browser extensions (uBlock Origin, Privacy Badger)
 - Browser has "Do Not Track" enabled
@@ -258,6 +276,7 @@ Test in a clean browser without extensions
 ### Issue 3: "Real-time shows users, but reports show 0"
 
 **Explanation:**
+
 - Real-time data appears immediately
 - Standard reports can take **24-48 hours** to populate
 - This is **normal** Google Analytics behavior
@@ -267,7 +286,7 @@ Test in a clean browser without extensions
 From industry studies:
 
 - **Accept All:** ~15-25% of visitors
-- **Reject/Only Necessary:** ~50-60% of visitors  
+- **Reject/Only Necessary:** ~50-60% of visitors
 - **Ignore Banner:** ~15-30% of visitors
 
 **Your expected data coverage:** 15-25% of total traffic
