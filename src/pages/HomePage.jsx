@@ -13,7 +13,7 @@ import DocumentSection from "../components/DocumentSection";
 const HomePage = () => {
   return (
     <PageTransition>
-      <title>PuntoMigrare - CAF e Servizi per l'Immigrazione a Roma</title>
+      <title>PuntoMigrare - Immigrazione, CAF e Servizi a Roma</title>
       <meta
         name="description"
         content="Assistenza specializzata per permesso di soggiorno, cittadinanza, ricongiungimento familiare a Roma. Servizi CAF professionali e umani. Contattaci su WhatsApp."
