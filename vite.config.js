@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "og-image.jpg"],
+      includeAssets: ["favicon.ico", "og-image.jpg", "favicon.svg"],
       manifest: {
         name: "Punto Migrare - Servizi di Immigrazione",
         short_name: "Punto Migrare",
@@ -21,13 +21,13 @@ export default defineConfig({
         start_url: "/",
         icons: [
           {
-            src: "/pwa-192x192.png",
+            src: "/pwa-192x192-transparent.png",
             sizes: "192x192",
             type: "image/png",
             purpose: "any maskable",
           },
           {
-            src: "/pwa-512x512.png",
+            src: "/pwa-512x512-transparent.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
