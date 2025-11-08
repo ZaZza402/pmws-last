@@ -26,6 +26,9 @@ const CookieConsent = () => {
       // Initialize Google Analytics if consent was given
       if (savedPreferences.analytics) {
         initializeAnalytics();
+      } else {
+        // Explicitly deny analytics if user rejected
+        denyAnalytics();
       }
     }
   }, []);
@@ -36,6 +39,17 @@ const CookieConsent = () => {
     if (window.gtag) {
       window.gtag("consent", "update", {
         analytics_storage: "granted",
+      });
+      // Send a page view to ensure tracking starts
+      window.gtag("event", "page_view");
+    }
+  };
+
+  const denyAnalytics = () => {
+    // Explicitly deny analytics when user rejects
+    if (window.gtag) {
+      window.gtag("consent", "update", {
+        analytics_storage: "denied",
       });
     }
   };
@@ -61,6 +75,7 @@ const CookieConsent = () => {
     };
     setPreferences(necessaryOnly);
     localStorage.setItem("cookie-consent", JSON.stringify(necessaryOnly));
+    denyAnalytics(); // Explicitly deny analytics tracking
     setShowBanner(false);
     setShowSettings(false);
   };
@@ -69,6 +84,8 @@ const CookieConsent = () => {
     localStorage.setItem("cookie-consent", JSON.stringify(preferences));
     if (preferences.analytics) {
       initializeAnalytics();
+    } else {
+      denyAnalytics();
     }
     setShowBanner(false);
     setShowSettings(false);

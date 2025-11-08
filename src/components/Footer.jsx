@@ -139,14 +139,14 @@ const Footer = () => {
             </ul>
             <div className="footer-credit">
               <small>
-                Website by{" "}
+                Sito Creato da{" "}
                 <a
                   href="https://www.alecsdesign.xyz"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-designer-link"
                 >
-                  Alex
+                  alecsdesign.xyz
                 </a>
               </small>
             </div>

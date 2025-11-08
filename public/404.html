@@ -12,18 +12,19 @@
 
       // Check if this is a static file that should not be redirected
       var staticFileExtensions = /\.(xml|txt|ico|png|jpg|svg|pdf)$/i;
-      var staticFiles = ['sitemap.xml', 'robots.txt'];
-      
-      var fileName = path.substring(path.lastIndexOf('/') + 1);
-      var isStaticFile = staticFileExtensions.test(fileName) || staticFiles.includes(fileName);
+      var staticFiles = ["sitemap.xml", "robots.txt"];
+
+      var fileName = path.substring(path.lastIndexOf("/") + 1);
+      var isStaticFile =
+        staticFileExtensions.test(fileName) || staticFiles.includes(fileName);
 
       if (!isStaticFile) {
         // Redirect to root, React Router will handle the routing
         window.location.replace("/" + search + hash);
       } else {
         // For static files, show a proper 404
-        document.write('<h1>404 - File Not Found</h1>');
-        document.write('<p>The requested file could not be found.</p>');
+        document.write("<h1>404 - File Not Found</h1>");
+        document.write("<p>The requested file could not be found.</p>");
       }
     </script>
   </head>
