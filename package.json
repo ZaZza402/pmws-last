@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "generate-pwa-icons": "node generate-pwa-icons.cjs"
+    "generate-pwa-icons": "node generate-pwa-icons.cjs",
+    "vercel-build": "npm install --legacy-peer-deps && vite build"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
