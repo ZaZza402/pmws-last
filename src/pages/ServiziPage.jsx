@@ -1,577 +1,465 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// src/pages/ServiziPage.jsx
+// Main Services Hub - 4 Main Categories
+
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
-  FaWhatsapp,
-  FaChevronRight,
-  FaSearch,
-  FaClipboardList,
-  FaGlobe,
-} from "react-icons/fa";
-import {
-  FaPassport,
-  FaUsers,
-  FaFlag,
-  FaGraduationCap,
-  FaLanguage,
-  FaPlane,
-  FaBuilding,
-  FaHome,
-  FaCalculator,
-  FaBalanceScale,
-  FaFileContract,
-  FaGavel,
-  FaLandmark,
-} from "react-icons/fa";
-import { allServices, serviceCategories } from "../servicesData";
+  FileText,
+  Plane,
+  Users,
+  Briefcase,
+  ArrowRight,
+  Home,
+  Flag,
+  Calculator,
+} from "lucide-react";
 import Breadcrumb from "../components/Breadcrumb";
+import AnimateOnScroll from "../components/AnimateOnScroll";
+import WhatsAppPopup from "../components/WhatsAppPopup";
+import SEO from "../components/SEO";
 import "./ServiziPage.css";
 
-// Icon mapping
-const iconMap = {
-  passport: FaPassport,
-  family: FaUsers,
-  flag: FaFlag,
-  education: FaGraduationCap,
-  translate: FaLanguage,
-  visa: FaPlane,
-  embassy: FaBuilding,
-  home: FaHome,
-  calculator: FaCalculator,
-  inheritance: FaBalanceScale,
-  contract: FaFileContract,
-  legal: FaGavel,
-  government: FaLandmark,
-};
-
 const ServiziPage = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [expandedServiceIds, setExpandedServiceIds] = useState([]); // Changed to array for multiple open cards
-  const [expandedSubIds, setExpandedSubIds] = useState([]);
+  const { hash } = useLocation();
+  const breadcrumbItems = [{ label: "Home", path: "/" }, { label: "Servizi" }];
 
-  // Handle hash navigation from home page links
+  const currentYear = new Date().getFullYear();
+  const yearsOfExperience = currentYear - 2017;
+
+  // Handle hash scrolling
   useEffect(() => {
-    const hash = window.location.hash;
     if (hash) {
-      const serviceId = hash.replace("#", "");
-
-      // Find and expand the service
-      const service = allServices.find((s) => s.id === serviceId);
-      if (service) {
-        // Add to expanded services
-        setExpandedServiceIds((prev) =>
-          prev.includes(serviceId) ? prev : [...prev, serviceId]
-        );
-
-        // Scroll to the service after a short delay
-        setTimeout(() => {
-          const element = document.getElementById(serviceId);
-          if (element) {
-            const headerOffset = 100; // Adjust for fixed header
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition =
-              elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth",
-            });
-          }
-        }, 300);
-      }
+      // Small timeout to ensure DOM is ready and animations don't interfere
+      setTimeout(() => {
+        const element = document.getElementById(hash.replace("#", ""));
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
     }
-  }, []);
-
-  // Filter services based on category and search
-  const filteredServices = allServices.filter((service) => {
-    const matchesCategory =
-      selectedCategory === "all" || service.category === selectedCategory;
-
-    if (!searchTerm) return matchesCategory;
-
-    const term = searchTerm.toLowerCase();
-    const matchesTitle = service.title.toLowerCase().includes(term);
-    const matchesDesc = service.description.toLowerCase().includes(term);
-    const matchesPractices = service.practices?.some((p) =>
-      p.toLowerCase().includes(term)
-    );
-    const matchesSub = service.subservices?.some(
-      (sub) =>
-        sub.title.toLowerCase().includes(term) ||
-        sub.description.toLowerCase().includes(term) ||
-        sub.practices?.some((p) => p.toLowerCase().includes(term))
-    );
-
-    return (
-      matchesCategory &&
-      (matchesTitle || matchesDesc || matchesPractices || matchesSub)
-    );
-  });
-
-  const toggleService = (id, event) => {
-    // Get the clicked element's position relative to viewport
-    const clickedElement = event?.currentTarget;
-    if (!clickedElement) return;
-
-    const rect = clickedElement.getBoundingClientRect();
-    const offsetFromTop = rect.top;
-
-    // Toggle this service in the array (allow multiple open)
-    setExpandedServiceIds((prev) =>
-      prev.includes(id)
-        ? prev.filter((serviceId) => serviceId !== id)
-        : [...prev, id]
-    );
-
-    // After state update, maintain the clicked element's position
-    requestAnimationFrame(() => {
-      if (clickedElement) {
-        const newRect = clickedElement.getBoundingClientRect();
-        const newOffsetFromTop = newRect.top;
-        const scrollAdjustment = newOffsetFromTop - offsetFromTop;
-
-        // Only adjust if there was a significant change
-        if (Math.abs(scrollAdjustment) > 1) {
-          window.scrollBy(0, scrollAdjustment);
-        }
-      }
-    });
-  };
-
-  const toggleSub = (subId, event) => {
-    // Get the clicked element's position relative to viewport
-    const clickedElement = event?.currentTarget;
-    if (!clickedElement) return;
-
-    const rect = clickedElement.getBoundingClientRect();
-    const offsetFromTop = rect.top;
-
-    setExpandedSubIds((prev) =>
-      prev.includes(subId)
-        ? prev.filter((id) => id !== subId)
-        : [...prev, subId]
-    );
-
-    // After state update, maintain the clicked element's position
-    requestAnimationFrame(() => {
-      if (clickedElement) {
-        const newRect = clickedElement.getBoundingClientRect();
-        const newOffsetFromTop = newRect.top;
-        const scrollAdjustment = newOffsetFromTop - offsetFromTop;
-
-        // Only adjust if there was a significant change
-        if (Math.abs(scrollAdjustment) > 1) {
-          window.scrollBy(0, scrollAdjustment);
-        }
-      }
-    });
-  };
-
-  const getCategoryCount = (cat) => {
-    return allServices.filter((s) => s.category === cat).length;
-  };
-
-  const getCategoryIcon = (category) => {
-    const iconMapping = {
-      Migranti: FaPassport,
-      Viaggiatori: FaPlane,
-      Famiglie: FaUsers,
-      "Altri Servizi": FaClipboardList,
-    };
-    const Icon = iconMapping[category];
-    return Icon ? <Icon className="cat-icon" /> : null;
-  };
-
-  const getIcon = (iconName) => {
-    const Icon = iconMap[iconName] || FaPassport;
-    return <Icon />;
-  };
+  }, [hash]);
 
   return (
-    <>
-      <title>
-        Tutti i Nostri Servizi - Immigrazione e CAF | PuntoMigrare Roma
-      </title>
-      <meta
-        name="description"
-        content="Servizi completi per immigrazione, permessi di soggiorno, cittadinanza, CAF, Patronato, traduzioni e assistenza legale a Roma. Oltre 30 pratiche gestite con professionalità."
+    <div className="servizi-hub">
+      <SEO
+        title="Tutti i Servizi per l'Immigrazione"
+        description="Scopri i nostri servizi: Permessi di Soggiorno, Cittadinanza, Ricongiungimenti, Visti e CAF. Assistenza completa a Roma."
+        canonical="/servizi"
       />
-      <link rel="canonical" href="https://www.puntomigrare.it/servizi" />
+      <div className="container">
+        <Breadcrumb items={breadcrumbItems} />
 
-      <div className="servizi-page">
-        {/* Hero */}
-        <section className="servizi-hero">
-          <div className="container">
-            {/* Breadcrumb */}
-            <Breadcrumb items={[{ label: "Servizi" }]} />
-
-            <h1>I Nostri Servizi</h1>
-            <p className="hero-subtitle">
-              Esplora tutti i nostri servizi. Clicca per vedere i dettagli.
+        {/* Editorial Header */}
+        <AnimateOnScroll animation="fade-up" delay={100}>
+          <header className="editorial-header">
+            <p className="editorial-kicker">I Nostri Servizi</p>
+            <h1 className="editorial-headline">
+              La Tua Guida Completa <br />
+              per l'Immigrazione in Italia
+            </h1>
+            <p className="editorial-deck">
+              Da oltre {yearsOfExperience} anni aiutiamo persone come te a
+              navigare il sistema italiano di immigrazione. Dalla prima
+              richiesta alla cittadinanza, siamo al tuo fianco in ogni passo.
             </p>
+          </header>
+        </AnimateOnScroll>
 
-            {/* Search */}
-            <div className="search-box">
-              <FaSearch className="search-icon" />
-              <input
-                type="text"
-                placeholder="Cerca servizio o pratica..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
-              />
-              {searchTerm && (
-                <button
-                  className="search-clear"
-                  onClick={() => setSearchTerm("")}
-                  aria-label="Cancella"
-                >
-                  ×
-                </button>
-              )}
-            </div>
-          </div>
-        </section>
+        {/* Quick Access Cards - Top Services */}
+        <AnimateOnScroll animation="fade-up" delay={150}>
+          <section className="quick-access">
+            <h2 className="quick-access__title">Servizi Più Richiesti</h2>
+            <div className="quick-access__grid">
+              <Link
+                to="/servizi/cittadinanza-italiana"
+                className="quick-card quick-card--blue"
+              >
+                <div className="quick-card__header">
+                  <div className="quick-card__icon">
+                    <Flag size={24} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="quick-card__title">Cittadinanza Italiana</h3>
+                </div>
+                <div className="quick-card__footer">
+                  <span className="quick-card__badge">5 tipologie</span>
+                  <p className="quick-card__description">
+                    Per matrimonio, residenza e Jure Sanguinis
+                  </p>
+                </div>
+              </Link>
 
-        {/* Popular Services - Most Requested */}
-        {!searchTerm && selectedCategory === "all" && (
-          <section className="popular-services-section">
-            <div className="container">
-              <h2 className="popular-title">Servizi Più Richiesti</h2>
-              <p className="popular-subtitle">
-                I servizi più comuni per chi arriva dall'estero o ha bisogno di
-                assistenza fiscale
-              </p>
-              <div className="popular-services-grid">
-                <button
-                  className="popular-service-card"
-                  onClick={() => {
-                    const serviceId = "s3"; // Cittadinanza
-                    setExpandedServiceIds((prev) =>
-                      prev.includes(serviceId) ? prev : [...prev, serviceId]
-                    );
-                    setTimeout(() => {
-                      const element = document.getElementById(serviceId);
-                      if (element) {
-                        const headerOffset = 100;
-                        const elementPosition =
-                          element.getBoundingClientRect().top;
-                        const offsetPosition =
-                          elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: "smooth",
-                        });
-                      }
-                    }, 100);
-                  }}
-                >
-                  <FaFlag className="popular-icon" />
-                  <h3>Cittadinanza Italiana</h3>
-                  <p>Richiesta e iter completo</p>
-                </button>
-                <button
-                  className="popular-service-card"
-                  onClick={() => {
-                    const serviceId = "s1"; // Permessi di Soggiorno
-                    setExpandedServiceIds((prev) =>
-                      prev.includes(serviceId) ? prev : [...prev, serviceId]
-                    );
-                    setTimeout(() => {
-                      const element = document.getElementById(serviceId);
-                      if (element) {
-                        const headerOffset = 100;
-                        const elementPosition =
-                          element.getBoundingClientRect().top;
-                        const offsetPosition =
-                          elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: "smooth",
-                        });
-                      }
-                    }, 100);
-                  }}
-                >
-                  <FaPassport className="popular-icon" />
-                  <h3>Permesso di Soggiorno</h3>
-                  <p>Rinnovo, richiesta, conversione</p>
-                </button>
-                <button
-                  className="popular-service-card"
-                  onClick={() => {
-                    const serviceId = "s2"; // Ricongiungimento Familiare
-                    setExpandedServiceIds((prev) =>
-                      prev.includes(serviceId) ? prev : [...prev, serviceId]
-                    );
-                    setTimeout(() => {
-                      const element = document.getElementById(serviceId);
-                      if (element) {
-                        const headerOffset = 100;
-                        const elementPosition =
-                          element.getBoundingClientRect().top;
-                        const offsetPosition =
-                          elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: "smooth",
-                        });
-                      }
-                    }, 100);
-                  }}
-                >
-                  <FaUsers className="popular-icon" />
-                  <h3>Ricongiungimento Familiare</h3>
-                  <p>Pratica completa per familiari</p>
-                </button>
-                <button
-                  className="popular-service-card"
-                  onClick={() => {
-                    const serviceId = "a1"; // CAF e Patronato services
-                    setExpandedServiceIds((prev) =>
-                      prev.includes(serviceId) ? prev : [...prev, serviceId]
-                    );
-                    setTimeout(() => {
-                      const element = document.getElementById(serviceId);
-                      if (element) {
-                        const headerOffset = 100;
-                        const elementPosition =
-                          element.getBoundingClientRect().top;
-                        const offsetPosition =
-                          elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: "smooth",
-                        });
-                      }
-                    }, 100);
-                  }}
-                >
-                  <FaCalculator className="popular-icon" />
-                  <h3>Modello 730 & ISEE</h3>
-                  <p>Dichiarazione redditi e certificazioni</p>
-                </button>
-              </div>
+              <Link
+                to="/servizi/permessi-di-soggiorno"
+                className="quick-card quick-card--orange"
+              >
+                <div className="quick-card__header">
+                  <div className="quick-card__icon">
+                    <FileText size={24} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="quick-card__title">Permessi di Soggiorno</h3>
+                </div>
+                <div className="quick-card__footer">
+                  <span className="quick-card__badge">8 tipologie</span>
+                  <p className="quick-card__description">
+                    Prima richiesta, rinnovi e conversioni
+                  </p>
+                </div>
+              </Link>
+
+              <Link
+                to="/servizi/caf-patronato"
+                className="quick-card quick-card--neutral"
+              >
+                <div className="quick-card__header">
+                  <div className="quick-card__icon">
+                    <Calculator size={24} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="quick-card__title">CAF e Patronato</h3>
+                </div>
+                <div className="quick-card__footer">
+                  <span className="quick-card__badge">2 servizi</span>
+                  <p className="quick-card__description">
+                    730, ISEE e pratiche fiscali
+                  </p>
+                </div>
+              </Link>
             </div>
           </section>
-        )}
+        </AnimateOnScroll>
 
-        {/* Content */}
-        <section className="servizi-content">
-          <div className="container-wide">
-            <div className="servizi-layout">
-              {/* Sidebar */}
-              <aside className="servizi-sidebar">
-                <h3>Categorie</h3>
-                <div className="category-filters">
-                  <button
-                    className={`cat-btn ${
-                      selectedCategory === "all" ? "active" : ""
-                    }`}
-                    onClick={() => setSelectedCategory("all")}
-                  >
-                    <FaGlobe className="cat-icon" />
-                    <span>Tutti</span>
-                    <span className="count">{allServices.length}</span>
-                  </button>
-                  {serviceCategories.map((cat) => (
-                    <button
-                      key={cat}
-                      className={`cat-btn ${
-                        selectedCategory === cat ? "active" : ""
-                      }`}
-                      onClick={() => setSelectedCategory(cat)}
-                    >
-                      {getCategoryIcon(cat)}
-                      <span>{cat}</span>
-                      <span className="count">{getCategoryCount(cat)}</span>
-                    </button>
-                  ))}
+        {/* Main Service Categories */}
+        <div className="editorial-content">
+          {/* MIGRANTI */}
+          <AnimateOnScroll animation="fade-up" delay={150}>
+            <section
+              id="migranti"
+              className="editorial-section editorial-section--featured"
+            >
+              <header className="section-header">
+                <div className="section-header__icon">
+                  <FileText size={32} strokeWidth={1.5} />
                 </div>
-              </aside>
+                <div className="section-header__content">
+                  <h2 className="section-title">Migranti</h2>
+                  <p className="section-intro">
+                    Servizi completi per cittadini extracomunitari: permessi di
+                    soggiorno, cittadinanza, ricongiungimenti familiari,
+                    riconoscimento titoli di studio e traduzioni certificate.
+                  </p>
+                </div>
+              </header>
 
-              {/* Services List */}
-              <main className="servizi-main">
-                {filteredServices.length === 0 ? (
-                  <div className="no-results">
-                    <p>Nessun servizio trovato</p>
-                    <button
-                      className="btn btn--outline"
-                      onClick={() => {
-                        setSearchTerm("");
-                        setSelectedCategory("all");
-                      }}
-                    >
-                      Mostra tutti
-                    </button>
-                  </div>
-                ) : (
-                  <div className="services-list">
-                    {filteredServices.map((service) => {
-                      const isExpanded = expandedServiceIds.includes(
-                        service.id
-                      );
-                      const hasSubservices =
-                        service.subservices && service.subservices.length > 0;
-
-                      return (
-                        <div
-                          key={service.id}
-                          id={service.id}
-                          className={`service-item ${
-                            isExpanded ? "expanded" : ""
-                          }`}
-                        >
-                          {/* Service Header */}
-                          <div
-                            className="service-header"
-                            onClick={(e) => toggleService(service.id, e)}
-                          >
-                            <div className="service-icon-box">
-                              {getIcon(service.icon)}
-                            </div>
-                            <div className="service-info">
-                              <h3>{service.title}</h3>
-                              <p>{service.description}</p>
-                              {hasSubservices && (
-                                <span className="sub-count">
-                                  {service.subservices.length} sotto-servizi
-                                </span>
-                              )}
-                            </div>
-                            <button
-                              className={`expand-btn ${
-                                isExpanded ? "open" : ""
-                              }`}
-                              aria-label={isExpanded ? "Chiudi" : "Apri"}
-                            >
-                              <FaChevronRight />
-                            </button>
-                          </div>
-
-                          {/* Service Body with smooth accordion animation */}
-                          <div className="service-body">
-                            <div className="service-body-content">
-                              {hasSubservices ? (
-                                <div className="subservices">
-                                  <h4>Seleziona il servizio specifico:</h4>
-                                  {service.subservices.map((sub) => {
-                                    const isSubExpanded =
-                                      expandedSubIds.includes(sub.id);
-                                    return (
-                                      <div
-                                        key={sub.id}
-                                        className={`sub-item ${
-                                          isSubExpanded ? "expanded" : ""
-                                        }`}
-                                      >
-                                        <div
-                                          className="sub-header"
-                                          onClick={(e) => toggleSub(sub.id, e)}
-                                        >
-                                          <span className="sub-number">
-                                            {sub.id.split("-")[1]}
-                                          </span>
-                                          <div className="sub-info">
-                                            <h5>{sub.title}</h5>
-                                            <p>{sub.description}</p>
-                                          </div>
-                                          <button
-                                            className={`sub-expand ${
-                                              isSubExpanded ? "open" : ""
-                                            }`}
-                                            aria-label={
-                                              isSubExpanded ? "Chiudi" : "Apri"
-                                            }
-                                          >
-                                            <FaChevronRight />
-                                          </button>
-                                        </div>
-
-                                        <div className="sub-body-wrapper">
-                                          <div className="sub-body">
-                                            <strong>
-                                              Pratiche specifiche:
-                                            </strong>
-                                            <ul>
-                                              {sub.practices.map(
-                                                (practice, idx) => (
-                                                  <li key={idx}>{practice}</li>
-                                                )
-                                              )}
-                                            </ul>
-                                            <a
-                                              href={`https://wa.me/393459256257?text=Info: ${service.title} - ${sub.title}`}
-                                              target="_blank"
-                                              rel="noopener noreferrer"
-                                              className="btn btn--primary btn--small"
-                                            >
-                                              <FaWhatsapp /> Chiedi Info
-                                            </a>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                              ) : (
-                                <div className="simple-service">
-                                  <strong>Pratiche che gestiamo:</strong>
-                                  <ul>
-                                    {service.practices.map((practice, idx) => (
-                                      <li key={idx}>{practice}</li>
-                                    ))}
-                                  </ul>
-                                  <a
-                                    href={`https://wa.me/393459256257?text=Info: ${service.title}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="btn btn--primary btn--small"
-                                  >
-                                    <FaWhatsapp /> Richiedi Informazioni
-                                  </a>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </main>
-            </div>
-          </div>
-        </section>
-
-        {/* Professional CTA Section */}
-        <section className="servizi-cta-section">
-          <div className="container">
-            <div className="cta-content">
-              <h2>Non hai trovato quello che cercavi?</h2>
-              <p>
-                Il nostro team è pronto ad ascoltarti. Contattaci per una
-                consulenza personalizzata e scopri come possiamo aiutarti con le
-                tue pratiche.
-              </p>
-              <div className="cta-buttons">
-                <a
-                  href="https://wa.me/393459256257?text=Ciao, vorrei informazioni sui vostri servizi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn--primary btn--large"
+              <nav className="category-services-list">
+                <Link
+                  to="/servizi/permessi-di-soggiorno"
+                  className="category-service-link"
                 >
-                  <FaWhatsapp /> Scrivici su WhatsApp
-                </a>
-                <Link to="/contatti" className="btn btn--outline btn--large">
-                  Vai ai Contatti
+                  <div className="service-link-content">
+                    <FileText size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Permessi di Soggiorno
+                      </span>
+                      <span className="service-link-desc">
+                        Prima richiesta, rinnovi, conversioni • 8 tipologie
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
                 </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+                <Link
+                  to="/servizi/migranti/ricongiungimenti-familiari"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Users size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Ricongiungimenti Familiari
+                      </span>
+                      <span className="service-link-desc">
+                        Porta la tua famiglia in Italia
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/cittadinanza-italiana"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Flag size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Cittadinanza Italiana
+                      </span>
+                      <span className="service-link-desc">
+                        Matrimonio, residenza, Jure Sanguinis • 5 tipologie
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/migranti/riconoscimento-titoli-di-studio"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Briefcase size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Riconoscimento Titoli di Studio
+                      </span>
+                      <span className="service-link-desc">
+                        Equipollenze e dichiarazioni di valore
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/migranti/traduzioni-atti"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <FileText size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Traduzioni Atti
+                      </span>
+                      <span className="service-link-desc">
+                        Traduzioni asseverate e legalizzazioni
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+              </nav>
+            </section>
+          </AnimateOnScroll>
+
+          {/* VIAGGIATORI */}
+          <AnimateOnScroll animation="fade-up" delay={200}>
+            <section id="viaggiatori" className="editorial-section">
+              <header className="section-header">
+                <div className="section-header__icon">
+                  <Plane size={32} strokeWidth={1.5} />
+                </div>
+                <div className="section-header__content">
+                  <h2 className="section-title">Viaggiatori</h2>
+                  <p className="section-intro">
+                    Assistenza per visti d'ingresso, mediazione con ambasciate e
+                    consolati, preparazione documentazione per pratiche
+                    consolari.
+                  </p>
+                </div>
+              </header>
+
+              <nav className="category-services-list">
+                <Link
+                  to="/servizi/viaggiatori/visti-italia"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Plane size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Visti per l'Italia
+                      </span>
+                      <span className="service-link-desc">
+                        Turismo, lavoro, studio e famiglia
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/viaggiatori/mediazione-ambasciate"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Briefcase size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Mediazione con Ambasciate
+                      </span>
+                      <span className="service-link-desc">
+                        Assistenza con enti consolari
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+              </nav>
+            </section>
+          </AnimateOnScroll>
+
+          {/* FAMIGLIE */}
+          <AnimateOnScroll animation="fade-up" delay={250}>
+            <section id="famiglie" className="editorial-section">
+              <header className="section-header">
+                <div className="section-header__icon">
+                  <Users size={32} strokeWidth={1.5} />
+                </div>
+                <div className="section-header__content">
+                  <h2 className="section-title">Famiglie</h2>
+                  <p className="section-intro">
+                    Gestione completa di contratti di lavoro domestico: colf,
+                    badanti, baby-sitter. Assunzioni, buste paga, CUD e TFR.
+                  </p>
+                </div>
+              </header>
+
+              <nav className="category-services-list">
+                <Link
+                  to="/servizi/famiglie/gestione-lavoro-domestico"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Users size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Gestione Contratti Lavoro Domestico
+                      </span>
+                      <span className="service-link-desc">
+                        Colf, badanti, baby-sitter: assunzioni e buste paga
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+              </nav>
+            </section>
+          </AnimateOnScroll>
+
+          {/* ALTRI SERVIZI */}
+          <AnimateOnScroll animation="fade-up" delay={300}>
+            <section id="altri-servizi" className="editorial-section">
+              <header className="section-header">
+                <div className="section-header__icon">
+                  <Briefcase size={32} strokeWidth={1.5} />
+                </div>
+                <div className="section-header__content">
+                  <h2 className="section-title">Altri Servizi</h2>
+                  <p className="section-intro">
+                    CAF, Patronato, successioni, contratti d'affitto, consulenza
+                    legale e disbrigo pratiche presso enti pubblici.
+                  </p>
+                </div>
+              </header>
+
+              <nav className="category-services-list">
+                <Link
+                  to="/servizi/caf-patronato"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Calculator size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        CAF e Patronato
+                      </span>
+                      <span className="service-link-desc">
+                        730, ISEE e pratiche fiscali • 2 servizi
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/altri/successioni"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <FileText size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">Successioni</span>
+                      <span className="service-link-desc">
+                        Gestione pratiche ereditarie
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/altri/contratti-affitto"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Home size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Contratti di Affitto
+                      </span>
+                      <span className="service-link-desc">
+                        Registrazione e gestione contratti
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/altri/consulenza-legale"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Briefcase size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Consulenza Legale
+                      </span>
+                      <span className="service-link-desc">
+                        Supporto legale per immigrazione
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/altri/disbrigo-pratiche"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <FileText size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Disbrigo Pratiche presso Enti Locali
+                      </span>
+                      <span className="service-link-desc">
+                        Assistenza con comuni, prefetture e questure
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+              </nav>
+            </section>
+          </AnimateOnScroll>
+        </div>
+
+        {/* CTA Section */}
+        <AnimateOnScroll animation="fade-up" delay={350}>
+          <section className="hub-cta">
+            <h2>Hai Bisogno di Aiuto?</h2>
+            <p>
+              Non sei sicuro quale servizio sia più adatto alla tua situazione?
+              Il nostro team è pronto ad ascoltarti.
+            </p>
+            <WhatsAppPopup
+              position="top"
+              triggerElement={
+                <button className="btn btn--primary btn--large">
+                  Contattaci su WhatsApp
+                </button>
+              }
+            />
+          </section>
+        </AnimateOnScroll>
       </div>
-    </>
+    </div>
   );
 };
 

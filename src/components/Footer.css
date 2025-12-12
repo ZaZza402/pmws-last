@@ -79,12 +79,36 @@
 
 .footer-contact {
   font-style: normal;
-  display: grid;
-  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.footer-contact a {
-  font-weight: 600;
+.footer-contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer-contact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #f78d23;
+  opacity: 0.9;
+}
+
+.footer-contact-value {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.5;
+  transition: opacity 0.2s ease;
+}
+
+.footer-contact-value:hover {
+  opacity: 0.8;
 }
 
 .footer-col ul {

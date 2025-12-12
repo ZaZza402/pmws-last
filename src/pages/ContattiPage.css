@@ -133,23 +133,94 @@
   line-height: 1.6;
 }
 
-.contact-step-content a {
-  display: inline-block;
+/* Contact Numbers List - Beautiful & Balanced */
+.contact-numbers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-top: 1rem;
-  background: linear-gradient(135deg, #f78d23 0%, #e87722 100%);
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 10px;
-  padding: 0.75rem 1.3rem;
-  text-decoration: none;
-  box-shadow: 0 2px 12px rgba(247, 141, 35, 0.25);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.contact-step-content a:hover,
-.contact-step-content a:focus {
-  background: linear-gradient(135deg, #2b286f 0%, #1e1d50 100%);
-  color: #ffffff;
+.contact-number-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.375rem 0;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.contact-number-link:hover {
+  opacity: 0.8;
+  transform: translateX(3px);
+}
+
+.contact-number-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.contact-number-link:hover .contact-number-icon {
+  transform: scale(1.1);
+}
+
+.contact-number-text {
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #2b286f;
+}
+
+.contact-number-text strong {
+  font-weight: 500;
+  color: #475569;
+  margin-left: 0.375rem;
+}
+
+/* WhatsApp variant */
+.contact-number-link--whatsapp .contact-number-icon {
+  color: #25d366;
+}
+
+/* Phone variant */
+.contact-number-link--phone .contact-number-icon {
+  color: #2b286f;
+}
+
+/* Email Quick Link - keep for email only */
+.contact-quick-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-quick-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(43, 40, 111, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.contact-quick-link svg {
+  font-size: 1.125rem;
+}
+
+.contact-quick-link--email {
+  background: linear-gradient(135deg, #f78d23 0%, #e87722 100%);
+  color: white;
+}
+
+.contact-quick-link--email:hover {
+  background: linear-gradient(135deg, #e87722 0%, #d96e1e 100%);
 }

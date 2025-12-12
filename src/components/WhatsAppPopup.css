@@ -1,0 +1,231 @@
+/* src/components/WhatsAppPopup.css */
+
+/* Wrapper */
+.whatsapp-popup-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Default Trigger Button */
+.whatsapp-popup-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.whatsapp-popup-trigger:hover {
+  opacity: 0.8;
+}
+
+.whatsapp-popup-trigger svg {
+  font-size: 1.5rem;
+  color: #25d366;
+}
+
+/* Popup Container */
+.whatsapp-popup {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1);
+  min-width: 240px;
+  overflow: hidden;
+}
+
+/* Position variants - no transform to avoid conflicts with Framer Motion */
+.whatsapp-popup--auto,
+.whatsapp-popup--bottom {
+  top: calc(100% + 12px);
+  left: 50%;
+  margin-left: -120px; /* Half of min-width */
+}
+
+.whatsapp-popup--top {
+  bottom: calc(100% + 12px);
+  left: 50%;
+  margin-left: -120px; /* Half of min-width */
+}
+
+.whatsapp-popup--left {
+  right: calc(100% + 12px);
+  top: 50%;
+  margin-top: -60px; /* Approximate half height */
+}
+
+.whatsapp-popup--right {
+  left: calc(100% + 12px);
+  top: 50%;
+  margin-top: -60px; /* Approximate half height */
+}
+
+/* Mobile: Force top positioning for tight spaces */
+@media (max-width: 768px) {
+  .whatsapp-popup--bottom,
+  .whatsapp-popup--auto {
+    top: auto;
+    bottom: calc(100% + 8px);
+  }
+
+  .whatsapp-popup--bottom .whatsapp-popup__arrow,
+  .whatsapp-popup--auto .whatsapp-popup__arrow {
+    top: auto;
+    bottom: -8px;
+  }
+}
+
+/* Cute arrow/tail */
+.whatsapp-popup__arrow {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: white;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.whatsapp-popup--bottom .whatsapp-popup__arrow,
+.whatsapp-popup--auto .whatsapp-popup__arrow {
+  top: -6px;
+  left: 50%;
+  margin-left: -8px;
+}
+
+.whatsapp-popup--top .whatsapp-popup__arrow {
+  bottom: -6px;
+  left: 50%;
+  margin-left: -8px;
+}
+
+.whatsapp-popup--left .whatsapp-popup__arrow {
+  right: -6px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.whatsapp-popup--right .whatsapp-popup__arrow {
+  left: -6px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+/* Contacts List */
+.whatsapp-popup__contacts {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual Contact Button */
+.whatsapp-popup__contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: white;
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-family: inherit;
+}
+
+.whatsapp-popup__contact:last-child {
+  border-bottom: none;
+}
+
+.whatsapp-popup__contact:hover {
+  background: #f7f7f7;
+}
+
+.whatsapp-popup__contact:active {
+  background: #ececec;
+}
+
+/* Contact Info */
+.whatsapp-popup__contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.whatsapp-popup__name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+.whatsapp-popup__phone {
+  font-size: 0.8125rem;
+  color: #666;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* WhatsApp Icon */
+.whatsapp-popup__icon {
+  font-size: 1.5rem;
+  color: #25d366;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+/* Phone Icon - different color */
+.whatsapp-popup__icon--phone {
+  color: #2b286f;
+}
+
+.whatsapp-popup__contact:hover .whatsapp-popup__icon {
+  transform: scale(1.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .whatsapp-popup {
+    min-width: 220px;
+  }
+
+  .whatsapp-popup__contact {
+    padding: 0.875rem 1rem;
+  }
+
+  .whatsapp-popup__name {
+    font-size: 0.875rem;
+  }
+
+  .whatsapp-popup__phone {
+    font-size: 0.75rem;
+  }
+
+  .whatsapp-popup__icon {
+    font-size: 1.375rem;
+  }
+}
+
+/* Animation enhancement - subtle bounce */
+@keyframes popupBounce {
+  0% {
+    transform: translateX(-50%) scale(0.8);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.05);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.whatsapp-popup--bottom,
+.whatsapp-popup--auto {
+  animation: popupBounce 0.3s ease-out;
+}

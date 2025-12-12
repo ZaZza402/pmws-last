@@ -1,0 +1,12 @@
+.service-layout {
+  position: relative;
+  min-height: 100vh;
+  /* Ensure no overflow hides the sticky element */
+  overflow: visible;
+  padding-top: 100px; /* Compensation for fixed search bar */
+}
+
+.service-layout main {
+  position: relative;
+  z-index: 1;
+}

@@ -1,37 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaWhatsapp, FaTimes } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+import {
+  whatsappContacts,
+  getWhatsAppUrl,
+  isMobileDevice,
+} from "../utils/whatsappHelper";
 
 const WhatsAppButton = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const message = "Buongiorno, vorrei informazioni sui vostri servizi.";
-
-  // Detect mobile device
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-  // Contact options
-  const contacts = [
-    {
-      name: "Paula",
-      phone: "393456839875",
-      displayPhone: "+39 345 683 9875",
-      color: "#2b286f",
-    },
-    {
-      name: "Mihaela",
-      phone: "393459256257",
-      displayPhone: "+39 345 925 6257",
-      color: "#F78D23",
-    },
-  ];
-
-  const getWhatsAppUrl = (phone) => {
-    return isMobile
-      ? `whatsapp://send?phone=${phone}&text=${encodeURIComponent(message)}`
-      : `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-  };
+  const mobile = isMobileDevice();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,92 +33,75 @@ const WhatsAppButton = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleContactClick = (contact) => {
+    const url = getWhatsAppUrl(contact.phone, message, mobile);
+    window.open(url, "_blank", "noopener,noreferrer");
+    setIsPopupOpen(false);
+  };
+
   return (
     <AnimatePresence>
       {isVisible && (
         <div className="whatsapp-btn-container">
-          {/* Contact Options Menu */}
+          {/* Cute Popup */}
           <AnimatePresence>
-            {isMenuOpen && (
+            {isPopupOpen && (
               <motion.div
-                className="whatsapp-menu"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                className="whatsapp-fab-popup"
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.85 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 25,
+                }}
               >
-                {contacts.map((contact, index) => (
-                  <motion.a
-                    key={contact.name}
-                    href={getWhatsAppUrl(contact.phone)}
-                    className="whatsapp-menu-item"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsMenuOpen(false)}
+                {/* Arrow pointing down to button */}
+                <div className="whatsapp-fab-popup__arrow" />
+
+                {/* Contact options */}
+                {whatsappContacts.map((contact, index) => (
+                  <motion.button
+                    key={contact.id}
+                    onClick={() => handleContactClick(contact)}
+                    className="whatsapp-fab-popup__contact"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, x: -5 }}
+                    transition={{ delay: index * 0.05 }}
+                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ "--contact-color": contact.color }}
                   >
-                    <div className="whatsapp-menu-item-content">
-                      <span className="whatsapp-menu-name">{contact.name}</span>
-                      <span className="whatsapp-menu-phone">
-                        {contact.displayPhone}
+                    <div className="whatsapp-fab-popup__info">
+                      <span className="whatsapp-fab-popup__name">
+                        {contact.name}
+                      </span>
+                      <span className="whatsapp-fab-popup__phone">
+                        {contact.phone}
                       </span>
                     </div>
-                    <FaWhatsapp className="whatsapp-menu-icon" size={20} />
-                  </motion.a>
+                    <FaWhatsapp className="whatsapp-fab-popup__icon" />
+                  </motion.button>
                 ))}
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Main WhatsApp Button */}
+          {/* Main WhatsApp FAB */}
           <motion.button
-            className={`whatsapp-btn ${isMenuOpen ? "whatsapp-btn--open" : ""}`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={
-              isMenuOpen ? "Chiudi menu WhatsApp" : "Apri menu WhatsApp"
-            }
-            title={isMenuOpen ? "Chiudi menu" : "Contattaci su WhatsApp"}
+            className="whatsapp-btn"
+            onClick={() => setIsPopupOpen(!isPopupOpen)}
+            aria-label="Contattaci su WhatsApp"
+            title="Contattaci su WhatsApp"
             initial={{ opacity: 0, scale: 0, y: 20 }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              rotate: isMenuOpen ? 90 : 0,
-            }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0, y: 20 }}
             transition={{ type: "spring", stiffness: 150, damping: 15 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <AnimatePresence mode="wait">
-              {isMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <FaTimes size={28} color="#f6f6f6ff" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="whatsapp"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <FaWhatsapp size={28} color="#f6f6f6ff" />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <FaWhatsapp size={28} color="#f6f6f6ff" />
           </motion.button>
         </div>
       )}

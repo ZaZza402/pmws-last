@@ -9,6 +9,8 @@ import {
   FaInstagram,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import WhatsAppPopup from "./WhatsAppPopup";
+import PhonePopup from "./PhonePopup";
 import "./ContactQuickLinks.css";
 
 const contactMethods = [
@@ -16,17 +18,15 @@ const contactMethods = [
     icon: <FaWhatsapp />,
     title: "WhatsApp",
     subtitle: "Risposta immediata",
-    link: "https://wa.me/393459256257?text=Buongiorno%2C%20vorrei%20informazioni",
     color: "#25d366",
-    external: true,
+    isWhatsApp: true,
   },
   {
     icon: <FaPhoneAlt />,
-    title: "Paula / Mihaela",
-    subtitle: "+39 345 683 9875 / +39 345 925 6257",
-    link: "tel:+393456839875",
+    title: "Chiamaci",
+    subtitle: "Paula / Mihaela",
     color: "#2b286f",
-    external: false,
+    isPhone: true,
   },
   {
     icon: <FaEnvelope />,
@@ -62,26 +62,88 @@ const ContactQuickLinks = () => {
         </div>
 
         <div className="contact-quick__grid">
-          {contactMethods.map((method, index) => (
-            <a
-              key={index}
-              href={method.link}
-              className="contact-quick__card"
-              target={method.external ? "_blank" : undefined}
-              rel={method.external ? "noopener noreferrer" : undefined}
-              style={{ "--card-color": method.color }}
-            >
-              <div className="contact-quick__icon" aria-hidden="true">
-                {method.icon}
-              </div>
-              <div className="contact-quick__content">
-                <strong className="contact-quick__title">{method.title}</strong>
-                <span className="contact-quick__subtitle">
-                  {method.subtitle}
-                </span>
-              </div>
-            </a>
-          ))}
+          {contactMethods.map((method, index) => {
+            // WhatsApp gets popup
+            if (method.isWhatsApp) {
+              return (
+                <WhatsAppPopup
+                  key={index}
+                  message="Buongiorno, vorrei informazioni sui vostri servizi."
+                  position="bottom"
+                  triggerElement={
+                    <div
+                      className="contact-quick__card"
+                      style={{ "--card-color": method.color }}
+                    >
+                      <div className="contact-quick__icon" aria-hidden="true">
+                        {method.icon}
+                      </div>
+                      <div className="contact-quick__content">
+                        <strong className="contact-quick__title">
+                          {method.title}
+                        </strong>
+                        <span className="contact-quick__subtitle">
+                          {method.subtitle}
+                        </span>
+                      </div>
+                    </div>
+                  }
+                />
+              );
+            }
+
+            // Phone gets popup
+            if (method.isPhone) {
+              return (
+                <PhonePopup
+                  key={index}
+                  position="bottom"
+                  triggerElement={
+                    <div
+                      className="contact-quick__card"
+                      style={{ "--card-color": method.color }}
+                    >
+                      <div className="contact-quick__icon" aria-hidden="true">
+                        {method.icon}
+                      </div>
+                      <div className="contact-quick__content">
+                        <strong className="contact-quick__title">
+                          {method.title}
+                        </strong>
+                        <span className="contact-quick__subtitle">
+                          {method.subtitle}
+                        </span>
+                      </div>
+                    </div>
+                  }
+                />
+              );
+            }
+
+            // Other contact methods remain as links
+            return (
+              <a
+                key={index}
+                href={method.link}
+                className="contact-quick__card"
+                target={method.external ? "_blank" : undefined}
+                rel={method.external ? "noopener noreferrer" : undefined}
+                style={{ "--card-color": method.color }}
+              >
+                <div className="contact-quick__icon" aria-hidden="true">
+                  {method.icon}
+                </div>
+                <div className="contact-quick__content">
+                  <strong className="contact-quick__title">
+                    {method.title}
+                  </strong>
+                  <span className="contact-quick__subtitle">
+                    {method.subtitle}
+                  </span>
+                </div>
+              </a>
+            );
+          })}
         </div>
 
         {/* Social Media Links */}

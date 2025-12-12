@@ -2,6 +2,8 @@ import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 import Breadcrumb from "../components/Breadcrumb";
+import WhatsAppPopup from "../components/WhatsAppPopup";
+import PhonePopup from "../components/PhonePopup";
 import { LiveClock } from "../components/DocumentSection";
 import "./ContattiPage.css";
 
@@ -11,49 +13,23 @@ const contactOptions = [
     title: "WhatsApp",
     description:
       "Perfetto per una domanda veloce o per inviarci una foto di un documento.",
-    action: (
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <a
-          href="https://wa.me/393456839875?text=Buongiorno"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ display: "block" }}
-        >
-          Paula: +39 345 683 9875
-        </a>
-        <a
-          href="https://wa.me/393459256257?text=Buongiorno"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ display: "block" }}
-        >
-          Mihaela: +39 345 925 6257
-        </a>
-      </div>
-    ),
+    type: "whatsapp",
   },
   {
     icon: <FaPhoneAlt />,
     title: "Telefono",
     description:
       "Se preferisci parlare direttamente con noi per spiegarci la tua situazione.",
-    action: (
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <a href="tel:+393456839875" style={{ display: "block" }}>
-          Paula: +39 345 683 9875
-        </a>
-        <a href="tel:+393459256257" style={{ display: "block" }}>
-          Mihaela: +39 345 925 6257
-        </a>
-      </div>
-    ),
+    type: "phone",
   },
   {
     icon: <FaEnvelope />,
     title: "Email",
     description:
       "Ideale per richieste più dettagliate o se hai bisogno di allegare più file.",
-    action: <a href="mailto:info@puntomigrare.it">Scrivi un'Email</a>,
+    type: "email",
+    link: "mailto:info@puntomigrare.it",
+    linkText: "info@puntomigrare.it",
   },
 ];
 
@@ -111,7 +87,69 @@ const ContattiPage = () => {
                       <div className="contact-step-content">
                         <strong>{option.title}</strong>
                         <p>{option.description}</p>
-                        {option.action}
+
+                        {/* WhatsApp - show both numbers with icons */}
+                        {option.type === "whatsapp" && (
+                          <div className="contact-numbers-list">
+                            <a
+                              href="https://wa.me/393456839875?text=Buongiorno"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="contact-number-link contact-number-link--whatsapp"
+                            >
+                              <FaWhatsapp className="contact-number-icon" />
+                              <span className="contact-number-text">
+                                Paula <strong>+39 345 683 9875</strong>
+                              </span>
+                            </a>
+                            <a
+                              href="https://wa.me/393459256257?text=Buongiorno"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="contact-number-link contact-number-link--whatsapp"
+                            >
+                              <FaWhatsapp className="contact-number-icon" />
+                              <span className="contact-number-text">
+                                Mihaela <strong>+39 345 925 6257</strong>
+                              </span>
+                            </a>
+                          </div>
+                        )}
+
+                        {/* Phone - show both numbers with icons */}
+                        {option.type === "phone" && (
+                          <div className="contact-numbers-list">
+                            <a
+                              href="tel:+393456839875"
+                              className="contact-number-link contact-number-link--phone"
+                            >
+                              <FaPhoneAlt className="contact-number-icon" />
+                              <span className="contact-number-text">
+                                Paula <strong>+39 345 683 9875</strong>
+                              </span>
+                            </a>
+                            <a
+                              href="tel:+393459256257"
+                              className="contact-number-link contact-number-link--phone"
+                            >
+                              <FaPhoneAlt className="contact-number-icon" />
+                              <span className="contact-number-text">
+                                Mihaela <strong>+39 345 925 6257</strong>
+                              </span>
+                            </a>
+                          </div>
+                        )}
+
+                        {/* Email direct link */}
+                        {option.type === "email" && (
+                          <a
+                            href={option.link}
+                            className="contact-quick-link contact-quick-link--email"
+                          >
+                            <FaEnvelope />
+                            <span>{option.linkText}</span>
+                          </a>
+                        )}
                       </div>
                     </div>
                   ))}

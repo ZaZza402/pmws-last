@@ -46,7 +46,7 @@ const ServiceCard = ({ category, services, image }) => {
           {services.map((service) => (
             <li key={service.id} className="service-card__item">
               <Link
-                to={`/servizi#${service.id}`}
+                to={service.path || `/servizi#${service.id}`}
                 className="service-card__link"
               >
                 {service.shortTitle}

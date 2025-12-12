@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import logoWhite from "../assets/brand-logo/insegna bianco.png";
+import WhatsAppPopup from "./WhatsAppPopup";
 import "./Footer.css";
 
 const Footer = () => {
@@ -43,10 +44,40 @@ const Footer = () => {
               la massima tranquillità.
             </p>
             <address className="footer-contact">
-              <a href="tel:+393456839875">Paula: +39 345 683 9875</a>
-              <a href="tel:+393459256257">Mihaela: +39 345 925 6257</a>
-              <a href="mailto:info@puntomigrare.it">info@puntomigrare.it</a>
-              <span>Via del Fuoco Sacro, 97, 00133 Roma RM</span>
+              <div className="footer-contact-item">
+                <span className="footer-contact-label">Paula</span>
+                <a href="tel:+393456839875" className="footer-contact-value">
+                  +39 345 683 9875
+                </a>
+              </div>
+              <div className="footer-contact-item">
+                <span className="footer-contact-label">Mihaela</span>
+                <a href="tel:+393459256257" className="footer-contact-value">
+                  +39 345 925 6257
+                </a>
+              </div>
+              <div className="footer-contact-item">
+                <span className="footer-contact-label">Email</span>
+                <a
+                  href="mailto:info@puntomigrare.it"
+                  className="footer-contact-value"
+                >
+                  info@puntomigrare.it
+                </a>
+              </div>
+              <div className="footer-contact-item">
+                <span className="footer-contact-label">Ufficio</span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Via+del+Fuoco+Sacro+97+00133+Roma+RM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-contact-value"
+                >
+                  Via del Fuoco Sacro, 97
+                  <br />
+                  00133 Roma RM
+                </a>
+              </div>
             </address>
             <div className="footer-social">
               <h4 className="footer-social__title">Seguici</h4>
@@ -69,15 +100,14 @@ const Footer = () => {
                 >
                   <FaInstagram size={20} />
                 </a>
-                <a
-                  href="https://wa.me/393459256257"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Contattaci su WhatsApp"
-                  className="social-link social-link--whatsapp"
-                >
-                  <FaWhatsapp size={20} />
-                </a>
+                <WhatsAppPopup
+                  triggerElement={
+                    <a className="social-link social-link--whatsapp">
+                      <FaWhatsapp size={20} />
+                    </a>
+                  }
+                  position="top"
+                />
               </div>
             </div>
           </div>
@@ -139,7 +169,7 @@ const Footer = () => {
             </ul>
             <div className="footer-credit">
               <small>
-                Sito Creato da{" "}
+                Sito da{" "}
                 <a
                   href="https://www.alecsdesign.xyz"
                   target="_blank"

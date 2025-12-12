@@ -119,6 +119,12 @@ html[data-theme="dark"] {
 /* ===== BASE TYPOGRAPHY ===== */
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight on mobile */
+}
+
+/* Remove default focus outline for mouse users, keep for keyboard if needed or handle via :focus-visible */
+*:focus {
+  outline: none;
 }
 
 html {
@@ -141,6 +147,14 @@ body {
   line-height: 1.7;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Lock scroll when menu is open */
+html.menu-open,
+body.menu-open {
+  overflow: hidden !important;
+  height: 100% !important;
+  touch-action: none; /* Prevent touch scrolling on mobile */
 }
 
 h1,
@@ -238,6 +252,7 @@ img {
 .container {
   width: min(var(--container), 92vw);
   margin: 0 auto;
+  position: relative;
 }
 
 .section {
@@ -344,8 +359,7 @@ a {
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
+  outline: none; /* Removed blue outline as requested */
 }
 
 .btn--primary {

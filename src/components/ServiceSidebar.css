@@ -1,0 +1,195 @@
+/* src/components/ServiceSidebar.css */
+
+.service-sidebar {
+  position: sticky;
+  top: 140px; /* Adjusted to clear the sticky ServiceSearch bar */
+  height: fit-content;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.service-sidebar__section {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.service-sidebar__title {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2b286f;
+}
+
+/* In This Page Navigation */
+.service-sidebar__nav {
+  margin: 0;
+}
+
+.service-sidebar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-sidebar__item {
+  margin: 0;
+}
+
+.service-sidebar__link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.625rem 0.75rem;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  color: #666;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.service-sidebar__link:hover {
+  color: #2b286f;
+  background: rgba(43, 40, 111, 0.05);
+}
+
+.service-sidebar__link.active {
+  color: #2b286f;
+  font-weight: 600;
+  border-left-color: #f78d23;
+  background: rgba(43, 40, 111, 0.05);
+}
+
+/* Contact CTA */
+.service-sidebar__cta {
+  background: linear-gradient(135deg, #2b286f 0%, #3d3a8f 100%);
+  color: white;
+}
+
+.service-sidebar__cta .service-sidebar__title {
+  color: white;
+}
+
+.service-sidebar__cta-text {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+.service-sidebar__cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.service-sidebar__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.service-sidebar__button--whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.service-sidebar__button--whatsapp:hover {
+  background: #20bd5a;
+  transform: translateY(-1px);
+}
+
+.service-sidebar__button--phone {
+  background: white;
+  color: #2b286f;
+  border: 2px solid white;
+}
+
+.service-sidebar__button--phone:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+/* Related Services */
+.service-sidebar__related {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-sidebar__related-item {
+  margin: 0;
+}
+
+.service-sidebar__related-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  color: #2b286f;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.service-sidebar__related-link:hover {
+  background: rgba(43, 40, 111, 0.1);
+  transform: translateX(3px);
+}
+
+.service-sidebar__related-link svg {
+  font-size: 0.75rem;
+  color: #f78d23;
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+  .service-sidebar {
+    position: static;
+    max-height: none;
+    margin-top: 2rem;
+  }
+}
+
+/* Scrollbar */
+.service-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.service-sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.service-sidebar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.service-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

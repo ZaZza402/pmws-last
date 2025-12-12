@@ -1,7 +1,7 @@
 // src/components/Header.jsx
 
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import MobileDrawer from "./MobileDrawer";
 import logoSvg from "../assets/brand-logo/pm-logo-blue-orange.svg";
 import "./Header.css";
@@ -9,15 +9,25 @@ import "./Header.css";
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = React.useRef(null);
+  const location = useLocation();
+
+  // Close dropdown when route changes
+  useEffect(() => {
+    setIsDropdownOpen(false);
+  }, [location]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setIsDrawerOpen(false);
+        setIsDropdownOpen(false);
       }
     };
     if (isDrawerOpen) {
       document.body.classList.add("menu-open");
+      document.documentElement.classList.add("menu-open"); // Lock html as well
       document.addEventListener("keydown", handleKeyDown);
     }
 
@@ -28,14 +38,30 @@ const Header = () => {
       setIsScrolled(scrollPosition > 50);
     };
 
+    // Close dropdown when clicking outside
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.body.classList.remove("menu-open");
+      document.documentElement.classList.remove("menu-open");
       document.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isDrawerOpen]);
+
+  // Hide header on /servizi routes
+  if (location.pathname.startsWith("/servizi")) {
+    return null;
+  }
 
   return (
     <>
@@ -60,7 +86,57 @@ const Header = () => {
 
           <nav className="desktop-nav" id="desktopNav" aria-label="Principale">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/servizi">Servizi</NavLink>
+
+            {/* Services Dropdown */}
+            <div className="nav-dropdown" ref={dropdownRef}>
+              <button
+                className="nav-dropdown__trigger"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                aria-expanded={isDropdownOpen}
+              >
+                Servizi
+              </button>
+              {isDropdownOpen && (
+                <div className="nav-dropdown__menu">
+                  <Link
+                    to="/servizi"
+                    onClick={() => setIsDropdownOpen(false)}
+                    className="nav-dropdown__link nav-dropdown__link--main"
+                  >
+                    Tutti i Servizi
+                  </Link>
+                  <Link
+                    to="/servizi#migranti"
+                    onClick={() => setIsDropdownOpen(false)}
+                    className="nav-dropdown__link"
+                  >
+                    Migranti
+                  </Link>
+                  <Link
+                    to="/servizi#viaggiatori"
+                    onClick={() => setIsDropdownOpen(false)}
+                    className="nav-dropdown__link"
+                  >
+                    Viaggiatori
+                  </Link>
+                  <Link
+                    to="/servizi#famiglie"
+                    onClick={() => setIsDropdownOpen(false)}
+                    className="nav-dropdown__link"
+                  >
+                    Famiglie
+                  </Link>
+                  <Link
+                    to="/servizi#altri-servizi"
+                    onClick={() => setIsDropdownOpen(false)}
+                    className="nav-dropdown__link"
+                  >
+                    Altri Servizi
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <NavLink to="/faq">FAQ</NavLink>
             <NavLink to="/contatti">Contatti</NavLink>
           </nav>

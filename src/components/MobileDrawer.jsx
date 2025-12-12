@@ -1,12 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
+import { ChevronDown } from "lucide-react";
+import WhatsAppPopup from "./WhatsAppPopup";
 import "./MobileDrawer.css";
 
 const MobileDrawer = ({ isOpen, onClose }) => {
   const drawerRef = useRef(null);
   const [shouldRender, setShouldRender] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [expandedCategory, setExpandedCategory] = useState(null);
+
+  const toggleCategory = (categoryId) => {
+    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  };
 
   // Handle rendering with proper timing for smooth animations
   useEffect(() => {
@@ -117,13 +124,69 @@ const MobileDrawer = ({ isOpen, onClose }) => {
             <Link to="/" onClick={onClose} className="mobile-drawer__link">
               Home
             </Link>
-            <Link
-              to="/servizi"
-              onClick={onClose}
-              className="mobile-drawer__link"
-            >
-              Servizi
-            </Link>
+
+            {/* Services Accordion - Simplified */}
+            <div className="mobile-drawer__category">
+              <button
+                className="mobile-drawer__category-trigger"
+                onClick={() => toggleCategory("servizi")}
+                aria-expanded={expandedCategory === "servizi"}
+              >
+                <span>Servizi</span>
+                <ChevronDown
+                  className={`mobile-drawer__chevron ${
+                    expandedCategory === "servizi" ? "open" : ""
+                  }`}
+                  size={20}
+                />
+              </button>
+              <div
+                className={`mobile-drawer__category-menu ${
+                  expandedCategory === "servizi" ? "open" : ""
+                }`}
+              >
+                <Link
+                  to="/servizi"
+                  onClick={onClose}
+                  className="mobile-drawer__category-link mobile-drawer__category-link--main"
+                >
+                  Tutti i Servizi
+                </Link>
+
+                <Link
+                  to="/servizi#migranti"
+                  onClick={onClose}
+                  className="mobile-drawer__category-link"
+                >
+                  Migranti
+                </Link>
+
+                <Link
+                  to="/servizi#viaggiatori"
+                  onClick={onClose}
+                  className="mobile-drawer__category-link"
+                >
+                  Viaggiatori
+                </Link>
+
+                <Link
+                  to="/servizi#famiglie"
+                  onClick={onClose}
+                  className="mobile-drawer__category-link"
+                >
+                  Famiglie
+                </Link>
+
+                <Link
+                  to="/servizi#altri-servizi"
+                  onClick={onClose}
+                  className="mobile-drawer__category-link"
+                >
+                  Altri Servizi
+                </Link>
+              </div>
+            </div>
+
             <Link to="/faq" onClick={onClose} className="mobile-drawer__link">
               FAQ
             </Link>
@@ -139,16 +202,16 @@ const MobileDrawer = ({ isOpen, onClose }) => {
           {/* CTA Button */}
           <div className="mobile-drawer__cta">
             <p className="mobile-drawer__cta-title">Hai bisogno di aiuto?</p>
-            <a
-              href="https://wa.me/393459256257?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={onClose}
-              className="mobile-drawer__whatsapp-btn"
-            >
-              <FaWhatsapp className="mobile-drawer__whatsapp-icon" />
-              <span>Contattaci su WhatsApp</span>
-            </a>
+            <WhatsAppPopup
+              message="Buongiorno, vorrei informazioni sui vostri servizi."
+              position="top"
+              triggerElement={
+                <button className="mobile-drawer__whatsapp-btn">
+                  <FaWhatsapp className="mobile-drawer__whatsapp-icon" />
+                  <span>Contattaci su WhatsApp</span>
+                </button>
+              }
+            />
           </div>
         </div>
       </div>

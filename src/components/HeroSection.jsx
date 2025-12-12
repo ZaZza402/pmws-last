@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import heroBackground from "../assets/brand-posters/young-family-hero-optimized.webp";
 import logoIcon from "../assets/brand-logo/pm-logo-blue-orange.svg";
+import WhatsAppPopup from "./WhatsAppPopup";
 import "./HeroSection.css";
 
 const HeroSection = () => {
@@ -144,22 +145,25 @@ const HeroSection = () => {
           animate={isLoaded ? "visible" : "hidden"}
           variants={ctaVariants}
         >
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn btn--primary"
-            href="https://wa.me/393459256257?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-            }}
-          >
-            <FaWhatsapp size={20} />
-            Contattaci su WhatsApp
-          </motion.a>
+          <WhatsAppPopup
+            message="Buongiorno, vorrei informazioni sui vostri servizi."
+            position="top"
+            triggerElement={
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn btn--primary"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}
+              >
+                <FaWhatsapp size={20} />
+                Contattaci su WhatsApp
+              </motion.button>
+            }
+          />
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

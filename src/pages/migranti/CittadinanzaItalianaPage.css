@@ -1,0 +1,459 @@
+/* src/pages/NewServiziPage.css */
+/* TRUE EDITORIAL/NEWSPAPER LAYOUT - NO CARDS */
+
+.servizi-hub {
+  padding: 2rem 0 4rem; /* Reduced top padding to 32px (2rem) */
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+.servizi-hub .container {
+  max-width: 100%;
+  padding: 0 2rem;
+}
+
+/* ==========================================
+   EDITORIAL HEADER - NEWSPAPER STYLE
+   ========================================== */
+
+.editorial-header {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.editorial-kicker {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #2b286f;
+  margin-bottom: 0.75rem;
+}
+
+.editorial-headline {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0 0 1.5rem;
+  font-family: "Roboto", sans-serif;
+  word-spacing: normal;
+}
+
+.editorial-deck {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ==========================================
+   EDITORIAL CONTENT - CLEAN LAYOUT
+   ========================================== */
+
+.editorial-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.editorial-section {
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.editorial-section:last-of-type {
+  border-bottom: none;
+}
+
+/* Featured section variant */
+.editorial-section--featured {
+  border-left: 3px solid #f78d23;
+  padding-left: 2rem;
+  border-bottom-color: #f78d23;
+}
+
+/* ==========================================
+   SECTION HEADER - CLEAN & MINIMAL
+   ========================================== */
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-header__icon {
+  flex-shrink: 0;
+  color: #2b286f;
+  margin-top: 0.25rem;
+}
+
+.editorial-section--featured .section-header__icon {
+  color: #f78d23;
+}
+
+.section-header__content {
+  flex: 1;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem;
+}
+
+.section-intro {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+}
+
+/* ==========================================
+   SECTION CONTENT - MULTI-COLUMN LAYOUT
+   ========================================== */
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 100%;
+}
+
+/* ==========================================
+   SUBSECTIONS - TYPOGRAPHY
+   ========================================== */
+
+.subsection {
+  margin-bottom: 0;
+}
+
+.subsection-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2b286f;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #2b286f;
+}
+
+.subsection-intro {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #666;
+  margin: 0 0 1.25rem;
+  font-style: italic;
+}
+
+/* ==========================================
+   SERVICE LIST - CLEAN LINKS
+   ========================================== */
+
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Desktop: Custom multi-column layouts for specific sections */
+@media (min-width: 769px) {
+  /* Prima Richiesta - 4 columns for 19 services */
+  .service-list--4col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem 2rem;
+  }
+
+  /* Rinnovo - Single centered service */
+  .service-list--centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .service-list--centered .service-link {
+    max-width: 450px;
+  }
+
+  /* Conversioni & Cittadinanza Italia - 3 columns */
+  .service-list--3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem 2rem;
+  }
+
+  /* Cittadinanza Estero - 2 columns */
+  .service-list--2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem 2rem;
+  }
+}
+
+.service-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.service-link:hover {
+  color: #2b286f;
+  border-bottom-color: #2b286f;
+  padding-left: 0.5rem;
+}
+
+.service-link svg {
+  flex-shrink: 0;
+  opacity: 0.4;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.service-link:hover svg {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Primary service link variant */
+.service-link--primary {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #f78d23;
+  padding: 1rem 0;
+}
+
+.service-link--primary:hover {
+  color: #d67518;
+  border-bottom-color: #f78d23;
+}
+
+/* ==========================================
+   EDITORIAL CTA - FOOTER
+   ========================================== */
+
+.editorial-cta {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.editorial-cta h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem;
+}
+
+.editorial-cta p {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 0 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editorial-cta__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn--primary {
+  background: #2b286f;
+  color: white;
+}
+
+.btn--primary:hover {
+  background: #1f1c52;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 40, 111, 0.3);
+}
+
+.btn--secondary {
+  background: #25d366;
+  color: white;
+}
+
+.btn--secondary:hover {
+  background: #20bd5a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+/* ==========================================
+   RESPONSIVE - TABLET
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .editorial-headline {
+    font-size: 2.5rem;
+  }
+
+  .section-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .editorial-section--featured {
+    padding-left: 1.5rem;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE - MOBILE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .servizi-hub {
+    padding: 2rem 0 3rem;
+  }
+
+  .editorial-header {
+    margin-bottom: 3rem;
+    text-align: left;
+  }
+
+  .editorial-kicker {
+    font-size: 0.75rem;
+  }
+
+  .editorial-headline {
+    font-size: 1.875rem;
+    word-spacing: -0.05em;
+    line-height: 1.25;
+  }
+
+  .editorial-headline br {
+    display: none;
+  }
+
+  .editorial-deck {
+    font-size: 1.0625rem;
+  }
+
+  .editorial-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+  }
+
+  .editorial-section--featured {
+    padding-left: 1rem;
+    border-left-width: 2px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-intro {
+    font-size: 1rem;
+  }
+
+  .section-content {
+    gap: 2rem;
+  }
+
+  .subsection-title {
+    font-size: 1rem;
+  }
+
+  .subsection-intro {
+    font-size: 0.875rem;
+  }
+
+  .service-link {
+    font-size: 0.9375rem;
+    padding: 0.5rem 0;
+  }
+
+  .service-link:hover {
+    padding-left: 0.25rem;
+  }
+
+  .editorial-cta {
+    padding: 2rem 1.5rem;
+  }
+
+  .editorial-cta h3 {
+    font-size: 1.25rem;
+  }
+
+  .editorial-cta p {
+    font-size: 1rem;
+  }
+
+  .editorial-cta__actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ==========================================
+   PRINT STYLES (Optional - for editorial feel)
+   ========================================== */
+
+@media print {
+  .servizi-hub {
+    padding: 0;
+  }
+
+  .editorial-section {
+    page-break-inside: avoid;
+  }
+
+  .service-link {
+    color: #000;
+  }
+
+  .editorial-cta {
+    display: none;
+  }
+}

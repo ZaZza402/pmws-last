@@ -1,0 +1,297 @@
+.simple-markdown {
+  color: #2d3748;
+  line-height: 1.8;
+  font-family: "Georgia", "Cambria", "Times New Roman", serif;
+  font-size: 1.125rem;
+}
+
+.markdown-h1,
+.markdown-h2,
+.markdown-h3,
+.simple-markdown h1,
+.simple-markdown h2,
+.simple-markdown h3 {
+  color: #2b286f;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.markdown-h1,
+.simple-markdown h1 {
+  font-size: 2.5rem;
+}
+
+.markdown-h2,
+.simple-markdown h2 {
+  font-size: 2rem;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 2.5em;
+}
+
+.markdown-h3,
+.simple-markdown h3 {
+  font-size: 1.5rem;
+  color: #2b286f;
+}
+
+.markdown-p,
+.simple-markdown p {
+  margin-bottom: 1.5em;
+  color: #2d3748;
+}
+
+.markdown-ul,
+.markdown-ol,
+.simple-markdown ul,
+.simple-markdown ol {
+  margin-bottom: 2em;
+  padding-left: 1.5em;
+  color: #2d3748;
+}
+
+.markdown-li,
+.simple-markdown li {
+  margin-bottom: 0.75em;
+  padding-left: 0.5em;
+  color: #2d3748;
+}
+
+.simple-markdown strong {
+  color: #2b286f;
+  font-weight: 700;
+}
+
+/* Horizontal Rules */
+.markdown-hr,
+.simple-markdown hr {
+  margin: 2.5em 0;
+  border: none;
+  border-top: 2px solid #e2e8f0;
+  opacity: 0.6;
+}
+
+/* Tables */
+.markdown-table,
+.simple-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  font-size: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.markdown-table thead,
+.simple-markdown table thead {
+  background: linear-gradient(135deg, #2b286f 0%, #3d3a8f 100%);
+}
+
+.markdown-table th,
+.simple-markdown table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.95rem;
+  letter-spacing: 0.025em;
+}
+
+.markdown-table td,
+.simple-markdown table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #2d3748;
+}
+
+.markdown-table tbody tr:last-child td,
+.simple-markdown table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown-table tbody tr:hover,
+.simple-markdown table tbody tr:hover {
+  background-color: #f7fafc;
+}
+
+/* Mobile table responsiveness - Card Layout */
+@media (max-width: 640px) {
+  .markdown-table,
+  .simple-markdown table {
+    font-size: 0.9rem;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  /* Hide table header on mobile */
+  .markdown-table thead,
+  .simple-markdown table thead {
+    display: none;
+  }
+
+  /* Make each row a card */
+  .markdown-table tbody,
+  .simple-markdown table tbody {
+    display: block;
+  }
+
+  .markdown-table tbody tr,
+  .simple-markdown table tbody tr {
+    display: block;
+    margin-bottom: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+
+  .markdown-table tbody tr:hover,
+  .simple-markdown table tbody tr:hover {
+    background-color: #fff;
+  }
+
+  /* Make each cell a row with label */
+  .markdown-table td,
+  .simple-markdown table td {
+    display: block;
+    padding: 0.5rem 0;
+    border: none;
+    text-align: left;
+  }
+
+  /* Add data labels before each cell */
+  .markdown-table td:nth-child(1)::before,
+  .simple-markdown table td:nth-child(1)::before {
+    content: "📄 ";
+    font-weight: 700;
+    color: #2b286f;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .markdown-table td:nth-child(1),
+  .simple-markdown table td:nth-child(1) {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2b286f;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+  }
+
+  .markdown-table td:nth-child(2),
+  .simple-markdown table td:nth-child(2) {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.5;
+    padding-bottom: 0.75rem;
+  }
+
+  .markdown-table td:nth-child(3),
+  .simple-markdown table td:nth-child(3) {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    background: #f7fafc;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Blockquotes */
+.markdown-blockquote,
+.simple-markdown blockquote {
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  border-left: 4px solid #f78d23;
+  background: linear-gradient(to right, #fff9f0 0%, #ffffff 100%);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #2d3748;
+}
+
+.markdown-blockquote strong,
+.simple-markdown blockquote strong {
+  color: #2b286f;
+  font-weight: 700;
+}
+
+.markdown-blockquote small,
+.simple-markdown blockquote small {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.875rem;
+  color: #718096;
+  font-style: normal;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .simple-markdown {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .markdown-h1,
+  .simple-markdown h1 {
+    font-size: 2rem;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .markdown-h2,
+  .simple-markdown h2 {
+    font-size: 1.5rem;
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+  }
+
+  .markdown-h3,
+  .simple-markdown h3 {
+    font-size: 1.25rem;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .markdown-p,
+  .simple-markdown p {
+    margin-bottom: 1.125em;
+  }
+
+  .markdown-ul,
+  .markdown-ol,
+  .simple-markdown ul,
+  .simple-markdown ol {
+    margin-bottom: 1.5em;
+    padding-left: 1.25em;
+  }
+
+  .markdown-li,
+  .simple-markdown li {
+    margin-bottom: 0.5em;
+  }
+
+  .markdown-hr,
+  .simple-markdown hr {
+    margin: 1.5em 0;
+  }
+
+  .markdown-table,
+  .simple-markdown table {
+    margin: 1.5em 0;
+    font-size: 0.9rem;
+  }
+
+  .markdown-table th,
+  .simple-markdown table th,
+  .markdown-table td,
+  .simple-markdown table td {
+    padding: 0.75rem 0.5rem;
+  }
+}

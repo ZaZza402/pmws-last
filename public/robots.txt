@@ -9,3 +9,4 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://www.puntomigrare.it/sitemap.xml
+Sitemap: https://www.puntomigrare.it/sitemap.xml
