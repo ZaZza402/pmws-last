@@ -12,6 +12,11 @@ import {
   Home,
   Flag,
   Calculator,
+  ClipboardList,
+  HeartPulse,
+  Scale,
+  TrendingUp,
+  Umbrella,
 } from "lucide-react";
 import Breadcrumb from "../components/Breadcrumb";
 import AnimateOnScroll from "../components/AnimateOnScroll";
@@ -146,7 +151,7 @@ const ServiziPage = () => {
                   <p className="section-intro">
                     Servizi completi per cittadini extracomunitari: permessi di
                     soggiorno, cittadinanza, ricongiungimenti familiari,
-                    riconoscimento titoli di studio e traduzioni certificate.
+                    compilazione kit e traduzioni certificate.
                   </p>
                 </div>
               </header>
@@ -204,23 +209,6 @@ const ServiziPage = () => {
                   <ArrowRight size={18} />
                 </Link>
                 <Link
-                  to="/servizi/migranti/riconoscimento-titoli-di-studio"
-                  className="category-service-link"
-                >
-                  <div className="service-link-content">
-                    <Briefcase size={20} className="service-link-icon" />
-                    <div>
-                      <span className="service-link-title">
-                        Riconoscimento Titoli di Studio
-                      </span>
-                      <span className="service-link-desc">
-                        Equipollenze e dichiarazioni di valore
-                      </span>
-                    </div>
-                  </div>
-                  <ArrowRight size={18} />
-                </Link>
-                <Link
                   to="/servizi/migranti/traduzioni-atti"
                   className="category-service-link"
                 >
@@ -232,6 +220,23 @@ const ServiziPage = () => {
                       </span>
                       <span className="service-link-desc">
                         Traduzioni asseverate e legalizzazioni
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/migranti/compilazione-kit"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <ClipboardList size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Compilazione KIT
+                      </span>
+                      <span className="service-link-desc">
+                        Compilazione kit postale per pratiche immigratorie
                       </span>
                     </div>
                   </div>
@@ -251,9 +256,8 @@ const ServiziPage = () => {
                 <div className="section-header__content">
                   <h2 className="section-title">Viaggiatori</h2>
                   <p className="section-intro">
-                    Assistenza per visti d'ingresso, mediazione con ambasciate e
-                    consolati, preparazione documentazione per pratiche
-                    consolari.
+                    Assistenza per visti d'ingresso, mediazione con ambasciate,
+                    assicurazione sanitaria, fidejussione e pratiche consolari.
                   </p>
                 </div>
               </header>
@@ -293,6 +297,23 @@ const ServiziPage = () => {
                   </div>
                   <ArrowRight size={18} />
                 </Link>
+                <Link
+                  to="/servizi/viaggiatori/assicurazione-fidejussione"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <HeartPulse size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Assicurazione Sanitaria + Fidejussione
+                      </span>
+                      <span className="service-link-desc">
+                        Pacchetto obbligatorio per visti turistici in Italia
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
               </nav>
             </section>
           </AnimateOnScroll>
@@ -312,6 +333,13 @@ const ServiziPage = () => {
                   </p>
                 </div>
               </header>
+
+              <div className="famiglie-logo">
+                <img
+                  src="/LOGO%20punto%20DOMINA.png"
+                  alt="Associazione Domina"
+                />
+              </div>
 
               <nav className="category-services-list">
                 <Link
@@ -346,7 +374,7 @@ const ServiziPage = () => {
                   <h2 className="section-title">Altri Servizi</h2>
                   <p className="section-intro">
                     CAF, Patronato, successioni, contratti d'affitto, consulenza
-                    legale e disbrigo pratiche presso enti pubblici.
+                    legale, contabilità PIVA, assicurazioni e disbrigo pratiche.
                   </p>
                 </div>
               </header>
@@ -430,6 +458,38 @@ const ServiziPage = () => {
                       </span>
                       <span className="service-link-desc">
                         Assistenza con comuni, prefetture e questure
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/altri/contabilita-piva"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <TrendingUp size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">
+                        Apertura/Chiusura e Gestione Contabilità PIVA
+                      </span>
+                      <span className="service-link-desc">
+                        Apertura, gestione e chiusura Partita IVA
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/servizi/altri/assicurazioni"
+                  className="category-service-link"
+                >
+                  <div className="service-link-content">
+                    <Umbrella size={20} className="service-link-icon" />
+                    <div>
+                      <span className="service-link-title">Assicurazioni</span>
+                      <span className="service-link-desc">
+                        Polizze assicurative per ogni esigenza
                       </span>
                     </div>
                   </div>

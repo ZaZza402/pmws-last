@@ -17,68 +17,75 @@ import ServiceLayout from "./components/ServiceLayout";
 // Lazy load other pages
 const HomePage = lazy(() => import("./pages/HomePage"));
 const ServiziPage = lazy(() => import("./pages/ServiziPage"));
-const PermessiSoggiornoPage = lazy(() =>
-  import("./pages/migranti/PermessiSoggiornoPage")
+const PermessiSoggiornoPage = lazy(
+  () => import("./pages/migranti/PermessiSoggiornoPage"),
 );
-const CittadinanzaItalianaPage = lazy(() =>
-  import("./pages/migranti/CittadinanzaItalianaPage")
+const CittadinanzaItalianaPage = lazy(
+  () => import("./pages/migranti/CittadinanzaItalianaPage"),
 );
 // const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
-const ClusteredPermessoPage = lazy(() =>
-  import("./pages/migranti/ClusteredPermessoPage")
+const ClusteredPermessoPage = lazy(
+  () => import("./pages/migranti/ClusteredPermessoPage"),
 );
 const CafPatronatoPage = lazy(() => import("./pages/caf/CafPatronatoPage"));
 const Modello730Page = lazy(() => import("./pages/caf/Modello730Page"));
 const IseePage = lazy(() => import("./pages/caf/IseePage"));
-const RicongiungimentiFamiliariPage = lazy(() =>
-  import("./pages/migranti/RicongiungimentiFamiliariPage")
+const RicongiungimentiFamiliariPage = lazy(
+  () => import("./pages/migranti/RicongiungimentiFamiliariPage"),
 );
-const RiconoscimentoTitoliPage = lazy(() =>
-  import("./pages/migranti/RiconoscimentoTitoliPage")
-);
-const TraduzioniAttiPage = lazy(() =>
-  import("./pages/migranti/TraduzioniAttiPage")
+const TraduzioniAttiPage = lazy(
+  () => import("./pages/migranti/TraduzioniAttiPage"),
 );
 
 // Cittadinanza Pages
-const CittadinanzaResidenzaPage = lazy(() =>
-  import("./pages/migranti/CittadinanzaResidenzaPage")
+const CittadinanzaResidenzaPage = lazy(
+  () => import("./pages/migranti/CittadinanzaResidenzaPage"),
 );
-const CittadinanzaMatrimonioPage = lazy(() =>
-  import("./pages/migranti/CittadinanzaMatrimonioPage")
+const CittadinanzaMatrimonioPage = lazy(
+  () => import("./pages/migranti/CittadinanzaMatrimonioPage"),
 );
-const CittadinanzaJureSanguinisPage = lazy(() =>
-  import("./pages/migranti/CittadinanzaJureSanguinisPage")
+const CittadinanzaJureSanguinisPage = lazy(
+  () => import("./pages/migranti/CittadinanzaJureSanguinisPage"),
 );
-const CittadinanzaNascitaPage = lazy(() =>
-  import("./pages/migranti/CittadinanzaNascitaPage")
+const CittadinanzaNascitaPage = lazy(
+  () => import("./pages/migranti/CittadinanzaNascitaPage"),
 );
-const CittadinanzaMatrimonioEsteroPage = lazy(() =>
-  import("./pages/migranti/CittadinanzaMatrimonioEsteroPage")
+const CittadinanzaMatrimonioEsteroPage = lazy(
+  () => import("./pages/migranti/CittadinanzaMatrimonioEsteroPage"),
 );
-const CittadinanzaServizioStatoPage = lazy(() =>
-  import("./pages/migranti/CittadinanzaServizioStatoPage")
+const CittadinanzaServizioStatoPage = lazy(
+  () => import("./pages/migranti/CittadinanzaServizioStatoPage"),
 );
 
-const VistiItaliaPage = lazy(() =>
-  import("./pages/viaggiatori/VistiItaliaPage")
+const VistiItaliaPage = lazy(
+  () => import("./pages/viaggiatori/VistiItaliaPage"),
 );
-const MediazioneAmbasciataPage = lazy(() =>
-  import("./pages/viaggiatori/MediazioneAmbasciataPage")
+const MediazioneAmbasciataPage = lazy(
+  () => import("./pages/viaggiatori/MediazioneAmbasciataPage"),
 );
-const LavoroDomesticoPage = lazy(() =>
-  import("./pages/famiglie/LavoroDomesticoPage")
+const LavoroDomesticoPage = lazy(
+  () => import("./pages/famiglie/LavoroDomesticoPage"),
 );
 const SuccessioniPage = lazy(() => import("./pages/altri/SuccessioniPage"));
-const ContrattiAffittoPage = lazy(() =>
-  import("./pages/altri/ContrattiAffittoPage")
+const ContrattiAffittoPage = lazy(
+  () => import("./pages/altri/ContrattiAffittoPage"),
 );
-const ConsulenzaLegalePage = lazy(() =>
-  import("./pages/altri/ConsulenzaLegalePage")
+const ConsulenzaLegalePage = lazy(
+  () => import("./pages/altri/ConsulenzaLegalePage"),
 );
-const DisbrigoPratichePage = lazy(() =>
-  import("./pages/altri/DisbrigoPratichePage")
+const DisbrigoPratichePage = lazy(
+  () => import("./pages/altri/DisbrigoPratichePage"),
 );
+const CompilazioneKitPage = lazy(
+  () => import("./pages/migranti/CompilazioneKitPage"),
+);
+const AssicurazioneFidejussionePage = lazy(
+  () => import("./pages/viaggiatori/AssicurazioneFidejussionePage"),
+);
+const ContabilitaPivaPage = lazy(
+  () => import("./pages/altri/ContabilitaPivaPage"),
+);
+const AssicurazioniPage = lazy(() => import("./pages/altri/AssicurazioniPage"));
 const FaqPage = lazy(() => import("./pages/FaqPage"));
 const ContattiPage = lazy(() => import("./pages/ContattiPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
@@ -126,12 +133,12 @@ function App() {
                   element={<RicongiungimentiFamiliariPage />}
                 />
                 <Route
-                  path="/servizi/migranti/riconoscimento-titoli-di-studio"
-                  element={<RiconoscimentoTitoliPage />}
-                />
-                <Route
                   path="/servizi/migranti/traduzioni-atti"
                   element={<TraduzioniAttiPage />}
+                />
+                <Route
+                  path="/servizi/migranti/compilazione-kit"
+                  element={<CompilazioneKitPage />}
                 />
 
                 {/* Cittadinanza Specific Pages */}
@@ -177,6 +184,10 @@ function App() {
                   path="/servizi/viaggiatori/mediazione-ambasciate"
                   element={<MediazioneAmbasciataPage />}
                 />
+                <Route
+                  path="/servizi/viaggiatori/assicurazione-fidejussione"
+                  element={<AssicurazioneFidejussionePage />}
+                />
                 {/* Famiglie services */}
                 <Route
                   path="/servizi/famiglie/gestione-lavoro-domestico"
@@ -198,6 +209,14 @@ function App() {
                 <Route
                   path="/servizi/altri/disbrigo-pratiche"
                   element={<DisbrigoPratichePage />}
+                />
+                <Route
+                  path="/servizi/altri/contabilita-piva"
+                  element={<ContabilitaPivaPage />}
+                />
+                <Route
+                  path="/servizi/altri/assicurazioni"
+                  element={<AssicurazioniPage />}
                 />
                 {/* Clustered permit pages - the actual detailed content pages */}
                 <Route

@@ -141,7 +141,9 @@
 .service-link svg {
   flex-shrink: 0;
   opacity: 0.4;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .service-link:hover svg {
@@ -276,6 +278,10 @@
     padding: 2rem 0 2rem;
   }
 
+  .servizi-hub .container {
+    padding: 0 1.25rem;
+  }
+
   .editorial-header {
     margin-bottom: 2rem;
     text-align: left;
@@ -309,8 +315,18 @@
   }
 
   .editorial-cta {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.25rem;
     margin-top: 2.5rem;
+  }
+
+  .editorial-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .editorial-cta__actions .btn {
+    text-align: center;
+    justify-content: center;
   }
 
   /* Requirements - Mobile Optimized */
@@ -335,6 +351,37 @@
   .requirement-text {
     font-size: 0.875rem;
     line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .servizi-hub .container {
+    padding: 0 1rem;
+  }
+
+  .editorial-headline {
+    font-size: 1.625rem;
+  }
+
+  .editorial-deck {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .requirements-section {
+    padding: 1.25rem 0.875rem;
+  }
+
+  .editorial-cta {
+    padding: 1.5rem 1rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9375rem;
   }
 }
 

@@ -295,3 +295,33 @@
     padding: 0.75rem 0.5rem;
   }
 }
+
+/* Extra small screens (phones ≤480px) */
+@media (max-width: 480px) {
+  .simple-markdown {
+    font-size: 1rem;
+  }
+
+  .markdown-blockquote,
+  .simple-markdown blockquote {
+    padding: 0.75em 1em;
+    margin: 1.25em 0;
+  }
+
+  .markdown-ul,
+  .markdown-ol,
+  .simple-markdown ul,
+  .simple-markdown ol {
+    padding-left: 1rem;
+  }
+
+  .markdown-h2,
+  .simple-markdown h2 {
+    font-size: 1.375rem;
+  }
+
+  .markdown-h3,
+  .simple-markdown h3 {
+    font-size: 1.125rem;
+  }
+}

@@ -42,6 +42,11 @@ const ServiceCard = ({ category, services, image }) => {
 
       {/* Colored band at the bottom with services list */}
       <div className="service-card__band">
+        {category === "Famiglie" && (
+          <div className="service-card__partner-logo">
+            <img src="/LOGO%20punto%20DOMINA.png" alt="Associazione Domina" />
+          </div>
+        )}
         <ul className="service-card__list">
           {services.map((service) => (
             <li key={service.id} className="service-card__item">
@@ -92,7 +97,7 @@ const ServicesSection = () => {
         >
           {serviceCategories.map((category, index) => {
             const categoryServices = allServices.filter(
-              (service) => service.category === category
+              (service) => service.category === category,
             );
             return (
               <ServiceCard

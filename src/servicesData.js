@@ -444,23 +444,6 @@ export const allServices = [
     ],
   },
   {
-    id: "s4",
-    category: "Migranti",
-    title: "Riconoscimento Titoli di Studio",
-    shortTitle: "Riconoscimento titoli studio",
-    path: "/servizi/migranti/riconoscimento-titoli-di-studio",
-    description:
-      "Valorizza la tua formazione estera in Italia. Gestiamo il riconoscimento e l'equipollenza dei tuoi titoli di studio.",
-    icon: "education",
-    practices: [
-      "Dichiarazione di valore titoli esteri",
-      "Equipollenza diplomi e lauree",
-      "Traduzioni giurate certificati",
-      "Legalizzazione e apostille",
-      "Iscrizione albi professionali",
-    ],
-  },
-  {
     id: "s5",
     category: "Migranti",
     title: "Traduzioni Atti",
@@ -475,6 +458,22 @@ export const allServices = [
       "Diplomi e certificati accademici",
       "Contratti e documenti legali",
       "Legalizzazione presso consolati",
+    ],
+  },
+  {
+    id: "s6",
+    category: "Migranti",
+    title: "Compilazione KIT",
+    shortTitle: "Compilazione kit",
+    path: "/servizi/migranti/compilazione-kit",
+    description:
+      "Assistenza nella compilazione del kit postale per la presentazione delle pratiche immigratorie.",
+    icon: "document",
+    practices: [
+      "Compilazione moduli kit postale",
+      "Verifica documentazione completa",
+      "Organizzazione pratica per sportello",
+      "Assistenza pre-appuntamento",
     ],
   },
   // VIAGGIATORI
@@ -511,6 +510,23 @@ export const allServices = [
       "Verifica stato domande",
       "Assistenza appuntamenti",
       "Supporto documentazione consolare",
+    ],
+  },
+  {
+    id: "v3",
+    category: "Viaggiatori",
+    title: "Assicurazione Sanitaria + Fidejussione",
+    shortTitle: "Assicurazione sanitaria + fidejussione",
+    path: "/servizi/viaggiatori/assicurazione-fidejussione",
+    description:
+      "Il pacchetto obbligatorio per i visti turistici in Italia: copertura sanitaria e garanzia fidejussoria in un unico servizio.",
+    icon: "health",
+    practices: [
+      "Polizze sanitarie per visti e soggiorni",
+      "Copertura spese mediche all'estero",
+      "Fidejussione per visti e permessi",
+      "Garanzie per pratiche consolari",
+      "Assistenza documentazione completa",
     ],
   },
   // FAMIGLIE
@@ -640,6 +656,38 @@ export const allServices = [
       "Sportello Unico Immigrazione",
     ],
   },
+  {
+    id: "a6",
+    category: "Altri Servizi",
+    title: "Apertura/Chiusura e Gestione Contabilità PIVA",
+    shortTitle: "Contabilità PIVA",
+    path: "/servizi/altri/contabilita-piva",
+    description:
+      "Apertura, chiusura e gestione contabile della Partita IVA per liberi professionisti e ditte individuali.",
+    icon: "calculator",
+    practices: [
+      "Apertura Partita IVA",
+      "Gestione contabilità ordinaria e semplificata",
+      "Dichiarazioni fiscali periodiche",
+      "Chiusura Partita IVA",
+    ],
+  },
+  {
+    id: "a7",
+    category: "Altri Servizi",
+    title: "Assicurazioni",
+    shortTitle: "Assicurazioni",
+    path: "/servizi/altri/assicurazioni",
+    description:
+      "Consulenza e assistenza per la scelta delle polizze assicurative più adatte alle tue esigenze.",
+    icon: "shield",
+    practices: [
+      "Assicurazione RC auto e moto",
+      "Polizze vita e infortuni",
+      "Assicurazioni casa e patrimonio",
+      "Consulenza personalizzata",
+    ],
+  },
 ];
 
 export const homePageServices = [
@@ -663,13 +711,6 @@ export const homePageServices = [
       "Il grande traguardo. Ti accompagniamo dall'analisi requisiti all'ottenimento.",
     icon: "flag",
     link: "/servizi/cittadinanza-italiana",
-  },
-  {
-    title: "Riconoscimento Titoli di Studio",
-    description:
-      "Valorizza la tua formazione estera. Gestiamo equipollenze e dichiarazioni di valore.",
-    icon: "education",
-    link: "/servizi/migranti/riconoscimento-titoli-di-studio",
   },
   {
     title: "Traduzioni Atti",

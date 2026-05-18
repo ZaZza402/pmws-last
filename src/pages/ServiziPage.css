@@ -549,3 +549,31 @@
     margin-bottom: 1.25rem;
   }
 }
+
+/* ==========================================
+   FAMIGLIE - PUNTO DOMINA LOGO
+   ========================================== */
+.famiglie-logo {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 2rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid #e8e8f0;
+  border-bottom: 1px solid #e8e8f0;
+}
+
+.famiglie-logo img {
+  max-height: 100px;
+  width: auto;
+  background-color: #ffffff;
+  padding: 14px 32px;
+  border-radius: 14px;
+  border: 1px solid #d8d8ef;
+  display: block;
+  box-shadow: 0 4px 16px rgba(43, 40, 111, 0.12);
+  transition: box-shadow 0.2s ease;
+}
+
+.famiglie-logo img:hover {
+  box-shadow: 0 6px 20px rgba(43, 40, 111, 0.18);
+}
