@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Search, X, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Search, X } from "lucide-react";
 import { allServices } from "../servicesData";
 import "./ServiceSearch.css";
 
@@ -10,7 +10,6 @@ const ServiceSearch = () => {
   const [isStuck, setIsStuck] = useState(false);
   const containerRef = useRef(null);
   const inputRef = useRef(null);
-  const navigate = useNavigate();
 
   // Flatten and index services for search
   const searchIndex = useMemo(() => {
@@ -103,7 +102,7 @@ const ServiceSearch = () => {
     inputRef.current?.focus();
   };
 
-  const handleResultClick = (path) => {
+  const handleResultClick = () => {
     setIsOpen(false);
     setSearchTerm("");
     // Navigate is handled by Link, but we clear state

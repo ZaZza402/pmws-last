@@ -2,8 +2,6 @@ import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 import Breadcrumb from "../components/Breadcrumb";
-import WhatsAppPopup from "../components/WhatsAppPopup";
-import PhonePopup from "../components/PhonePopup";
 import { LiveClock } from "../components/DocumentSection";
 import "./ContattiPage.css";
 
@@ -79,7 +77,7 @@ const ContattiPage = () => {
                   Contattaci Come Preferisci
                 </h2>
                 <div className="contact-timeline mt-2">
-                  {contactOptions.map((option, idx) => (
+                  {contactOptions.map((option) => (
                     <div className="contact-step" key={option.title}>
                       <span className="contact-step-icon" aria-hidden="true">
                         {option.icon}

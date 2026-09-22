@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://zazza402.github.io/pmws-last",
+  "homepage": "https://www.puntomigrare.it/",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
@@ -34,6 +34,7 @@
     "@vitejs/plugin-react": "^5.0.0",
     "baseline-browser-mapping": "^2.10.27",
     "eslint": "^9.33.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",

@@ -14,7 +14,6 @@ import {
   Calculator,
   ClipboardList,
   HeartPulse,
-  Scale,
   TrendingUp,
   Umbrella,
 } from "lucide-react";

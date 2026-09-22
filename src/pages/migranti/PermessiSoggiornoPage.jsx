@@ -4,7 +4,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   FileText,
-  Flag,
   Users,
   ArrowRight,
   Briefcase,
@@ -12,7 +11,6 @@ import {
   Home,
   Shield,
   RefreshCw,
-  Copy,
 } from "lucide-react";
 import Breadcrumb from "../../components/Breadcrumb";
 import AnimateOnScroll from "../../components/AnimateOnScroll";
@@ -30,10 +28,6 @@ const PermessiSoggiornoPage = () => {
     { label: "Servizi", path: "/servizi" },
     { label: "Permessi di Soggiorno" },
   ];
-
-  // Calculate years of experience dynamically (started in 2017)
-  const currentYear = new Date().getFullYear();
-  const yearsOfExperience = currentYear - 2017;
 
   return (
     <div className="servizi-hub">

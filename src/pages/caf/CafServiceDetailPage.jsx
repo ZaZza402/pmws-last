@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { FileText, CheckCircle, ArrowLeft, Download } from "lucide-react";
+import { CheckCircle, ArrowLeft, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import Breadcrumb from "../../components/Breadcrumb";
 import AnimateOnScroll from "../../components/AnimateOnScroll";
@@ -73,8 +73,8 @@ const CafServiceDetailPage = ({ serviceData }) => {
                   {serviceData.slug === "730"
                     ? "Documenti Necessari per il 730/2026"
                     : serviceData.slug === "isee"
-                    ? "Documenti Necessari per ISEE 2026"
-                    : "Documenti Necessari"}
+                      ? "Documenti Necessari per ISEE 2026"
+                      : "Documenti Necessari"}
                 </h2>
                 <p className="section-intro" style={{ marginBottom: "1.5rem" }}>
                   {serviceData.slug === "730"

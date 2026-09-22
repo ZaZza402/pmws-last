@@ -95,7 +95,7 @@ const ServicesSection = () => {
           ref={scrollRef}
           onScroll={handleScroll}
         >
-          {serviceCategories.map((category, index) => {
+          {serviceCategories.map((category) => {
             const categoryServices = allServices.filter(
               (service) => service.category === category,
             );

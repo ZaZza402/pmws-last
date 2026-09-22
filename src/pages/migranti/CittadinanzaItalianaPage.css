@@ -220,7 +220,9 @@
 .service-link svg {
   flex-shrink: 0;
   opacity: 0.4;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .service-link:hover svg {
@@ -276,46 +278,6 @@
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-/* ==========================================
-   BUTTONS
-   ========================================== */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  border: none;
-}
-
-.btn--primary {
-  background: #2b286f;
-  color: white;
-}
-
-.btn--primary:hover {
-  background: #1f1c52;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(43, 40, 111, 0.3);
-}
-
-.btn--secondary {
-  background: #25d366;
-  color: white;
-}
-
-.btn--secondary:hover {
-  background: #20bd5a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
 /* ==========================================

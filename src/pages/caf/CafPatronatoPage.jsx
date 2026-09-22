@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { FileText, Calculator, ArrowRight } from "lucide-react";
+import { Calculator, ArrowRight } from "lucide-react";
 import Breadcrumb from "../../components/Breadcrumb";
 import AnimateOnScroll from "../../components/AnimateOnScroll";
 import WhatsAppPopup from "../../components/WhatsAppPopup";

@@ -14,10 +14,6 @@ import "./caf/CafPatronatoPage.css"; // Reusing CAF styles
 const GenericServicePage = ({ serviceData }) => {
   const location = useLocation();
 
-  console.log("GenericServicePage serviceData:", serviceData);
-  console.log("longDescription exists:", !!serviceData?.longDescription);
-  console.log("longDescription length:", serviceData?.longDescription?.length);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);

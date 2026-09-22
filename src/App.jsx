@@ -269,13 +269,6 @@ function App() {
                   element={<PermessoRedirect />}
                 />
               </Route>
-              {/* 
-              <Route
-                path="/servizi/cittadinanza/:slug"
-                element={<ServiceDetailPage />}
-              />
-              <Route path="/servizi/:slug" element={<ServiceDetailPage />} /> 
-              */}
               <Route path="/faq" element={<FaqPage />} />
               <Route path="/contatti" element={<ContattiPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
